@@ -551,32 +551,39 @@ h2 {
     color: #f60;
     text-decoration: underline;
 }
-#link ul{
+
+#link ul {
     padding: 0 0 0 10px;
     height: 30px;
     line-height: 30px;
     border-bottom: 1px dashed #999;
     margin: 0 auto;
 }
-#link ul li{
+
+#link ul li {
     display: inline;
     padding: 5px 5px 0 5px;
 }
-#link ul li a{
+
+#link ul li a {
     color: #666;
     text-decoration: none;
 }
-#link ul li a:hover{
+
+#link ul li a:hover {
     text-decoration: underline;
 }
-#link dl{
+
+#link dl {
     padding: 10px 0 0 8px;
 }
-#link dl dd{
+
+#link dl dd {
     float: left;
     padding: 0 8px;
 }
-#link dl dd img{
+
+#link dl dd img {
     border: none;
     display: block;
 }
