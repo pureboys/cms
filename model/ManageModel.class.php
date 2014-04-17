@@ -9,6 +9,7 @@ class ManageModel extends Model
     private $_admin_user;
     private $_admin_pass;
     private $_level;
+    private $_limit;
 
     function __set($key, $value)
     {
@@ -17,29 +18,27 @@ class ManageModel extends Model
 
     function __get($key)
     {
-        return $key;
+        return $this->$key;
     }
-
-    public function getAllLevel()
+    //获取管理员总记录
+    public function getManageTotal()
     {
-        $sql = "SELECT id,level_name FROM cms_level ORDER BY id ASC";
-        return parent::all($sql);
+        $_sql = "SELECT COUNT(*) FROM cms_manage";
+        return parent::total($_sql);
     }
-
-
     /**
      * 获取所有列表数据
      * @return array
      */
     public function getAllManage()
     {
-        $sql = "SELECT m.id,m.admin_user,l.level_name,m.last_ip,m.last_time,m.reg_time FROM cms_manage as m,cms_level as l WHERE m.level=l.id ORDER BY id ASC LIMIT 0,20";
+        $sql = "SELECT m.id,m.admin_user,l.level_name,m.last_ip,m.last_time,m.reg_time FROM cms_manage as m,cms_level as l WHERE m.level=l.id ORDER BY id ASC $this->_limit";
         return parent::all($sql);
     }
 
     public function getOneManage()
     {
-        $sql = "SELECT id,admin_user,admin_pass,level FROM cms_manage WHERE id='$this->id' LIMIT 1";
+        $sql = "SELECT id,admin_user,admin_pass,level FROM cms_manage WHERE id='$this->id' OR admin_user='$this->_admin_user' OR level='$this->_level' LIMIT 1";
         return parent::one($sql);
     }
 

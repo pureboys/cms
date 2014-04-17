@@ -1,4 +1,4 @@
-.idea
+.idea/*
 templates/
 templates_c/
 cache/

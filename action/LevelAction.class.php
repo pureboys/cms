@@ -4,7 +4,7 @@ class LevelAction extends Action
 {
     public function __construct(&$_tpl)
     {
-        parent::__construct($_tpl,new LevelModel());
+        parent::__construct($_tpl, new LevelModel());
         $this->_action();
         $this->_tpl->display('level.tpl');
     }
@@ -37,6 +37,7 @@ class LevelAction extends Action
             if (Validate::checkLength($_POST['level_name'], 20, 'max')) Tool::alertBack("警告：等级不得大于20位");
             if (Validate::checkLength($_POST['level_info'], 200, 'max')) Tool::alertBack("警告：介绍不得大于200位");
             $this->_model->level_name = $_POST['level_name'];
+            if ($this->_model->getOneLevel()) Tool::alertBack('警告！等级已经有了！');
             $this->_model->level_info = $_POST['level_info'];
             $this->_model->addLevel() ? Tool::alertLocation("恭喜新增等级成功!", 'level.php?action=show') : Tool::alertBack("很遗憾，添加等级失败!");
         }
@@ -87,7 +88,9 @@ class LevelAction extends Action
     private function delete()
     {
         if (isset($_GET['id'])) {
-            $this->_model->id = $_GET['id'];
+            $_manage = new ManageModel();
+            $_manage->_level = $this->_model->id = $_GET['id'];
+            if ($_manage->getOneManage()) Tool::alertBack('警告，此等级已经被管理员使用，无法删除！请删除相关用户');
             $this->_model->deleteLevel() ? Tool::alertLocation('恭喜你，删除等级成功！', 'level.php?action=show') : Tool::alertBack('很遗憾，删除等级失败！');
         } else {
             Tool::alertBack('非法操作！');

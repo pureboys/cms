@@ -16,9 +16,8 @@ class LevelModel extends Model
 
     function __get($key)
     {
-        return $key;
+        return $this->$key;
     }
-
 
     /**
      * 获取所有列表数据
@@ -26,13 +25,13 @@ class LevelModel extends Model
      */
     public function getAllLevel()
     {
-        $sql = "SELECT id,level_name,level_info FROM cms_level ORDER BY id ASC LIMIT 0,20";
+        $sql = "SELECT id,level_name,level_info FROM cms_level ORDER BY id ASC";
         return parent::all($sql);
     }
 
     public function getOneLevel()
     {
-        $sql = "SELECT id,level_name,level_info FROM cms_level WHERE id='$this->id' LIMIT 1";
+        $sql = "SELECT id,level_name,level_info FROM cms_level WHERE id='$this->id' OR level_name='$this->level_name' LIMIT 1";
         return parent::one($sql);
     }
 

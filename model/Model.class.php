@@ -49,5 +49,17 @@ class Model {
         return $html;
     }
 
+    //查找总记录模型
+    protected function total($sql)
+    {
+        $_db = DB::getDB();
+        $_result = $_db->query($sql);
+        $_total = $_result->fetch_row();
+        DB::unDB($_result,$_db);
+        return $_total[0];
+    }
+
+
+
 
 } 
