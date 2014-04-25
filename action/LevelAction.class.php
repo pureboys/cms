@@ -4,6 +4,7 @@ class LevelAction extends Action
 {
     public function __construct(&$_tpl)
     {
+        Validate::checkSession();
         parent::__construct($_tpl, new LevelModel());
         $this->_action();
         $this->_tpl->display('level.tpl');
@@ -45,16 +46,18 @@ class LevelAction extends Action
         $this->_tpl->assign('show', false);
         $this->_tpl->assign('update', false);
         $this->_tpl->assign('title', '新增等级');
+        $this->_tpl->assign('prev_url',PREV_URL);
     }
 
 
     private function show()
     {
+        parent::page($this->_model->getLevelTotal());
         $this->_tpl->assign('show', true);
         $this->_tpl->assign('add', false);
         $this->_tpl->assign('update', false);
         $this->_tpl->assign('title', '等级列表');
-        $this->_tpl->assign('AllLevel', $this->_model->getAllLevel());
+        $this->_tpl->assign('AllLevel', $this->_model->getAllLimitLevel());
     }
 
 
@@ -68,14 +71,16 @@ class LevelAction extends Action
             $this->_model->id = $_POST['id'];
             $this->_model->level_name = $_POST['level_name'];
             $this->_model->level_info = $_POST['level_info'];
-            $this->_model->updateLevel() ? Tool::alertLocation('恭喜修改等级成功！', 'level.php?action=show') : Tool::alertBack('很遗憾，修改等级失败');
+            $this->_model->updateLevel() ? Tool::alertLocation('恭喜修改等级成功！', $_POST['prev_url']) : Tool::alertBack('很遗憾，修改等级失败');
         }
         if (isset($_GET['id'])) {
             $this->_model->id = $_GET['id'];
-            is_object($this->_model->getOneLevel()) ? true : Tool::alertBack('等级传值id有误');
-            $this->_tpl->assign('id', $this->_model->getOneLevel()->id);
-            $this->_tpl->assign('level_name', $this->_model->getOneLevel()->level_name);
-            $this->_tpl->assign('level_info', $this->_model->getOneLevel()->level_info);
+            $_level = $this->_model->getOneLevel();
+            is_object($_level) ? true : Tool::alertBack('等级传值id有误');
+            $this->_tpl->assign('id', $_level->id);
+            $this->_tpl->assign('level_name', $_level->level_name);
+            $this->_tpl->assign('level_info', $_level->level_info);
+            $this->_tpl->assign('prev_url',PREV_URL);
             $this->_tpl->assign('update', true);
             $this->_tpl->assign('show', false);
             $this->_tpl->assign('add', false);
@@ -91,7 +96,7 @@ class LevelAction extends Action
             $_manage = new ManageModel();
             $_manage->_level = $this->_model->id = $_GET['id'];
             if ($_manage->getOneManage()) Tool::alertBack('警告，此等级已经被管理员使用，无法删除！请删除相关用户');
-            $this->_model->deleteLevel() ? Tool::alertLocation('恭喜你，删除等级成功！', 'level.php?action=show') : Tool::alertBack('很遗憾，删除等级失败！');
+            $this->_model->deleteLevel() ? Tool::alertLocation('恭喜你，删除等级成功！', PREV_URL) : Tool::alertBack('很遗憾，删除等级失败！');
         } else {
             Tool::alertBack('非法操作！');
         }

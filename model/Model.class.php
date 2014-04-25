@@ -1,12 +1,13 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: Administrator
  * Date: 14-4-11
  * Time: 下午1:19
  */
-
-class Model {
+class Model
+{
 
     /**
      * 增删修改模型
@@ -33,7 +34,7 @@ class Model {
         $_result = $_db->query($sql);
         $_objects = $_result->fetch_object();
         DB::unDB($_result, $_db);
-        return $_objects;
+        return Tool::htmlString($_objects);
     }
 
 
@@ -46,7 +47,7 @@ class Model {
             $html[] = $row;
         }
         DB::unDB($_result, $_db);
-        return $html;
+        return Tool::htmlString($html);
     }
 
     //查找总记录模型
@@ -55,11 +56,16 @@ class Model {
         $_db = DB::getDB();
         $_result = $_db->query($sql);
         $_total = $_result->fetch_row();
-        DB::unDB($_result,$_db);
+        DB::unDB($_result, $_db);
         return $_total[0];
     }
 
-
-
+    //获取下一个增值id
+    public function nextId($_table)
+    {
+        $_sql = "SHOW TABLE STATUS LIKE '$_table'";
+        $object = $this->one($_sql);
+        return $object->Auto_increment;
+    }
 
 } 

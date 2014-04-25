@@ -1,4 +1,6 @@
 <?php
+//开启session
+session_start();
 header('Content-Type:text/html;charset=utf-8');
 //模版根目录
 define('ROOT_PATH', dirname(__FILE__));

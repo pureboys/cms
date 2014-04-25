@@ -47,7 +47,7 @@ class Parser
     {
         $_pattenForeach = '/\{foreach\s+\$([\w]+)\(([\w]+),([\w]+)\)\}/';
         $_pattenEndForeach = '/\{\/foreach\}/';
-        $_pattenVar = '/\{@([\w]+)([\w\-\>]*)\}/';
+        $_pattenVar = '/\{@([\w]+)([\w\-\>+]*)\}/';
         if (preg_match($_pattenForeach, $this->_tpl)) {
             if (preg_match($_pattenEndForeach, $this->_tpl)) {
                 $this->_tpl = preg_replace($_pattenForeach, "<?php foreach(\$this->_vars['$1'] as \$$2 => \$$3){ ?>", $this->_tpl);

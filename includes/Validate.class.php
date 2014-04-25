@@ -24,6 +24,9 @@ class Validate
         } else if ($_flag == 'max') {
             if (mb_strlen(trim($_date), 'utf8') > $_length) return true;
             return false;
+        } else if ($_flag == 'equals') {
+            if (mb_strlen(trim($_date), 'utf8') != $_length) return true;
+            return false;
         } else {
             Tool::alertBack('ERROR:参数传递错误，必须是min,max');
         }
@@ -36,4 +39,10 @@ class Validate
         if (trim($_date) != trim($_other_date)) return true;
         return false;
     }
+
+  //session验证
+    static public function checkSession(){
+        if(!isset($_SESSION['admin'])) Tool::alertBack('警告：非法登录;');
+    }
+
 } 

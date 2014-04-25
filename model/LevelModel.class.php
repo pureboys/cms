@@ -8,10 +8,11 @@ class LevelModel extends Model
     private $id;
     private $level_name;
     private $level_info;
+    private $_limit;
 
     function __set($key, $value)
     {
-        $this->$key = $value;
+        $this->$key = Tool::mysqlString($value);
     }
 
     function __get($key)
@@ -19,13 +20,30 @@ class LevelModel extends Model
         return $this->$key;
     }
 
+    //获取等级总记录
+    public function getLevelTotal()
+    {
+        $_sql = "SELECT COUNT(*) FROM cms_level";
+        return parent::total($_sql);
+    }
+
     /**
-     * 获取所有列表数据
+     * 获取所有列表数据,不带limit
      * @return array
      */
     public function getAllLevel()
     {
-        $sql = "SELECT id,level_name,level_info FROM cms_level ORDER BY id ASC";
+        $sql = "SELECT id,level_name,level_info FROM cms_level ORDER BY id DESC";
+        return parent::all($sql);
+    }
+
+    /**
+     * 获取所有列表数据,带limit
+     * @return array
+     */
+    public function getAllLimitLevel()
+    {
+        $sql = "SELECT id,level_name,level_info FROM cms_level ORDER BY id DESC $this->_limit";
         return parent::all($sql);
     }
 
@@ -42,7 +60,7 @@ class LevelModel extends Model
     public function addLevel()
     {
 
-        $sql = "INSERT INTO cms_level(level_name,level_info) values ('$this->level_name','$this->level_info')";
+        $sql = "INSERT INTO cms_level(level_name,level_info) VALUES ('$this->level_name','$this->level_info')";
         return parent::aud($sql);
     }
 

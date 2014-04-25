@@ -19,7 +19,7 @@ class Page
 
     public function __construct($_total, $_pagesize)
     {
-        $this->total = $_total;
+        $this->total = $_total ? $_total : 1;
         $this->pagesize = $_pagesize;
         $this->pagenum = ceil($this->total / $this->pagesize);
         $this->page = $this->setPage();
