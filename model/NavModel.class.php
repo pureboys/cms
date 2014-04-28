@@ -31,10 +31,16 @@ class NavModel extends Model
     //获取总记录
     public function getNavTotal()
     {
-        $_sql = "SELECT COUNT(*) FROM cms_nav";
+        $_sql = "SELECT COUNT(*) FROM cms_nav WHERE pid=0";
         return parent::total($_sql);
     }
 
+    //获取子导航总记录
+    public function getNavChildTotal()
+    {
+        $_sql = "SELECT COUNT(*) FROM cms_nav WHERE pid='$this->id'";
+        return parent::total($_sql);
+    }
 
     /**
      * 获取所有列表数据
@@ -42,7 +48,14 @@ class NavModel extends Model
      */
     public function getAllNav()
     {
-        $sql = "SELECT id,nav_name,nav_info FROM cms_nav $this->_limit";
+        $sql = "SELECT id,nav_name,nav_info,sort FROM cms_nav WHERE pid=0 ORDER BY sort ASC $this->_limit";
+        return parent::all($sql);
+    }
+
+    //查看子导航数据
+    public function getAllChildNav()
+    {
+        $sql = "SELECT id,nav_name,nav_info,sort FROM cms_nav WHERE pid='$this->id' ORDER BY sort ASC $this->_limit";
         return parent::all($sql);
     }
 
@@ -52,7 +65,7 @@ class NavModel extends Model
     public function addNav()
     {
 
-        $sql = "INSERT INTO cms_nav(nav_name,nav_info,pid,sort) VALUES ('$this->nav_name','$this->nav_info',0," . parent::nextId('cms_nav') . ")";
+        $sql = "INSERT INTO cms_nav(nav_name,nav_info,pid,sort) VALUES ('$this->nav_name','$this->nav_info','$this->pid'," . parent::nextId('cms_nav') . ")";
         return parent::aud($sql);
     }
 
@@ -71,5 +84,24 @@ class NavModel extends Model
         $sql = "DELETE FROM cms_nav WHERE id='$this->id' LIMIT 1";
         return parent::aud($sql);
     }
+
+    //前台显示指定的主导航
+    public function getFrontNav()
+    {
+        $sql = "SELECT id,nav_name FROM cms_nav WHERE pid=0 ORDER BY sort ASC LIMIT 0," . NAV_SIZE;
+        return parent::all($sql);
+    }
+
+    //导航排序
+    public function setNavSort()
+    {
+        $sql = "";
+        foreach ($this->sort as $_key => $_value) {
+            if (!is_numeric($_value)) continue;
+            $sql .= "UPDATE cms_nav SET sort='$_value' WHERE id='$_key';";
+        }
+        return parent::multi($sql);
+    }
+
 
 }

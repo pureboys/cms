@@ -4,13 +4,10 @@ class LevelAction extends Action
 {
     public function __construct(&$_tpl)
     {
-        Validate::checkSession();
         parent::__construct($_tpl, new LevelModel());
-        $this->_action();
-        $this->_tpl->display('level.tpl');
     }
 
-    private function _action()
+    public function _action()
     {
         switch ($_GET['action']) {
             case  'show':
@@ -46,7 +43,7 @@ class LevelAction extends Action
         $this->_tpl->assign('show', false);
         $this->_tpl->assign('update', false);
         $this->_tpl->assign('title', '新增等级');
-        $this->_tpl->assign('prev_url',PREV_URL);
+        $this->_tpl->assign('prev_url', PREV_URL);
     }
 
 
@@ -80,7 +77,7 @@ class LevelAction extends Action
             $this->_tpl->assign('id', $_level->id);
             $this->_tpl->assign('level_name', $_level->level_name);
             $this->_tpl->assign('level_info', $_level->level_info);
-            $this->_tpl->assign('prev_url',PREV_URL);
+            $this->_tpl->assign('prev_url', PREV_URL);
             $this->_tpl->assign('update', true);
             $this->_tpl->assign('show', false);
             $this->_tpl->assign('add', false);

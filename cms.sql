@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50524
 File Encoding         : 65001
 
-Date: 2014-04-25 17:02:50
+Date: 2014-04-28 17:56:10
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -55,7 +55,7 @@ CREATE TABLE `cms_manage` (
 -- ----------------------------
 -- Records of cms_manage
 -- ----------------------------
-INSERT INTO `cms_manage` VALUES ('1', 'admin', '7c4a8d09ca3762af61e59520943dc26494f8941b', '2', '0', '000.000.000.000', '0000-00-00 00:00:00', '2014-03-27 15:19:54');
+INSERT INTO `cms_manage` VALUES ('1', 'admin', '7c4a8d09ca3762af61e59520943dc26494f8941b', '2', '5', '127.0.0.1', '2014-04-28 17:15:20', '2014-03-27 15:19:54');
 INSERT INTO `cms_manage` VALUES ('2', 'oliver', '7c4a8d09ca3762af61e59520943dc26494f8941b', '5', '1', '127.0.0.1', '2014-04-24 08:51:52', '2014-03-27 15:23:59');
 INSERT INTO `cms_manage` VALUES ('3', '我是MT', '7c4a8d09ca3762af61e59520943dc26494f8941b', '3', '0', '000.000.000.000', '0000-00-00 00:00:00', '2014-03-27 15:24:28');
 INSERT INTO `cms_manage` VALUES ('4', '樱木花道', '7c4a8d09ca3762af61e59520943dc26494f8941b', '4', '0', '000.000.000.000', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
@@ -77,7 +77,7 @@ CREATE TABLE `cms_nav` (
   `pid` mediumint(8) NOT NULL DEFAULT '0',
   `sort` mediumint(8) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of cms_nav
@@ -92,3 +92,8 @@ INSERT INTO `cms_nav` VALUES ('7', '热门汽车', '热门汽车', '0', '7');
 INSERT INTO `cms_nav` VALUES ('8', '房产家居', '房产家居', '0', '8');
 INSERT INTO `cms_nav` VALUES ('9', '读书教育', '读书教育', '0', '9');
 INSERT INTO `cms_nav` VALUES ('11', '股票基金', '股票基金', '0', '11');
+INSERT INTO `cms_nav` VALUES ('13', '中国军事', '中国军事', '1', '5');
+INSERT INTO `cms_nav` VALUES ('14', '美国军事', '美国军事', '1', '1');
+INSERT INTO `cms_nav` VALUES ('15', '韩国军事', '韩国军事', '1', '2');
+INSERT INTO `cms_nav` VALUES ('16', '日本军事', '日本军事', '1', '3');
+INSERT INTO `cms_nav` VALUES ('18', '越南军事', '越南军事', '1', '4');

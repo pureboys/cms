@@ -68,4 +68,13 @@ class Model
         return $object->Auto_increment;
     }
 
+//    //执行多条sql语句;
+    public function multi($sql)
+    {
+        $_db = DB::getDB();
+        $_result = $_db->multi_query($sql);
+        DB::unDB($_result, $_db);
+        return true;
+    }
+
 } 

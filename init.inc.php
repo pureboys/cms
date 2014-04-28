@@ -19,8 +19,8 @@ function __autoload($_className)
     }
 }
 
-//缓存机制
-require 'cache.inc.php';
 //实例化模版类
 $_tpl = new Templates();
+//初始化
+require 'common.inc.php';
 

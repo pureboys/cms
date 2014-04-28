@@ -7,7 +7,7 @@
     <script src="/js/admin_login.js" type="text/javascript"></script>
  </head>
 <body>
-<form action="manage.php?action=login" method="post" id="adminLogin" name="login">
+<form action="?action=login" method="post" id="adminLogin" name="login">
     <fieldset>
         <legend>登录后台CMS系统</legend>
         <label for="">帐　号：<input type="text" name="admin_user" class="text" /></label>

@@ -167,7 +167,10 @@ ul, ol {
     background: #ffffff;
     border: 1px solid #cccccc;
 }
-
+#main form input.sort {
+    width: 30px;
+    text-align: center;
+}
 #main form select {
     width: 100px;
     height: 19px;
