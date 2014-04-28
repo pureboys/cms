@@ -1,3 +1,5 @@
 .idea/
 templates_c/*
 cache/*
+!templets_c/index.html
+!cache/index.html
