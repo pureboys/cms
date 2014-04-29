@@ -115,8 +115,18 @@ ul, ol {
 
 #main table {
     width: 95%;
-    margin: 0 auto;
+    margin-left: auto;
+    margin-right: auto;
     text-align: center;
+}
+
+#main table table {
+    width: 100%;
+    text-align: left;
+}
+
+#main table.cke_dialog {
+    width: auto;
 }
 
 #main table.left {
@@ -130,6 +140,32 @@ ul, ol {
 #main table tr:hover {
     background: #ffffcc;
 }
+
+/*==================================ckeditor配置==================================*/
+#main table tr.ckeditor {
+    background: none;
+}
+
+#main table tr.ckeditor tr {
+    background: none;
+}
+
+#main table.cke_dialog tr {
+    background: none;
+}
+
+#main table.cke_dialog_footer_buttons {
+    width: 100px;
+}
+
+#main table.cke_dialog_footer_buttons tr td a.cke_dialog_ui_button_ok {
+    color: #fff;
+}
+
+#main table.cke_dialog_footer_buttons tr td a.cke_dialog_ui_button_cancel {
+    color: #333;
+}
+/*=================================================================================*/
 
 #main table th, #main table td {
     height: 30px;
@@ -145,6 +181,35 @@ ul, ol {
 
 #main table td {
     border-bottom: 1px solid #eee;
+}
+
+#main table.content td {
+    text-align: left;
+    padding: 0 0 0 5px;
+}
+
+#main table.content td input.text {
+    width: 440px;
+}
+
+#main table.content td select {
+    width: 150px;
+    height: 22px;
+}
+
+#main table.content td textarea {
+    margin: 0;
+    width: 440px;
+    height: 80px;
+    overflow: auto;
+}
+
+#main table.content td span.middle {
+    vertical-align: 30px;
+}
+
+#main table.content td input.small {
+    width: 100px;
 }
 
 #main a {
@@ -167,15 +232,18 @@ ul, ol {
     background: #ffffff;
     border: 1px solid #cccccc;
 }
+
 #main form input.sort {
     width: 30px;
     text-align: center;
 }
+
 #main form select {
     width: 100px;
     height: 19px;
     background: #ffffff;
 }
+
 #main form textarea {
     font-size: 13px;
     width: 220px;
@@ -184,6 +252,7 @@ ul, ol {
     border: 1px solid #cccccc;
     margin: 0 0 0 65px;
 }
+
 #main form input.submit {
     cursor: pointer;
     margin: 0 0 0 65px;
@@ -212,63 +281,76 @@ ul, ol {
     background: #3b6ea5;
     color: #ffffff;
 }
-#adminLogin{
+
+#adminLogin {
     width: 350px;
     margin: 100px auto;
     color: #666;
     font-size: 14px;
 }
-#adminLogin fieldset{
+
+#adminLogin fieldset {
     padding: 20px;
 }
-#adminLogin legend{
+
+#adminLogin legend {
     font-size: 16px;
     font-weight: bold;
 }
-#adminLogin label{
+
+#adminLogin label {
     display: block;
     margin: 5px;
 }
-#adminLogin label.t{
+
+#adminLogin label.t {
     color: #999;
     text-indent: 56px;
 }
-#adminLogin label input.text{
+
+#adminLogin label input.text {
     width: 220px;
     height: 27px;
     border: 1px solid #666666;
     background: #eeeeee;
 }
-#adminLogin  input.submit{
+
+#adminLogin input.submit {
     margin: 0 0 0 60px;
     cursor: pointer;
 }
-#adminLogin label img{
+
+#adminLogin label img {
     margin: 0 0 0 56px;
     cursor: pointer;
 }
-#page{
+
+#page {
     text-align: center;
     padding: 10px;
 }
-#page a{
+
+#page a {
     border: 1px solid #666;
     padding: 2px 5px;
     margin: 0 2px;
 }
-#page a:hover,#page span.me{
+
+#page a:hover, #page span.me {
     color: #ffffff;
     border: 1px solid #000;
     background: #000;
     text-decoration: none;
 }
-#page span.disabled{
+
+#page span.disabled {
     border: 1px solid #ccc;
     padding: 2px 5px;
     margin: 0 2px;
     color: #cccccc;
 }
-#page span.me{
+
+#page span.me {
     padding: 2px 5px;
     margin: 0 2px;
 }

@@ -59,7 +59,7 @@ class Tool
     static public function mysqlString($_data)
     {
         if(is_array($_data)) return $_data;
-        return !GPC ? mysql_real_escape_string($_data) : $_data;
+            return !GPC ? mysql_real_escape_string($_data) : $_data;
     }
 
 }

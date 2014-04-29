@@ -24,7 +24,7 @@ class NavModel extends Model
 
     public function getOneNav()
     {
-        $sql = "SELECT id,nav_name,nav_info FROM cms_nav WHERE id='$this->id' OR nav_name='$this->nav_name' LIMIT 1";
+        $sql = "SELECT n1.id,n1.nav_name,n1.nav_info,n2.id iid,n2.nav_name nnav_name FROM cms_nav n1 LEFT JOIN cms_nav n2 ON n1.pid=n2.id WHERE n1.id='$this->id' OR n1.nav_name='$this->nav_name' LIMIT 1";
         return parent::one($sql);
     }
 
@@ -56,6 +56,13 @@ class NavModel extends Model
     public function getAllChildNav()
     {
         $sql = "SELECT id,nav_name,nav_info,sort FROM cms_nav WHERE pid='$this->id' ORDER BY sort ASC $this->_limit";
+        return parent::all($sql);
+    }
+
+    //查看子导航数据，不带limit
+    public function getAllChildFrontNav()
+    {
+        $sql = "SELECT id,nav_name,nav_info,sort FROM cms_nav WHERE pid='$this->id' ORDER BY sort ASC";
         return parent::all($sql);
     }
 

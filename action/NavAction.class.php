@@ -98,7 +98,7 @@ class NavAction extends Action
             $this->_tpl->assign('add', false);
             $this->_tpl->assign('addchild', false);
             $this->_tpl->assign('showchild', false);
-            $this->_tpl->assign('title', '修改等级');
+            $this->_tpl->assign('title', '修改导航');
         } else {
             Tool::alertBack('非法操作！');
         }
