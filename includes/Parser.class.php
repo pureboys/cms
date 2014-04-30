@@ -66,12 +66,12 @@ class Parser
     {
         $_patten = '/\{include\s+file=(\"|\')([\w\.\-\/]+)(\"|\')\}/';
         if (preg_match_all($_patten, $this->_tpl, $_file)) {
-           foreach($_file[2] as $_value){
-               if(!file_exists('templates/'.$_value)){
-                   exit('ERROR:包含文件出错！');
-               }
-               $this->_tpl = preg_replace($_patten, "<?php \$_tpl->create('$2'); ?>", $this->_tpl);
-           }
+            foreach ($_file[2] as $_value) {
+                if (!file_exists('templates/' . $_value)) {
+                    exit('ERROR:包含文件出错！');
+                }
+                $this->_tpl = preg_replace($_patten, "<?php \$_tpl->create('$2'); ?>", $this->_tpl);
+            }
         }
     }
 

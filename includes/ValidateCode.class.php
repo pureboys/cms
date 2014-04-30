@@ -54,12 +54,12 @@ class ValidateCode
     private function createLine()
     {
         for ($i = 0; $i < 6; $i++) {
-            $color = imagecolorallocate($this->img, mt_rand(0,156), mt_rand(0,156), mt_rand(0,156));
+            $color = imagecolorallocate($this->img, mt_rand(0, 156), mt_rand(0, 156), mt_rand(0, 156));
             imageline($this->img, mt_rand(0, $this->width), mt_rand(0, $this->height), mt_rand(0, $this->width), mt_rand(0, $this->height), $color);
         }
         for ($i = 0; $i < 100; $i++) {
-            $color = imagecolorallocate($this->img, mt_rand(200,255), mt_rand(200,255), mt_rand(200,255));
-            imagestring($this->img,mt_rand(1,5),mt_rand(0,$this->width),mt_rand(0,$this->height),'*',$color);
+            $color = imagecolorallocate($this->img, mt_rand(200, 255), mt_rand(200, 255), mt_rand(200, 255));
+            imagestring($this->img, mt_rand(1, 5), mt_rand(0, $this->width), mt_rand(0, $this->height), '*', $color);
         }
     }
 
@@ -82,7 +82,8 @@ class ValidateCode
     }
 
     //获取验证码
-    public function getCode(){
+    public function getCode()
+    {
         //$this->createCode();
         return strtolower($this->code);
     }

@@ -23,7 +23,7 @@
 {if $show}
 {/if}
 {if $add}
-    <form action="">
+    <form action="" name="content">
         <table class="content">
             <tr>
                 <th><strong>发布一条新文档</strong></th>
@@ -49,10 +49,14 @@
                 </td>
             </tr>
             <tr>
-                <td>关 键 字： <input type="text" name="keyword" class="text"/> <input type="button" value="上传缩略图" onclick="centerWindow('../templates/upfile.html','upfile','400','100')"/></td>
+                <td>关 键 字： <input type="text" name="keyword" class="text"/></td>
             </tr>
             <tr>
-                <td>缩 略 图： <input type="text" name="thumbnail" class="text"/></td>
+                <td>缩 略 图： <input type="text" name="thumbnail" class="text" readonly/> <input type="button"
+                                                                                              value="上传缩略图"
+                                                                                              onclick="centerWindow('../templates/upfile.html','upfile','400','100')"/>
+                    <img name="pic" style="display: none"/>
+                </td>
             </tr>
             <tr>
                 <td>文章来源： <input type="text" name="source" class="text"/></td>
@@ -63,7 +67,9 @@
             <tr>
                 <td><span class="middle">内容摘要：</span> <textarea name="info" id="" cols="" rows=""></textarea></td>
             </tr>
-            <tr class="ckeditor"><td><textarea id="TextArea1" class="ckeditor" name="content"></textarea></td></tr>
+            <tr class="ckeditor">
+                <td><textarea id="TextArea1" class="ckeditor" name="content"></textarea></td>
+            </tr>
             <tr>
                 <td>评论选项： <input type="radio" name="commend" value="1" checked/>允许评论
                     <input type="radio" name="commend" value="0"/>禁止评论　　　　　　　　
@@ -77,7 +83,7 @@
                         <option value="">置顶一周</option>
                         <option value="">置顶一月</option>
                         <option value="">置顶一年</option>
-                </select>　　　　　　　　消费金币： <input type="text" name="gold" class="text small" value="0"/>
+                    </select>　　　　　　　　消费金币： <input type="text" name="gold" class="text small" value="0"/>
                 </td>
             </tr>
             <tr>

@@ -58,8 +58,20 @@ class Tool
     //数据库输入过滤
     static public function mysqlString($_data)
     {
-        if(is_array($_data)) return $_data;
-            return !GPC ? mysql_real_escape_string($_data) : $_data;
+        if (is_array($_data)) return $_data;
+        return !GPC ? mysql_real_escape_string($_data) : $_data;
     }
+
+    //弹窗赋值关闭（上传）
+    static public function alertOpenerClose($_info, $_path)
+    {
+        echo "<script type='text/javascript'>alert('$_info');</script>";
+        echo "<script type='text/javascript'>opener.document.content.thumbnail.value='$_path'</script>";
+        echo "<script type='text/javascript'>opener.document.content.pic.style.display='block'</script>";
+        echo "<script type='text/javascript'>opener.document.content.pic.src='$_path'</script>";
+        echo "<script type='text/javascript'>window.close();</script>";
+        exit();
+    }
+
 
 }

@@ -63,10 +63,12 @@
     padding: 0 0 5px 0;
     margin: 0 0 10px 0;
 }
-#sidebar div.nav span{
+
+#sidebar div.nav span {
     padding: 5px 0 0 0;
     display: inline-block;
 }
+
 #sidebar div.nav strong {
     width: 110px;
     height: 25px;

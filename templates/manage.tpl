@@ -31,21 +31,25 @@
             <th>操作</th>
         </tr>
         {if $AllManage}
-        {foreach $AllManage(key,value)}
-            <tr>
-                <td><script type="text/javascript">document.write({@key+1}+{$num});</script></td>
-                <td>{@value->admin_user}</td>
-                <td>{@value->level_name}</td>
-                <td>{@value->last_ip}</td>
-                <td>{@value->last_time}</td>
-                <td>{@value->reg_time}</td>
-                <td><a href="manage.php?action=update&id={@value->id}">修改</a>|<a
-                            href="manage.php?action=delete&id={@value->id}"
-                            onclick="return confirm('你真的要删除这个管理员么？') ? true : false">删除</a></td>
-            </tr>
-        {/foreach}
+            {foreach $AllManage(key,value)}
+                <tr>
+                    <td>
+                        <script type="text/javascript">document.write({@key+1}+{$num});</script>
+                    </td>
+                    <td>{@value->admin_user}</td>
+                    <td>{@value->level_name}</td>
+                    <td>{@value->last_ip}</td>
+                    <td>{@value->last_time}</td>
+                    <td>{@value->reg_time}</td>
+                    <td><a href="manage.php?action=update&id={@value->id}">修改</a>|<a
+                                href="manage.php?action=delete&id={@value->id}"
+                                onclick="return confirm('你真的要删除这个管理员么？') ? true : false">删除</a></td>
+                </tr>
+            {/foreach}
         {else}
-            <tr><td colspan="7">对不起，没有任何数据！</td></tr>
+            <tr>
+                <td colspan="7">对不起，没有任何数据！</td>
+            </tr>
         {/if}
     </table>
     <div id="page">{$page}</div>
@@ -57,7 +61,7 @@
         <table cellspacing="0" class="left">
             <tr>
                 <td>
-                    用 户 名： <input type="text" name="admin_user" class="text" />
+                    用 户 名： <input type="text" name="admin_user" class="text"/>
                     (* 不得小于2位，不得大于20位)
                 </td>
             </tr>

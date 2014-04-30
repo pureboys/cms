@@ -223,28 +223,32 @@ h2 {
     font-family: Tahoma;
 }
 
-#page{
+#page {
     text-align: center;
     padding: 10px;
 }
-#page a{
+
+#page a {
     border: 1px solid #666;
     padding: 2px 5px;
     margin: 0 2px;
 }
-#page a:hover,#page span.me{
+
+#page a:hover, #page span.me {
     color: #ffffff;
     border: 1px solid #000;
     background: #000;
     text-decoration: none;
 }
-#page span.disabled{
+
+#page span.disabled {
     border: 1px solid #ccc;
     padding: 2px 5px;
     margin: 0 2px;
     color: #cccccc;
 }
-#page span.me{
+
+#page span.me {
     padding: 2px 5px;
     margin: 0 2px;
 }

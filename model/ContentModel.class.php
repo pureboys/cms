@@ -18,5 +18,4 @@ class ContentModel extends Model
     }
 
 
-
 }
