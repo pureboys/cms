@@ -196,8 +196,16 @@ ul, ol {
 #main table.content td select {
     width: 150px;
     height: 22px;
+    border: 1px solid #cccccc;
 }
 
+#main table.content td select optgroup {
+    font-style: normal;
+}
+
+#main table.content td select optgroup option{
+    padding: 0 0 0 20px;
+}
 #main table.content td textarea {
     margin: 0;
     width: 440px;

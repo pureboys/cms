@@ -43,7 +43,7 @@ class NavModel extends Model
     }
 
     /**
-     * 获取所有列表数据
+     * 获取所有列表数据,查询所有主导航带limit
      * @return array
      */
     public function getAllNav()
@@ -51,6 +51,14 @@ class NavModel extends Model
         $sql = "SELECT id,nav_name,nav_info,sort FROM cms_nav WHERE pid=0 ORDER BY sort ASC $this->_limit";
         return parent::all($sql);
     }
+
+    //查询所有主导航不带limit
+    public function getAllFrontNav()
+    {
+        $sql = "SELECT id,nav_name,nav_info,sort FROM cms_nav WHERE pid=0 ORDER BY sort ASC";
+        return parent::all($sql);
+    }
+
 
     //查看子导航数据
     public function getAllChildNav()

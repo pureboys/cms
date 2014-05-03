@@ -11,6 +11,7 @@ define('PAGE_SIZE', 10); //每页条数
 @define('PREV_URL', $_SERVER['HTTP_REFERER']); //上一页地址
 define('NAV_SIZE', 10); //主导航在前台显示个数
 define('UPDIR', '/uploads/'); //上传路径地址
+define('MARK', ROOT_PATH . '/images/yc.png'); //水印图片
 
 //模版文件目录
 define('TPL_DIR', ROOT_PATH . '/templates/');

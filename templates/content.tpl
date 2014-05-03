@@ -23,7 +23,7 @@
 {if $show}
 {/if}
 {if $add}
-    <form action="" name="content">
+    <form action="?action=add" name="content" method="post">
         <table class="content">
             <tr>
                 <th><strong>发布一条新文档</strong></th>
@@ -33,7 +33,8 @@
             </tr>
             <tr>
                 <td>栏　　目： <select name="nav" id="">
-                        <option value="">请选择一个栏目类别</option>
+                        <option value="" style="padding: 0">请选择一个栏目类别</option>
+                        {$nav}
                     </select>
                 </td>
             </tr>
@@ -42,10 +43,10 @@
             </tr>
             <tr>
                 <td>定义属性：
-                    <input type="checkbox" name="top" value="头条"/>头条
-                    <input type="checkbox" name="rec" value="推荐"/>推荐
-                    <input type="checkbox" name="bold" value="加粗"/>加粗
-                    <input type="checkbox" name="skip" value="跳转"/>跳转
+                    <input type="checkbox" name="attr[]" value="头条"/>头条
+                    <input type="checkbox" name="attr[]" value="推荐"/>推荐
+                    <input type="checkbox" name="attr[]" value="加粗"/>加粗
+                    <input type="checkbox" name="attr[]" value="跳转"/>跳转
                 </td>
             </tr>
             <tr>
@@ -95,14 +96,14 @@
                         <option value="">vip会员</option>
                     </select>　　　　　　　　标题颜色：<select name="color" id="">
                         <option value="">默认颜色</option>
-                        <option value="" style="color: red">红色</option>
-                        <option value="" style="color: blue">蓝色</option>
-                        <option value="" style="color: orange">橙色</option>
+                        <option value="red" style="color: red">红色</option>
+                        <option value="blue" style="color: blue">蓝色</option>
+                        <option value="orange" style="color: orange">橙色</option>
                     </select>
                 </td>
             </tr>
             <tr>
-                <td><input type="submit" value="发布文档"/> <input type="reset" value="重置"/></td>
+                <td><input type="submit" name="send" value="发布文档"/> <input type="reset" value="重置"/></td>
             </tr>
 
         </table>
