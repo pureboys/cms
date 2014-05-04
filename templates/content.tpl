@@ -29,17 +29,17 @@
                 <th><strong>发布一条新文档</strong></th>
             </tr>
             <tr>
-                <td>文档标题： <input type="text" name="title" class="text"/></td>
+                <td>文档标题： <input type="text" name="title" class="text"/><span class="red">[必填]</span>(* 标题2-50之间)</td>
             </tr>
             <tr>
                 <td>栏　　目： <select name="nav" id="">
                         <option value="" style="padding: 0">请选择一个栏目类别</option>
                         {$nav}
-                    </select>
+                    </select> <span class="red">[必填]</span>
                 </td>
             </tr>
             <tr>
-                <td>TAG 标签： <input type="text" name="tag" class="text"/></td>
+                <td>TAG 标签： <input type="text" name="tag" class="text"/>(*每个标签用','隔开,总长不超过30位)</td>
             </tr>
             <tr>
                 <td>定义属性：
@@ -50,23 +50,24 @@
                 </td>
             </tr>
             <tr>
-                <td>关 键 字： <input type="text" name="keyword" class="text"/></td>
+                <td>关 键 字： <input type="text" name="keyword" class="text"/>(*每个关键字用','隔开,总长不超过30位)</td>
             </tr>
             <tr>
                 <td>缩 略 图： <input type="text" name="thumbnail" class="text" readonly/> <input type="button"
                                                                                               value="上传缩略图"
                                                                                               onclick="centerWindow('../templates/upfile.html','upfile','400','100')"/>
-                    <img name="pic" style="display: none"/>
+                    <img name="pic" style="display: none"/>(*jpg,gif,png,且在200k内)
                 </td>
             </tr>
             <tr>
-                <td>文章来源： <input type="text" name="source" class="text"/></td>
+                <td>文章来源： <input type="text" name="source" class="text"/>(*文章来源不得大于20位)</td>
             </tr>
             <tr>
-                <td>作　　者： <input type="text" name="author" class="text"/></td>
+                <td>作　　者： <input type="text" name="author" class="text" value="{$author}"/>(*作者不得大于10位)</td>
             </tr>
             <tr>
-                <td><span class="middle">内容摘要：</span> <textarea name="info" id="" cols="" rows=""></textarea></td>
+                <td><span class="middle">内容摘要：</span> <textarea name="info" id="" cols="" rows=""></textarea><span
+                            class="middle">(*内容摘要200以内)</span></td>
             </tr>
             <tr class="ckeditor">
                 <td><textarea id="TextArea1" class="ckeditor" name="content"></textarea></td>
@@ -103,7 +104,8 @@
                 </td>
             </tr>
             <tr>
-                <td><input type="submit" name="send" value="发布文档"/> <input type="reset" value="重置"/></td>
+                <td><input type="submit" name="send" value="发布文档" onclick="return checkAddContent();"/> <input
+                            type="reset" value="重置"/></td>
             </tr>
 
         </table>

@@ -73,5 +73,26 @@ class Tool
         exit();
     }
 
+    //字符串截取
+    static public function subStr($_object, $_field, $_length, $_encoding)
+    {
+        foreach ($_object as $_value) {
+            if (mb_strlen($_value->$_field, $_encoding) > $_length) {
+                $_value->$_field = mb_substr($_value->$_field, 0, $_length, $_encoding) . '...';
+            }
+        }
+        return $_object;
+    }
+
+    //将对象数组转换成字符串，并且去掉最后的逗号
+    static public function objArrOfstr($_object, $_field)
+    {
+        $_html = '';
+        foreach ($_object as $_value) {
+            $_html .= $_value->$_field . ',';
+        }
+        return substr($_html, 0, strlen($_html) - 1);
+    }
+
 
 }

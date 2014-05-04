@@ -31,6 +31,11 @@
     float: left;
 }
 
+#list dl dt img {
+    display: block;
+    border: 1px solid #cccccc;
+}
+
 #list dl dd {
     width: 530px;
     float: left;
@@ -48,6 +53,12 @@
 
 #list dl dd a:hover {
     color: #f60;
+}
+
+#list p.none {
+    padding: 20px;
+    text-align: center;
+    border-bottom: 1px dashed #ccc
 }
 
 #sidebar {

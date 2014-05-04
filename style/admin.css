@@ -189,6 +189,10 @@ ul, ol {
     padding: 0 0 0 5px;
 }
 
+#main table.content td span.red {
+    color: red;
+}
+
 #main table.content td input.text {
     width: 440px;
 }
@@ -203,9 +207,10 @@ ul, ol {
     font-style: normal;
 }
 
-#main table.content td select optgroup option{
+#main table.content td select optgroup option {
     padding: 0 0 0 20px;
 }
+
 #main table.content td textarea {
     margin: 0;
     width: 440px;

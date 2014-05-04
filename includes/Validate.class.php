@@ -15,6 +15,13 @@ class Validate
         return false;
     }
 
+//数据是否为数字
+    static public function checkNum($_date)
+    {
+        if (!is_numeric($_date)) return true;
+        return false;
+    }
+
 //    长度是否合法
     static public function checkLength($_date, $_length, $_flag)
     {
