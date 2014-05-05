@@ -94,5 +94,11 @@ class Tool
         return substr($_html, 0, strlen($_html) - 1);
     }
 
+    //将html字符串转换成html标签
+    static public function unHtml($_str)
+    {
+        return htmlspecialchars_decode($_str);
+    }
+
 
 }

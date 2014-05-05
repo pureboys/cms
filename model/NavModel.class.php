@@ -118,5 +118,21 @@ class NavModel extends Model
         return parent::multi($sql);
     }
 
+    //获取主类下子类的ID
+    public function getNavChildId()
+    {
+        $_sql = "SELECT id FROM cms_nav WHERE pid='$this->id'";
+        return parent::all($_sql);
+    }
+
+    //获取所有非主类的ID
+    public function getAllNavChildId(){
+        $_sql = "SELECT id FROM cms_nav WHERE  pid <> 0";
+        return parent::all($_sql);
+    }
+
+
+
+
 
 }

@@ -66,6 +66,46 @@ class ContentAction extends Action
         $this->_tpl->assign('show', false);
         $this->_tpl->assign('update', false);
         $this->_tpl->assign('title', '新增文档');
+        $this->nav();
+        $this->_tpl->assign('author', $_SESSION['admin']['admin_user']);
+    }
+
+
+    private function show()
+    {
+        $this->_tpl->assign('show', true);
+        $this->_tpl->assign('add', false);
+        $this->_tpl->assign('update', false);
+        $this->_tpl->assign('title', '文档列表');
+        $this->nav();
+        $_nav = new NavModel();
+        if (empty($_GET['nav'])) {
+            $_id = $_nav->getAllNavChildId();
+            $this->_model->nav = Tool::objArrOfstr($_id, 'id');
+        } else {
+            $_nav->id = $_GET['nav'];
+            if (!$_nav->getOneNav()) Tool::alertBack('警告：传输类别有误！');
+            $this->_model->nav = $_nav->id;
+        }
+        parent::page($this->_model->getListContentTotal());
+        $_object = $this->_model->getListContent();
+        $_object = Tool::subStr($_object, 'title', '20', 'utf8');
+        $this->_tpl->assign('SearchContent', $_object);
+    }
+
+
+    private function update()
+    {
+
+    }
+
+    private function delete()
+    {
+
+    }
+
+    private function nav()
+    {
         $_nav = new NavModel();
         $_html = '';
         foreach ($_nav->getAllFrontNav() as $_object) {
@@ -79,26 +119,7 @@ class ContentAction extends Action
             $_html .= '</optgroup>';
         }
         $this->_tpl->assign('nav', $_html);
-        $this->_tpl->assign('author', $_SESSION['admin']['admin_user']);
     }
 
 
-    private function show()
-    {
-        $this->_tpl->assign('show', true);
-        $this->_tpl->assign('add', false);
-        $this->_tpl->assign('update', false);
-        $this->_tpl->assign('title', '文档列表');
-    }
-
-
-    private function update()
-    {
-
-    }
-
-    private function delete()
-    {
-
-    }
 }

@@ -21,7 +21,53 @@
 </ol>
 
 {if $show}
+    <table cellspacing="0">
+        <tr>
+            <th>序号</th>
+            <th>标题</th>
+            <th>属性</th>
+            <th>文档类别</th>
+            <th>浏览次数</th>
+            <th>发布时间</th>
+            <th>操作</th>
+        </tr>
+        {if $SearchContent}
+            {foreach $SearchContent(key,value)}
+                <tr>
+                    <td>
+                        <script type="text/javascript">document.write({@key+1}+{$num});</script>
+                    </td>
+                    <td><a href="/details.php?id={@value->id}" target="_blank" title="{@value->t}">{@value->title}</a>
+                    </td>
+                    <td>{@value->attr}</td>
+                    <td><a href="?action=show&nav={@value->nav}">{@value->nav_name}</a></td>
+                    <td>{@value->count}</td>
+                    <td>{@value->date}</td>
+                    <td><a href="manage.php?action=update&id={@value->id}">修改</a>|<a
+                                href="manage.php?action=delete&id={@value->id}"
+                                onclick="return confirm('你真的要删除这个管理员么？') ? true : false">删除</a></td>
+                </tr>
+            {/foreach}
+        {else}
+            <tr>
+                <td colspan="7">对不起，没有任何数据！</td>
+            </tr>
+        {/if}
+    </table>
+    <form action="?" method="get">
+        <div id="page">
+            {$page}
+            <input type="hidden" name="action" value="show"/>
+            <select name="nav" id="" class="select">
+                <option value="0">默认全部</option>
+                {$nav}
+            </select>
+            <input type="submit" name="" value="查询"/>
+        </div>
+    </form>
+    <p class="center">[<a href="manage.php?action=add">新增管理员</a>]</p>
 {/if}
+
 {if $add}
     <form action="?action=add" name="content" method="post">
         <table class="content">

@@ -39,12 +39,11 @@ class ListAction extends Action
     {
         if (isset($_GET['id'])) {
             parent::__construct($this->_tpl, new ContentModel());
-            $this->_model->id = $_GET['id'];
-            $_navid = $this->_model->getNavChildId();
-            $this->_model->nav = $_navid ? Tool::objArrOfstr($_navid, 'id') : $this->_model->id;
-
+            $_nav = new NavModel();
+            $_nav->id = $_GET['id'];
+            $_navid = $_nav->getNavChildId();
+            $this->_model->nav = $_navid ? Tool::objArrOfstr($_navid, 'id') : $_nav->id;
             parent::page($this->_model->getListContentTotal(), ARTICLE_SIZE);
-
             $_object = $this->_model->getListContent();
             if ($_object) {
                 $_object = Tool::subStr($_object, 'info', 120, 'utf8');

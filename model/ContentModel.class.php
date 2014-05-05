@@ -45,16 +45,10 @@ class ContentModel extends Model
     //获取文档列表
     public function getListContent()
     {
-        $_sql = "SELECT c.id,c.title,c.date,c.info,c.thumbnail,c.count,n.nav_name FROM cms_content c,cms_nav n WHERE c.nav=n.id AND c.nav IN ($this->nav) " . $this->_limit;
+        $_sql = "SELECT c.id,c.title,c.title t,c.date,c.info,c.thumbnail,c.count,c.attr,c.nav,n.nav_name FROM cms_content c,cms_nav n WHERE c.nav=n.id AND c.nav IN ($this->nav) ORDER BY c.date DESC " . $this->_limit;
         return parent::all($_sql);
     }
 
-    //获取主类下子类的ID
-    public function getNavChildId()
-    {
-        $_sql = "SELECT id FROM cms_nav WHERE pid='$this->id'";
-        return parent::all($_sql);
-    }
 
     //获取文档总记录
     public function getListContentTotal()
@@ -62,6 +56,14 @@ class ContentModel extends Model
         $_sql = "SELECT COUNT(*) FROM cms_content c,cms_nav n WHERE c.nav=n.id AND c.nav IN ($this->nav)";
         return parent::total($_sql);
     }
+
+    //获取单一的文档内容
+    public function getOneContent(){
+        $_sql = "SELECT id,title,nav,content,info,date,count,author,source FROM cms_content WHERE id='$this->id'";
+        return parent::one($_sql);
+    }
+
+
 
 
 }
