@@ -96,6 +96,28 @@ class ContentAction extends Action
 
     private function update()
     {
+        if (isset($_GET['id'])) {
+            $this->_tpl->assign('show', false);
+            $this->_tpl->assign('add', false);
+            $this->_tpl->assign('update', true);
+            $this->_tpl->assign('title', '文档修改');
+            $this->_model->id = $_GET['id'];
+            $_content = $this->_model->getOneContent();
+            if (!$_content) Tool::alertBack('警告：不存在此文档！');
+            $this->_tpl->assign('titlec', $_content->title);
+            $this->_tpl->assign('tag', $_content->tag);
+            $this->_tpl->assign('keyword', $_content->keyword);
+            $this->_tpl->assign('thumbnail', $_content->thumbnail);
+            $this->_tpl->assign('source', $_content->source);
+            $this->_tpl->assign('author', $_content->author);
+            $this->_tpl->assign('content', $_content->content);
+            $this->_tpl->assign('info', $_content->info);
+            $this->_tpl->assign('count', $_content->count);
+            $this->_tpl->assign('gold', $_content->gold);
+            $this->nav($_content->nav);
+        } else {
+            Tool::alertBack('警告：非法操作!');
+        }
 
     }
 
@@ -104,7 +126,7 @@ class ContentAction extends Action
 
     }
 
-    private function nav()
+    private function nav($_n = 0)
     {
         $_nav = new NavModel();
         $_html = '';
@@ -113,7 +135,9 @@ class ContentAction extends Action
             $_nav->id = $_object->id;
             if (!!$_child_nav = $_nav->getAllChildFrontNav()) {
                 foreach ($_child_nav as $_object2) {
-                    $_html .= '<option value="' . $_object2->id . '">' . $_object2->nav_name . '</option>';
+                    $_select = '';
+                    if ($_n == $_object2->id) $_select = 'selected';
+                    $_html .= '<option ' . $_select . ' value="' . $_object2->id . '">' . $_object2->nav_name . '</option>';
                 }
             }
             $_html .= '</optgroup>';

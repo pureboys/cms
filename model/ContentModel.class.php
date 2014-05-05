@@ -59,7 +59,7 @@ class ContentModel extends Model
 
     //获取单一的文档内容
     public function getOneContent(){
-        $_sql = "SELECT id,title,nav,content,info,date,count,author,source FROM cms_content WHERE id='$this->id'";
+        $_sql = "SELECT id,title,nav,content,info,date,count,author,source,tag,keyword,thumbnail,gold FROM cms_content WHERE id='$this->id'";
         return parent::one($_sql);
     }
 
