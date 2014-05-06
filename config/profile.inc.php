@@ -20,3 +20,9 @@ define('TPL_DIR', ROOT_PATH . '/templates/');
 define('TPL_C_DIR', ROOT_PATH . '/templates_c/');
 //缓存文件目录
 define('CACHE', ROOT_PATH . '/cache/');
+
+//后台缓存，不得开启
+define('ADMIN_CACHE', false);
+//前台缓存
+define('FRONT_CACHE', false);
+

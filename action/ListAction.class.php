@@ -48,6 +48,11 @@ class ListAction extends Action
             if ($_object) {
                 $_object = Tool::subStr($_object, 'info', 120, 'utf8');
                 $_object = Tool::subStr($_object, 'title', 35, 'utf8');
+                if (FRONT_CACHE) {
+                    foreach ($_object as $_value) {
+                        $_value->count = "<script>getContentCount();</script>";
+                    }
+                }
             }
             $this->_tpl->assign('AllListContent', $_object);
         } else {

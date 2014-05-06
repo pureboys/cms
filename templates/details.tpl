@@ -5,6 +5,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="/style/basic.css"/>
     <link rel="stylesheet" href="/style/details.css"/>
+    <script src="/config/static.php?id={$id}&type=details"></script>
 </head>
 <body>
 

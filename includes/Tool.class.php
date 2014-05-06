@@ -100,5 +100,13 @@ class Tool
         return htmlspecialchars_decode($_str);
     }
 
+    //将当前文件转换成.tpl文件名
+    static public function tplName()
+    {
+        $_str = explode('/', $_SERVER['SCRIPT_NAME']);
+        $_str = explode('.', $_str[count($_str) - 1]);
+        return $_str[0] . '.tpl';
+    }
+
 
 }
