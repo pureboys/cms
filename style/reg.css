@@ -43,12 +43,73 @@
     color: #ff0000;
 }
 
-#reg form dl dd img.code{
+#reg form dl dd img.face{
+    margin: 0 0 0 60px;
+}
+
+#reg form dl dd img.code {
     cursor: pointer;
     margin: 0 0 0 60px;
 }
 
-#reg form dl dd input.submit{
+#reg form dl dd input.submit {
     cursor: pointer;
     margin: 0 0 0 60px;
 }
+
+#login {
+    width: 100%;
+    float: left;
+    margin: 0 0 10px 0;
+}
+
+#login h2 {
+    border: 1px solid #cccccc;
+    border-bottom: none;
+    text-align: center;
+}
+
+#login h2 a {
+    color: #360;
+    text-decoration: none;
+}
+
+#login h2 a:hover {
+    color: #f60;
+}
+
+#login form {
+    border: 1px solid #cccccc;
+    padding: 15px 0;
+}
+
+#login form dl {
+    padding-left: 250px;
+}
+
+#login form dl dd {
+    padding: 5px 0;
+}
+
+#login form dl dd input.text, #login form dl dd select {
+    width: 220px;
+    height: 22px;
+    border: 1px solid #999;
+    background: #eeeeee;
+}
+
+#login form dl dd span.red {
+    color: #ff0000;
+}
+
+#login form dl dd img.code {
+    cursor: pointer;
+    margin: 0 0 0 60px;
+}
+
+#login form dl dd input.submit {
+    cursor: pointer;
+    margin: 0 0 0 60px;
+}
+
+

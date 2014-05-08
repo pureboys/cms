@@ -1,3 +1,5 @@
 <?php
+//后台缓存，不得开启
+define('IS_CACHE', false);
 //判断是否开启缓存
-ADMIN_CACHE ? ob_start() : null;
+IS_CACHE ? ob_start() : null;

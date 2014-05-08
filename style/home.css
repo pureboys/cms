@@ -4,15 +4,17 @@
     height: 398px;
     float: right;
     border: 1px solid #cccccc;
+    overflow: hidden;
 }
 
 #user form {
     position: relative;
+    top:2px;
 }
 
 #user form label {
     display: block;
-    padding: 8px 0 5px 12px;
+    padding: 6px 0 4px 12px;
 }
 
 #user form label input.text {
@@ -26,15 +28,23 @@
     width: 100px;
 }
 
-#user form img.vdimgck {
-    position: absolute;
-    top: 82px;
-    left: 170px;
+#user form label.yzm {
+    position: relative;
+    top: -14px;
+}
+
+#user form img.code {
+    height: 30px;
+    position: relative;
+    top: 10px;
+    cursor: pointer;
 }
 
 #user form p {
     text-align: center;
     padding: 5px 0;
+    position: relative;
+    top: -5px;
 }
 
 #user form p a {

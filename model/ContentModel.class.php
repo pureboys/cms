@@ -52,7 +52,8 @@ class ContentModel extends Model
     }
 
     //删除文档
-    public function deleteContent(){
+    public function deleteContent()
+    {
         $_sql = "DELETE FROM cms_content WHERE id='$this->id' LIMIT 1";
         return parent::aud($_sql);
     }
@@ -81,12 +82,11 @@ class ContentModel extends Model
     }
 
     //累计文档点击
-    public function setContentCount(){
+    public function setContentCount()
+    {
         $_sql = "UPDATE cms_content SET count=count+1 WHERE id='$this->id' LIMIT 1";
         return parent::aud($_sql);
     }
-
-
 
 
 }

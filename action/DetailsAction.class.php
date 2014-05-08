@@ -28,7 +28,7 @@ class DetailsAction extends Action
             $this->_tpl->assign('info', $_content->info);
             $this->_tpl->assign('content', Tool::unHtml($_content->content));
             $this->getNav($_content->nav);
-            if (FRONT_CACHE) {
+            if (IS_CACHE) {
                 $this->_tpl->assign('count', "<script>getContentCount();</script>");
             } else {
                 $this->_tpl->assign('count', $_content->count);

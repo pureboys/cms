@@ -126,13 +126,11 @@ class NavModel extends Model
     }
 
     //获取所有非主类的ID
-    public function getAllNavChildId(){
+    public function getAllNavChildId()
+    {
         $_sql = "SELECT id FROM cms_nav WHERE  pid <> 0";
         return parent::all($_sql);
     }
-
-
-
 
 
 }

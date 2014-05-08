@@ -369,12 +369,13 @@ ul, ol {
     margin: 0 2px;
 }
 
-#page select.select{
+#page select.select {
     width: 120px;
     background: #ffffff;
     border: 1px solid #cccccc;
 }
-#page select.select optgroup{
+
+#page select.select optgroup {
     font-style: normal;
 }
 

@@ -1,6 +1,8 @@
+<script src="/config/static.php?type=header"></script>
 <div id="top">
-    <a href="###">文字广告1</a>
-    <a href="###">文字广告2</a>
+    {$header}
+    <a href="###" class="adv">文字广告1</a>
+    <a href="###" class="adv">文字广告1</a>
 </div>
 <div id="header">
     <h1><a href="###">web俱乐部</a></h1>

@@ -67,7 +67,7 @@ class ContentAction extends Action
 
     private function update()
     {
-        if(isset($_POST['send'])){
+        if (isset($_POST['send'])) {
             $this->_model->id = $_POST['id'];
             $this->getPost();
             $this->_model->updateContent() ? Tool::alertLocation('文档修改成功！', $_POST['prev_url']) : Tool::alertBack('警告：文档修改失败！');
@@ -106,16 +106,17 @@ class ContentAction extends Action
 
     private function delete()
     {
-        if(isset($_GET['id'])){
+        if (isset($_GET['id'])) {
             $this->_model->id = $_GET['id'];
-            $this->_model->deleteContent() ? Tool::alertLocation('文档删除成功！',PREV_URL) : Tool::alertBack('警告：文档删除失败！');
-        }else{
+            $this->_model->deleteContent() ? Tool::alertLocation('文档删除成功！', PREV_URL) : Tool::alertBack('警告：文档删除失败！');
+        } else {
             Tool::alertBack('警告：非法操作!');
         }
     }
 
     //getPost
-    private function getPost(){
+    private function getPost()
+    {
         if (Validate::checkNull($_POST['title'])) Tool::alertBack('警告：标题不能为空！');
         if (Validate::checkLength($_POST['title'], 2, 'min')) Tool::alertBack('警告：标题长度不得小于2位');
         if (Validate::checkLength($_POST['title'], 50, 'max')) Tool::alertBack('警告：标题长度不得大于50位');
@@ -149,9 +150,6 @@ class ContentAction extends Action
         $this->_model->sort = $_POST['sort'];
         $this->_model->readlimit = $_POST['readlimit'];
     }
-
-
-
 
 
     private function nav($_n = 0)

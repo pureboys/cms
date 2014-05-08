@@ -5,6 +5,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="/style/basic.css"/>
     <link rel="stylesheet" href="/style/home.css"/>
+    <script src="/js/reg.js"></script>
 </head>
 <body>
 
@@ -12,13 +13,16 @@
 <div id="user">
     <h2>会员信息</h2>
 
-    <form action="">
-        <label for="">用户名：<input type="text" name="username" class="text"/></label>
-        <label for="">密　码：<input type="password" name="password" class="text"/></label>
-        <label for="">验证码：<input type="text" name="code" class="text code"/></label>
-        <img src="/images/vdimgck.png" alt="验证码" class="vdimgck"/>
+    <form action="/register.php?action=login" method="post" name="login">
+        <label for="">用户名：<input type="text" name="user" class="text"/></label>
+        <label for="">密　码：<input type="password" name="pass" class="text"/></label>
+        <label for="" class="yzm">验证码：<input type="text" name="code" class="text code"/>
+            <img src="/config/code.php"
+                 onclick="javascript:this.src='/config/code.php?tm='+Math.random();" class="code"/>
+        </label>
 
-        <p><input type="submit" name="send" value="登录" class="submit"/> <a href="register.php">注册会员</a> <a href="###">忘记密码</a>
+        <p><input type="submit" name="send" value="登录" class="submit" onclick="return checkLogin();"/> <a href="register.php?action=reg">注册会员</a> <a
+                    href="###">忘记密码</a>
         </p>
 
         <h3>最近登录会员<span>─────────────</span></h3>

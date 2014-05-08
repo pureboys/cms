@@ -19,29 +19,31 @@
     color: #f60;
 }
 
-#details h3{
+#details h3 {
     text-align: center;
     color: #333;
     padding: 20px 0 0 0;
     font-size: 22px;
 }
 
-#details div.d1{
+#details div.d1 {
     text-align: center;
     padding: 10px;
 }
 
-#details div.d2{
+#details div.d2 {
     padding: 10px;
     margin: 10px;
     background: #ffffee;
     border: 1px solid #cccccc;
     line-height: 150%;
 }
-#details div.d3{
+
+#details div.d3 {
     padding: 20px 10px;
     line-height: 220%;
 }
+
 #sidebar {
     width: 260px;
     min-height: 600px;

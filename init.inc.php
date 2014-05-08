@@ -20,6 +20,9 @@ function __autoload($_className)
     }
 }
 
+//设置不缓存
+$_cache = new Cache(array('code', 'ckeup', 'static', 'upload', 'register'));
+
 //实例化模版类
 $_tpl = new Templates();
 //初始化

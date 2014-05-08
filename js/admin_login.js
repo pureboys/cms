@@ -5,7 +5,7 @@ function checkLogin() {
         fm.admin_user.focus();
         return false;
     }
-    if (fm.admin_pass.value == '' || fm.admin_pass.value.length < 2) {
+    if (fm.admin_pass.value == '' || fm.admin_pass.value.length < 6) {
         alert('密码不得为空或者小于6位');
         fm.admin_pass.focus();
         return false;

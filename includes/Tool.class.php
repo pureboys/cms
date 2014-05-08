@@ -105,7 +105,7 @@ class Tool
     {
         $_str = explode('/', $_SERVER['SCRIPT_NAME']);
         $_str = explode('.', $_str[count($_str) - 1]);
-        return $_str[0] . '.tpl';
+        return $_str[0];
     }
 
 
