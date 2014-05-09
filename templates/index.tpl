@@ -6,51 +6,52 @@
     <link rel="stylesheet" href="/style/basic.css"/>
     <link rel="stylesheet" href="/style/home.css"/>
     <script src="/js/reg.js"></script>
+    <script src="/config/static.php?type=index"></script>
 </head>
 <body>
 
 {include file='header.tpl'}
 <div id="user">
-    <h2>会员信息</h2>
+    {if $cache}
+        {$member}
+    {else}
+        {if $login}
+            <h2>会员登录</h2>
+            <form action="/register.php?action=login" method="post" name="login">
+                <label for="">用户名：<input type="text" name="user" class="text"/></label>
+                <label for="">密　码：<input type="password" name="pass" class="text"/></label>
+                <label for="" class="yzm">验证码：<input type="text" name="code" class="text code"/>
+                    <img src="/config/code.php"
+                         onclick="javascript:this.src='/config/code.php?tm='+Math.random();" class="code"/>
+                </label>
 
-    <form action="/register.php?action=login" method="post" name="login">
-        <label for="">用户名：<input type="text" name="user" class="text"/></label>
-        <label for="">密　码：<input type="password" name="pass" class="text"/></label>
-        <label for="" class="yzm">验证码：<input type="text" name="code" class="text code"/>
-            <img src="/config/code.php"
-                 onclick="javascript:this.src='/config/code.php?tm='+Math.random();" class="code"/>
-        </label>
+                <p><input type="submit" name="send" value="登录" class="submit" onclick="return checkLogin();"/> <a
+                            href="register.php?action=reg">注册会员</a> <a
+                            href="###">忘记密码</a>
+                </p>
+            </form>
+        {else}
+            <h2>会员信息</h2>
+            <div class="a">您好, <strong>{$user}</strong> 欢迎光临</div>
+            <div class="b">
+                <img src="/images/{$face}" alt="{$user}"/>
+                <a href="###">个人中心</a>
+                <a href="###">我的评论</a>
+                <a href="/register.php?action=logout">退出登录</a>
+            </div>
+        {/if}
+    {/if}
 
-        <p><input type="submit" name="send" value="登录" class="submit" onclick="return checkLogin();"/> <a href="register.php?action=reg">注册会员</a> <a
-                    href="###">忘记密码</a>
-        </p>
+    <h3>最近登录会员<span>─────────────</span></h3>
+     {if $AllLaterUser}
+     {foreach $AllLaterUser(key,value)}
+    <dl>
+        <dt><img src="/images/{@value->face}" alt="{@value->user}"/></dt>
+        <dd>{@value->user}</dd>
+    </dl>
+    {/foreach}
+    {/if}
 
-        <h3>最近登录会员<span>─────────────</span></h3>
-        <dl>
-            <dt><img src="/images/01.gif" alt="头像1"/></dt>
-            <dd>樱桃小丸子</dd>
-        </dl>
-        <dl>
-            <dt><img src="/images/04.gif" alt="头像04"/></dt>
-            <dd>蜡笔小新</dd>
-        </dl>
-        <dl>
-            <dt><img src="/images/12.gif" alt="头像12"/></dt>
-            <dd>圣斗士形式</dd>
-        </dl>
-        <dl>
-            <dt><img src="/images/17.gif" alt="头像17"/></dt>
-            <dd>我叫MT</dd>
-        </dl>
-        <dl>
-            <dt><img src="/images/22.gif" alt="头像22"/></dt>
-            <dd>海贼王</dd>
-        </dl>
-        <dl>
-            <dt><img src="/images/14.gif" alt="头像14"/></dt>
-            <dd>一户</dd>
-        </dl>
-    </form>
 </div>
 <div id="news">
     <h3><a href="###">四大行封杀余额宝违反《反垄断法》</a></h3>

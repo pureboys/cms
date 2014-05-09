@@ -2,5 +2,6 @@
 
 require dirname(__FILE__) . '/init.inc.php';
 global $_tpl;
-$_tpl->assign('title', '标头');
+$_index = new IndexAction($_tpl);
+$_index->_action();
 $_tpl->display('index.tpl');

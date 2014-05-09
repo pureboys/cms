@@ -50,6 +50,7 @@ class RegisterAction extends Action
             $this->_model->pass = sha1($_POST['pass']);
             $this->_model->email = $_POST['email'];
             $this->_model->face = $_POST['face'];
+            $this->_model->time = time();
 
             if ($this->_model->checkUser()) Tool::alertBack('用户名已经被注册！');
             if ($this->_model->checkEmail()) Tool::alertBack('Email已经被使用!');
@@ -57,6 +58,9 @@ class RegisterAction extends Action
             if ($this->_model->addUser()) {
                 $_cookie = new Cookie('user', $this->_model->user);
                 $_cookie->setCookie();
+                $_cookie = new Cookie('face', $this->_model->face);
+                $_cookie->setCookie();
+
                 Tool::alertLocation('恭喜你注册成功', '/');
             } else {
                 Tool::alertBack('很遗憾，注册失败!');
@@ -81,16 +85,19 @@ class RegisterAction extends Action
             if (Validate::checkLength($_POST['pass'], 6, 'min')) Tool::alertBack("警告：密码不得小于6位");
             $this->_model->user = $_POST['user'];
             $this->_model->pass = sha1($_POST['pass']);
-            if ($this->_model->checkLogin()) {
+            if ($_user = $this->_model->checkLogin()) {
                 //cookie
-                $_cookie = new Cookie('user', $this->_model->user, $_POST['time']);
+                $_cookie = new Cookie('user', $_user->user, $_POST['time']);
                 $_cookie->setCookie();
+                $_cookie = new Cookie('face', $_user->face, $_POST['time']);
+                $_cookie->setCookie();
+                $this->_model->id = $_user->id;
+                $this->_model->time = time();
+                $this->_model->setLaterUser();
                 Tool::alertLocation(null, '/');
             } else {
                 Tool::alertBack('用户名或密码错误!');
             }
-
-
         }
         $this->_tpl->assign('reg', false);
         $this->_tpl->assign('login', true);

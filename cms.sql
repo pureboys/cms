@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50524
 File Encoding         : 65001
 
-Date: 2014-05-08 15:39:26
+Date: 2014-05-09 17:37:31
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -147,14 +147,17 @@ CREATE TABLE `cms_user` (
   `question` varchar(20) NOT NULL,
   `answer` varchar(20) NOT NULL,
   `state` tinyint(1) NOT NULL DEFAULT '1',
+  `time` char(10) NOT NULL,
   `date` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of cms_user
 -- ----------------------------
-INSERT INTO `cms_user` VALUES ('5', 'xiaoA', '7c4a8d09ca3762af61e59520943dc26494f8941b', 'sss@sina.com', '23.gif', '您父亲的姓名', 'nini', '1', '2014-05-07 14:49:25');
-INSERT INTO `cms_user` VALUES ('6', '黑崎一护', '7c4a8d09ca3762af61e59520943dc26494f8941b', 'heiqi@sina.com', '11.gif', '您父亲的姓名', '同行', '1', '2014-05-08 10:15:13');
-INSERT INTO `cms_user` VALUES ('7', '樱桃小丸子', '7c4a8d09ca3762af61e59520943dc26494f8941b', 'yingtao@sina.com', '09.gif', '您父亲的姓名', '同行', '1', '2014-05-08 10:16:25');
-INSERT INTO `cms_user` VALUES ('8', '路飞', '7c4a8d09ca3762af61e59520943dc26494f8941b', 'lufei@sina.com', '07.gif', '您父亲的姓名', '同行', '1', '2014-05-08 14:15:17');
+INSERT INTO `cms_user` VALUES ('5', 'xiaoA', '7c4a8d09ca3762af61e59520943dc26494f8941b', 'sss@sina.com', '23.gif', '您父亲的姓名', 'nini', '1', '1399604713', '2014-05-07 14:49:25');
+INSERT INTO `cms_user` VALUES ('6', '黑崎一护', '7c4a8d09ca3762af61e59520943dc26494f8941b', 'heiqi@sina.com', '11.gif', '您父亲的姓名', '同行', '1', '1399604754', '2014-05-08 10:15:13');
+INSERT INTO `cms_user` VALUES ('7', '樱桃小丸子', '7c4a8d09ca3762af61e59520943dc26494f8941b', 'yingtao@sina.com', '09.gif', '您父亲的姓名', '同行', '1', '1399604680', '2014-05-08 10:16:25');
+INSERT INTO `cms_user` VALUES ('8', '路飞', '7c4a8d09ca3762af61e59520943dc26494f8941b', 'lufei@sina.com', '07.gif', '您父亲的姓名', '同行', '1', '1399604779', '2014-05-08 14:15:17');
+INSERT INTO `cms_user` VALUES ('9', '山本', '7c4a8d09ca3762af61e59520943dc26494f8941b', 'shanben@sina.com', '04.gif', '', '', '1', '1399604802', '2014-05-09 09:41:33');
+INSERT INTO `cms_user` VALUES ('10', '呵呵', '7c4a8d09ca3762af61e59520943dc26494f8941b', 'hehe@sina.com', '05.gif', '', '', '1', '1399604919', '2014-05-09 11:08:39');
