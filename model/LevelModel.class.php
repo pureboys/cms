@@ -12,7 +12,10 @@ class LevelModel extends Model
 
     function __set($key, $value)
     {
-        $this->$key = Tool::mysqlString($value);
+        $_link = DB::getDB();
+        $this->$key = Tool::mysqlString($_link,$value);
+        $_result = null;
+        DB::unDB($_result,$_link);
     }
 
     function __get($key)

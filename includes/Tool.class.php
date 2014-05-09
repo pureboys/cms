@@ -56,10 +56,10 @@ class Tool
     }
 
     //数据库输入过滤
-    static public function mysqlString($_data)
+    static public function mysqlString($link,$_data)
     {
         if (is_array($_data)) return $_data;
-        return !GPC ? mysql_real_escape_string($_data) : $_data;
+        return !GPC ? mysqli_real_escape_string($link,$_data) : $_data;
     }
 
     //弹窗赋值关闭（上传）
