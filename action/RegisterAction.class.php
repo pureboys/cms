@@ -50,6 +50,7 @@ class RegisterAction extends Action
             $this->_model->pass = sha1($_POST['pass']);
             $this->_model->email = $_POST['email'];
             $this->_model->face = $_POST['face'];
+            $this->_model->state = 1;
             $this->_model->time = time();
 
             if ($this->_model->checkUser()) Tool::alertBack('用户名已经被注册！');

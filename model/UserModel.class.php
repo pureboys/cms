@@ -9,17 +9,19 @@ class UserModel extends Model
     private $user;
     private $pass;
     private $face;
+    private $state;
     private $email;
     private $question;
     private $answer;
     private $time;
+    private $_limit;
 
     function __set($key, $value)
     {
         $_link = DB::getDB();
-        $this->$key = Tool::mysqlString($_link,$value);
+        $this->$key = Tool::mysqlString($_link, $value);
         $_result = null;
-        DB::unDB($_result,$_link);
+        DB::unDB($_result, $_link);
     }
 
     function __get($key)
@@ -33,7 +35,7 @@ class UserModel extends Model
     public function addUser()
     {
 
-        $sql = "INSERT INTO cms_user(user,pass,email,face,question,answer,time,date) VALUES ('$this->user','$this->pass','$this->email','$this->face','$this->question','$this->answer','$this->time',NOW())";
+        $sql = "INSERT INTO cms_user(user,pass,email,face,state,question,answer,time,date) VALUES ('$this->user','$this->pass','$this->email','$this->face','$this->state','$this->question','$this->answer','$this->time',NOW())";
         return parent::aud($sql);
     }
 
@@ -69,6 +71,41 @@ class UserModel extends Model
     {
         $_sql = "SELECT id,user,face FROM cms_user ORDER BY time DESC LIMIT 0,6";
         return parent::all($_sql);
+    }
+
+    //取得所有会员
+    public function getAllUser()
+    {
+        $_sql = "SELECT id,user,email,state FROM cms_user ORDER BY date DESC $this->_limit";
+        return parent::all($_sql);
+    }
+
+    //获取会员总数
+    public function getUserTotal()
+    {
+        $_sql = "SELECT count(*) FROM cms_user";
+        return parent::total($_sql);
+    }
+
+    //会员删除
+    public function deleteUser()
+    {
+        $_sql = "DELETE FROM cms_user WHERE id='$this->id' LIMIT 1";
+        return parent::aud($_sql);
+    }
+
+    //查找单一会员
+    public function getOneUser()
+    {
+        $_sql = "SELECT id,user,pass,face,email,question,answer,state FROM cms_user WHERE id='$this->id' LIMIT 1";
+        return parent::one($_sql);
+    }
+
+    //修改会员
+    public function updateUser()
+    {
+        $_sql = "UPDATE cms_user SET pass='$this->pass',face='$this->face',question='$this->question',answer='$this->answer',state='$this->state',email='$this->email' WHERE id='$this->id' LIMIT 1";
+        return parent::aud($_sql);
     }
 
 
