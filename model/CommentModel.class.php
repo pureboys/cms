@@ -35,7 +35,7 @@ class CommentModel extends Model
     //分页评论
     public function getAllComment()
     {
-        $_sql = "SELECT c.user,c.manner,c.content,c.date,u.face FROM cms_comment AS c LEFT JOIN cms_user AS u ON c.user=u.user WHERE c.cid='$this->cid' ORDER BY date DESC ".$this->_limit;
+        $_sql = "SELECT c.id,c.cid,c.user,c.manner,c.content,c.date,c.sustain,c.oppose,u.face FROM cms_comment AS c LEFT JOIN cms_user AS u ON c.user=u.user WHERE c.cid='$this->cid' ORDER BY c.date DESC " . $this->_limit;
         return parent::all($_sql);
     }
 
@@ -44,6 +44,48 @@ class CommentModel extends Model
     {
         $_sql = "SELECT count(*) FROM cms_comment WHERE cid='$this->cid'";
         return parent::total($_sql);
+    }
+
+    //支持
+    public function setSustain()
+    {
+        $_sql = "UPDATE cms_comment SET sustain=sustain+1 WHERE id='$this->id' LIMIT 1";
+        return parent::aud($_sql);
+    }
+
+    //反对
+    public function setOppose()
+    {
+        $_sql = "UPDATE cms_comment SET oppose=oppose+1 WHERE id='$this->id' LIMIT 1";
+        return parent::aud($_sql);
+    }
+
+    //查找单一评论
+    public function getOneComment()
+    {
+        $_sql = "SELECT id FROM cms_comment WHERE id='$this->id' LIMIT 1";
+        return parent::one($_sql);
+    }
+
+    //获取最新三条评论
+    public function getNewThreeComment()
+    {
+        $_sql = "SELECT c.id,c.cid,c.user,c.manner,c.content,c.date,c.sustain,c.oppose,u.face FROM cms_comment AS c LEFT JOIN cms_user AS u ON c.user=u.user WHERE c.cid='$this->cid' ORDER BY c.date DESC LIMIT 0,3";
+        return parent::all($_sql);
+    }
+
+    //获取三条最火评论 支持+反对=0 不显示
+    public function getHotThreeComment()
+    {
+        $_sql = "SELECT c.id,c.cid,c.user,c.manner,c.content,c.date,c.sustain,c.oppose,u.face FROM cms_comment AS c LEFT JOIN cms_user AS u ON c.user=u.user WHERE c.cid='$this->cid' AND c.sustain+c.oppose>0 ORDER BY c.sustain+c.oppose DESC LIMIT 0,3";
+        return parent::all($_sql);
+    }
+
+    //获取总排行榜，文档评论量从大到小
+    public function getHotTwentyComment()
+    {
+        $_sql = "SELECT ct.id,ct.title FROM cms_content AS ct ORDER BY (SELECT COUNT(*) FROM cms_comment AS c WHERE c.cid=ct.id) DESC LIMIT 0,20";
+        return parent::all($_sql);
     }
 
 

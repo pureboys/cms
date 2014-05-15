@@ -28,6 +28,13 @@ class Tool
         exit();
     }
 
+//    弹窗关闭
+    static public function alertClose($_info)
+    {
+        echo "<script type='text/javascript'>alert('$_info');close();</script>";
+        exit();
+    }
+
     //清理session
     static public function unSession()
     {

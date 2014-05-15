@@ -20,6 +20,8 @@ class DetailsAction extends Action
             $this->_model->id = $_GET['id'];
             if (!$this->_model->setContentCount()) Tool::alertBack('警告：不存在此文档！');
             $_content = $this->_model->getOneContent();
+            $_comment = new CommentModel();
+            $_comment->cid = $this->_model->id;
             $this->_tpl->assign('id', $_content->id);
             $this->_tpl->assign('titles', $_content->title);
             $this->_tpl->assign('date', $_content->date);
@@ -30,10 +32,31 @@ class DetailsAction extends Action
             $this->_tpl->assign('content', Tool::unHtml($_content->content));
             $this->getNav($_content->nav);
             if (IS_CACHE) {
+                $this->_tpl->assign('comment', "<script>getComment();</script>");
                 $this->_tpl->assign('count', "<script>getContentCount();</script>");
             } else {
+                $this->_tpl->assign('comment', $_comment->getCommentTotal());
                 $this->_tpl->assign('count', $_content->count);
             }
+            $_object = $_comment->getNewThreeComment();
+            if ($_object) {
+                foreach ($_object as $_value) {
+                    switch ($_value->manner) {
+                        case -1:
+                            $_value->manner = '反对';
+                            break;
+                        case 0:
+                            $_value->manner = '中立';
+                            break;
+                        case 1:
+                            $_value->manner = '支持';
+                            break;
+                    }
+                    if (empty($_value->face)) $_value->face = '00.gif';
+                    if (!empty($_value->oppose)) $_value->oppose = '-' . $_value->oppose;
+                }
+            }
+            $this->_tpl->assign('NewThreeComment', $_object);
         } else {
             Tool::alertBack('警告：非法操作！');
         }

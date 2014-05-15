@@ -21,7 +21,7 @@ function __autoload($_className)
 }
 
 //设置不缓存
-$_cache = new Cache(array('code', 'ckeup', 'static', 'upload', 'register'));
+$_cache = new Cache(array('code', 'ckeup', 'static', 'upload', 'register','feedback'));
 
 //实例化模版类
 $_tpl = new Templates();

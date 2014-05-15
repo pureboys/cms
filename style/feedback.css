@@ -9,6 +9,15 @@
 
 }
 
+#feedback h4{
+    font-size: 18px;
+    color: #333;
+    width: 96%;
+    margin: 10px auto;
+    padding: 10px;
+    border-bottom:1px solid #cccccc;
+}
+
 #feedback h2 a {
     color: #360;
     text-decoration: none;
@@ -16,6 +25,26 @@
 
 #feedback h2 a:hover {
     color: #f60;
+}
+
+#feedback h3{
+    text-align: center;
+    font-size: 22px;
+    color: #333;
+    border-bottom:1px solid #cccccc;
+    width: 98%;
+    margin: 0 auto;
+    padding:20px 0;
+}
+
+#feedback p.info{
+    font-size: 16px;
+    text-indent: 25px;
+    line-height: 150%;
+    border-bottom:1px solid #cccccc;
+    width: 98%;
+    margin: 0 auto 10px auto;
+    padding:20px 0;
 }
 
 #feedback dl {
@@ -65,10 +94,11 @@
 }
 
 #sidebar ul li {
-    height: 23px;
-    line-height: 23px;
+    line-height: 160%;
     background: url("../images/pointer.png") no-repeat left center;
-    padding: 0 0 0 10px;
+    padding: 5px 0 0 10px;
+    margin:0 0 5px 0;
+    border-bottom: 1px dashed #cccccc;
 }
 
 #sidebar ul li a {
@@ -85,3 +115,50 @@
     font-style: normal;
     font-family: Tahoma;
 }
+
+div.d5 {
+    width: 674px;
+    margin: 10px 0;
+    padding: 8px;
+    border: 1px solid #cccccc;
+    clear: both;
+}
+
+div.d5 p {
+    margin: 10px 0;
+}
+
+div.d5 p.red {
+    color: #ff0000;
+}
+
+div.d5 p input.text {
+    width: 80px;
+    height: 20px;
+    border: 1px dashed #999999;
+    background: #eeeeee;
+}
+
+div.d5 p input.submit {
+    width: 80px;
+    height: 25px;
+    cursor: pointer;
+}
+
+div.d5 p img.code {
+    width: 78px;
+    height: 30px;
+    position: relative;
+    top: 10px;
+    cursor: pointer;
+}
+
+div.d5 p textarea {
+    width: 650px;
+    height: 150px;
+    background: #eeeeee;
+    border: 1px dashed #999;
+}
+
+
+

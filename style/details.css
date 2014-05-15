@@ -53,6 +53,7 @@
     margin: 10px 0;
     padding: 8px;
     border: 1px solid #cccccc;
+    clear: both;
 }
 
 #details div.d5 p {
@@ -92,7 +93,14 @@
 }
 
 #details div.d6 {
-    margin: 10px 0 0 0;
+    margin: 10px 0;
+    border: 1px solid #cccccc;
+    float: left;
+    width: 688px;
+}
+
+#details div.d6 h2 {
+    border: none;
 }
 
 #details div.d6 h2 a {
@@ -104,6 +112,41 @@
 
 #details div.d6 h2 a span {
     color: #ff0000;
+}
+
+#details div.d6 dl {
+    width: 670px;
+    margin: 10px 0 10px 8px;
+    border-bottom: 1px dashed #cccccc;
+    float: left;
+}
+
+#details div.d6 dl dt {
+    float: left;
+}
+
+#details div.d6 dl dd {
+    width: 585px;
+    float: right;
+    padding: 0 0 10px 10px;
+}
+
+#details div.d6 dl dd span {
+    color: #0066ff;
+}
+
+#details div.d6 dl dd.info {
+    font-size: 12px;
+    line-height: 150%;
+}
+
+#details div.d6 dl dd.bottom {
+    text-align: right;
+}
+
+#details div.d6 dl dd em {
+    float: right;
+    font-style: normal;
 }
 
 #sidebar {

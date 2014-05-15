@@ -65,7 +65,7 @@ class ContentModel extends Model
     //获取文档列表
     public function getListContent()
     {
-        $_sql = "SELECT c.id,c.title,c.title t,c.date,c.info,c.thumbnail,c.count,c.attr,c.nav,n.nav_name FROM cms_content c,cms_nav n WHERE c.nav=n.id AND c.nav IN ($this->nav) ORDER BY c.date DESC " . $this->_limit;
+        $_sql = "SELECT c.id,c.title,c.title t,c.date,c.info,c.thumbnail,c.count,c.attr,c.gold,c.nav,n.nav_name FROM cms_content c,cms_nav n WHERE c.nav=n.id AND c.nav IN ($this->nav) ORDER BY c.date DESC " . $this->_limit;
         return parent::all($_sql);
     }
 

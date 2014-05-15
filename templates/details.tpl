@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="/style/basic.css"/>
     <link rel="stylesheet" href="/style/details.css"/>
     <script src="/config/static.php?id={$id}&type=details"></script>
+    <script src="/js/details.js"></script>
 </head>
 <body>
 
@@ -20,16 +21,30 @@
     <div class="d3">{$content}</div>
     <div class="d4">TAG标签：{$tag}</div>
     <div class="d6">
-        <h2><a href="/feedback.php?cid={$id}" target="_blank">已经有<span>222</span>人参与评论</a>最新评论</h2>
+        <h2><a href="/feedback.php?cid={$id}" target="_blank">已经有<span>{$comment}</span>人参与评论</a>最新评论</h2>
+        {if $NewThreeComment}
+        {foreach $NewThreeComment(key,value)}
+        <dl>
+            <dt><img src="/images/{@value->face}" alt="游客"/></dt>
+            <dd><em>{@value->date} 发表</em><span>[{@value->user}]</span></dd>
+            <dd class="info">{@value->manner}:{@value->content}</dd>
+            <dd class="bottom"><a href="/feedback.php?cid={@value->cid}&id={@value->id}&type=sustain" target="_blank">[{@value->sustain}]支持</a> <a href="/feedback.php?cid={@value->cid}&id={@value->id}&type=oppose" target="_blank">[{@value->oppose}]反对</a></dd>
+        </dl>
+        {/foreach}
+        {else}
+            <dl>
+                <dd>当前没有评论！</dd>
+            </dl>
+        {/if}
     </div>
     <div class="d5">
-        <form action="feedback.php?cid={$id}" method="post" target="_blank">
+        <form action="feedback.php?cid={$id}" method="post" target="_blank" name="comment">
             <p>你对本文的态度: <input type="radio" name="manner" value="1" checked />支持<input type="radio" name="manner" value="0"/>中立<input type="radio" name="manner" value="-1"/>反对</p>
             <p class="red">请不要发表关于政治、反动、色情评论</p>
             <p><textarea name="content" id="" cols="30" rows="10"></textarea></p>
             <p style="position: relative;top: -5px;">验证码：<input type="text" class="text" name="code"/>
                 <img src="/config/code.php" onclick="javascript:this.src='/config/code.php?tm='+Math.random();" class="code"/>
-                <input type="submit" value="提交评论" name="send" class="submit"/>
+                <input type="submit" value="提交评论" name="send" class="submit" onclick="return checkComment()"/>
             </p>
         </form>
     </div>
