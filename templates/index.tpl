@@ -54,27 +54,23 @@
 
 </div>
 <div id="news">
-    <h3><a href="###">四大行封杀余额宝违反《反垄断法》</a></h3>
+    <h3><a href="/details.php?id={$TopId}" target="_blank">{$TopTitle}</a></h3>
 
-    <p>对此，马云发文表达强烈抗议，“ 市场更不怕竞争，市场怕不公平……决定市场胜负的不应该是垄断和权力，而是用户！……也不知道谁给银行们权力，可以伤害储户支配自己资金的权力。更不知道谁来监管四大“国手”联合封杀的...<a
-                href="###">[阅读全文]</a></p>
+    <p>{$TopInfo}<a href="/details.php?id={$TopId}" target="_blank">[阅读全文]</a></p>
 
     <p class="link">
-        <a href="###">逾500名埃及前总统穆尔西支</a>|
-        <a href="###"> 深圳公务员分类改革:退休人员多</a>
-        <a href="###">日本宣布归还美国高浓缩铀与武器级钚</a>|
-        <a href="###">北京城市总体规划将调整修改</a>
+        {if $NewTopList}
+        {foreach $NewTopList(key,value)}
+        <a href="/details.php?id={@value->id}" target="_blank">{@value->title}</a>{@value->line}
+        {/foreach}
+        {/if}
     </p>
     <ul>
-        <li><em>06-20</em><a href="###">天空飘来五个字，那都不是事儿...</a></li>
-        <li><em>06-20</em><a href="###">天空飘来五个字，那都不是事儿...</a></li>
-        <li><em>06-20</em><a href="###">天空飘来五个字，那都不是事儿...</a></li>
-        <li><em>06-20</em><a href="###">天空飘来五个字，那都不是事儿...</a></li>
-        <li><em>06-20</em><a href="###">天空飘来五个字，那都不是事儿...</a></li>
-        <li><em>06-20</em><a href="###">天空飘来五个字，那都不是事儿...</a></li>
-        <li><em>06-20</em><a href="###">天空飘来五个字，那都不是事儿...</a></li>
-        <li><em>06-20</em><a href="###">天空飘来五个字，那都不是事儿...</a></li>
-        <li><em>06-20</em><a href="###">天空飘来五个字，那都不是事儿...</a></li>
+        {if $NewList}
+        {foreach $NewList(key,value)}
+        <li><em>{@value->date}</em><a href="/details.php?id={@value->id}" target="_blank">{@value->title}</a></li>
+        {/foreach}
+        {/if}
     </ul>
 </div>
 <div id="pic">
@@ -83,13 +79,11 @@
 <div id="rec">
     <h2>特别推荐</h2>
     <ul>
-        <li><em>06-20</em><a href="###">天空飘来五个字，那都不是事儿...</a></li>
-        <li><em>06-20</em><a href="###">天空飘来五个字，那都不是事儿...</a></li>
-        <li><em>06-20</em><a href="###">天空飘来五个字，那都不是事儿...</a></li>
-        <li><em>06-20</em><a href="###">天空飘来五个字，那都不是事儿...</a></li>
-        <li><em>06-20</em><a href="###">天空飘来五个字，那都不是事儿...</a></li>
-        <li><em>06-20</em><a href="###">天空飘来五个字，那都不是事儿...</a></li>
-        <li><em>06-20</em><a href="###">天空飘来五个字，那都不是事儿...</a></li>
+        {if $NewRecList}
+        {foreach $NewRecList(key,value)}
+        <li><em>{@value->date}</em><a href="/details.php?id={@value->id}" target="_blank">{@value->title}</a></li>
+        {/foreach}
+        {/if}
     </ul>
 </div>
 <div id="sidebar-right">
@@ -97,25 +91,20 @@
     <div class="hot">
         <h2>本月热点</h2>
         <ul>
-            <li><em>06-20</em><a href="###">天空飘来五个字，那都不是事儿...</a></li>
-            <li><em>06-20</em><a href="###">天空飘来五个字，那都不是事儿...</a></li>
-            <li><em>06-20</em><a href="###">天空飘来五个字，那都不是事儿...</a></li>
-            <li><em>06-20</em><a href="###">天空飘来五个字，那都不是事儿...</a></li>
-            <li><em>06-20</em><a href="###">天空飘来五个字，那都不是事儿...</a></li>
-            <li><em>06-20</em><a href="###">天空飘来五个字，那都不是事儿...</a></li>
-            <li><em>06-20</em><a href="###">天空飘来五个字，那都不是事儿...</a></li>
-        </ul>
+            {if $MonthHotList}
+                {foreach $MonthHotList(key,value)}
+                    <li><em>{@value->date}</em><a href="/details.php?id={@value->id}" target="_blank">{@value->title}</a></li>
+                {/foreach}
+            {/if}
     </div>
     <div class="comm">
         <h2>本月评论</h2>
         <ul>
-            <li><em>06-20</em><a href="###">天空飘来五个字，那都不是事儿...</a></li>
-            <li><em>06-20</em><a href="###">天空飘来五个字，那都不是事儿...</a></li>
-            <li><em>06-20</em><a href="###">天空飘来五个字，那都不是事儿...</a></li>
-            <li><em>06-20</em><a href="###">天空飘来五个字，那都不是事儿...</a></li>
-            <li><em>06-20</em><a href="###">天空飘来五个字，那都不是事儿...</a></li>
-            <li><em>06-20</em><a href="###">天空飘来五个字，那都不是事儿...</a></li>
-            <li><em>06-20</em><a href="###">天空飘来五个字，那都不是事儿...</a></li>
+            {if $MonthCommentList}
+                {foreach $MonthCommentList(key,value)}
+                    <li><em>{@value->date}</em><a href="/details.php?id={@value->id}" target="_blank">{@value->title}</a></li>
+                {/foreach}
+            {/if}
         </ul>
     </div>
     <div class="vote">
@@ -135,88 +124,31 @@
 </div>
 <div id="picnews">
     <h2>图文资讯</h2>
+    {if $PicList}
+        {foreach $PicList(key,value)}
     <dl>
-        <dt><a href="###"><img src="/images/pic1.png" alt="标题"/></a></dt>
-        <dd><a href="###">号外！号外！士兵检阅时晕倒！</a></dd>
+        <dt><a href="/details.php?id={@value->id}"><img src="{@value->thumbnail}" alt="{@value->title}"/></a></dt>
+        <dd><a href="/details.php?id={@value->id}">{@value->title}</a></dd>
     </dl>
-    <dl>
-        <dt><a href="###"><img src="/images/pic2.png" alt="标题"/></a></dt>
-        <dd><a href="###">号外！号外！士兵检阅时晕倒！</a></dd>
-    </dl>
-    <dl>
-        <dt><a href="###"><img src="/images/pic3.png" alt="标题"/></a></dt>
-        <dd><a href="###">号外！号外！士兵检阅时晕倒！</a></dd>
-    </dl>
-    <dl>
-        <dt><a href="###"><img src="/images/pic4.png" alt="标题"/></a></dt>
-        <dd><a href="###">号外！号外！士兵检阅时晕倒！</a></dd>
-    </dl>
+        {/foreach}
+    {/if}
 </div>
 <div id="newslist">
-    <div class="list bottom">
-        <h2><a href="###">更多</a>军事动态</h2>
-        <ul>
-            <li><em>06-20</em><a href="###">天空飘来五个字，那都不是事儿...</a></li>
-            <li><em>06-20</em><a href="###">天空飘来五个字，那都不是事儿...</a></li>
-            <li><em>06-20</em><a href="###">天空飘来五个字，那都不是事儿...</a></li>
-            <li><em>06-20</em><a href="###">天空飘来五个字，那都不是事儿...</a></li>
-            <li><em>06-20</em><a href="###">天空飘来五个字，那都不是事儿...</a></li>
-            <li><em>06-20</em><a href="###">天空飘来五个字，那都不是事儿...</a></li>
-            <li><em>06-20</em><a href="###">天空飘来五个字，那都不是事儿...</a></li>
-            <li><em>06-20</em><a href="###">天空飘来五个字，那都不是事儿...</a></li>
-            <li><em>06-20</em><a href="###">天空飘来五个字，那都不是事儿...</a></li>
-            <li><em>06-20</em><a href="###">天空飘来五个字，那都不是事儿...</a></li>
-            <li><em>06-20</em><a href="###">天空飘来五个字，那都不是事儿...</a></li>
-        </ul>
-    </div>
-    <div class="list right bottom">
-        <h2><a href="###">更多</a>八卦娱乐</h2>
-        <ul>
-            <li><em>06-20</em><a href="###">天空飘来五个字，那都不是事儿...</a></li>
-            <li><em>06-20</em><a href="###">天空飘来五个字，那都不是事儿...</a></li>
-            <li><em>06-20</em><a href="###">天空飘来五个字，那都不是事儿...</a></li>
-            <li><em>06-20</em><a href="###">天空飘来五个字，那都不是事儿...</a></li>
-            <li><em>06-20</em><a href="###">天空飘来五个字，那都不是事儿...</a></li>
-            <li><em>06-20</em><a href="###">天空飘来五个字，那都不是事儿...</a></li>
-            <li><em>06-20</em><a href="###">天空飘来五个字，那都不是事儿...</a></li>
-            <li><em>06-20</em><a href="###">天空飘来五个字，那都不是事儿...</a></li>
-            <li><em>06-20</em><a href="###">天空飘来五个字，那都不是事儿...</a></li>
-            <li><em>06-20</em><a href="###">天空飘来五个字，那都不是事儿...</a></li>
-            <li><em>06-20</em><a href="###">天空飘来五个字，那都不是事儿...</a></li>
-        </ul>
-    </div>
-    <div class="list">
-        <h2><a href="###">更多</a>时尚女人</h2>
-        <ul>
-            <li><em>06-20</em><a href="###">天空飘来五个字，那都不是事儿...</a></li>
-            <li><em>06-20</em><a href="###">天空飘来五个字，那都不是事儿...</a></li>
-            <li><em>06-20</em><a href="###">天空飘来五个字，那都不是事儿...</a></li>
-            <li><em>06-20</em><a href="###">天空飘来五个字，那都不是事儿...</a></li>
-            <li><em>06-20</em><a href="###">天空飘来五个字，那都不是事儿...</a></li>
-            <li><em>06-20</em><a href="###">天空飘来五个字，那都不是事儿...</a></li>
-            <li><em>06-20</em><a href="###">天空飘来五个字，那都不是事儿...</a></li>
-            <li><em>06-20</em><a href="###">天空飘来五个字，那都不是事儿...</a></li>
-            <li><em>06-20</em><a href="###">天空飘来五个字，那都不是事儿...</a></li>
-            <li><em>06-20</em><a href="###">天空飘来五个字，那都不是事儿...</a></li>
-            <li><em>06-20</em><a href="###">天空飘来五个字，那都不是事儿...</a></li>
-        </ul>
-    </div>
-    <div class="list right">
-        <h2><a href="###">更多</a>科技频道</h2>
-        <ul>
-            <li><em>06-20</em><a href="###">天空飘来五个字，那都不是事儿...</a></li>
-            <li><em>06-20</em><a href="###">天空飘来五个字，那都不是事儿...</a></li>
-            <li><em>06-20</em><a href="###">天空飘来五个字，那都不是事儿...</a></li>
-            <li><em>06-20</em><a href="###">天空飘来五个字，那都不是事儿...</a></li>
-            <li><em>06-20</em><a href="###">天空飘来五个字，那都不是事儿...</a></li>
-            <li><em>06-20</em><a href="###">天空飘来五个字，那都不是事儿...</a></li>
-            <li><em>06-20</em><a href="###">天空飘来五个字，那都不是事儿...</a></li>
-            <li><em>06-20</em><a href="###">天空飘来五个字，那都不是事儿...</a></li>
-            <li><em>06-20</em><a href="###">天空飘来五个字，那都不是事儿...</a></li>
-            <li><em>06-20</em><a href="###">天空飘来五个字，那都不是事儿...</a></li>
-            <li><em>06-20</em><a href="###">天空飘来五个字，那都不是事儿...</a></li>
-        </ul>
-    </div>
+    {if $FourNav}
+        {foreach $FourNav(key,value)}
+        <div class="{@value->class}">
+            <h2><a href="/list.php?id={@value->id}" target="_blank">更多</a>{@value->nav_name}</h2>
+            <ul>
+            {iff @value->list}
+                {for @value->list(key,value)}
+                    <li><em>{@value->date}</em><a href="/details.php?id={@value->id}">{@value->title}</a></li>
+                {/for}
+                {else}
+            {/iff}
+            </ul>
+        </div>
+        {/foreach}
+    {/if}
 </div>
 
 {include file='footer.tpl'}

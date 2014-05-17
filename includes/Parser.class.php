@@ -42,6 +42,26 @@ class Parser
         }
     }
 
+    //解析iff语句
+    private function parIff()
+    {
+        $_pattenIf = '/\{iff\s+\@([\w\-\>]+)\}/';
+        $_pattenEndIf = '/\{\/iff\}/';
+        $_pattenElse = '/\{else\}/';
+        if (preg_match($_pattenIf, $this->_tpl)) {
+            if (preg_match($_pattenEndIf, $this->_tpl)) {
+                $this->_tpl = preg_replace($_pattenIf, "<?php if(\$$1){ ?>", $this->_tpl);
+                $this->_tpl = preg_replace($_pattenEndIf, "<?php } ?>", $this->_tpl);
+                if (preg_match($_pattenElse, $this->_tpl)) {
+                    $this->_tpl = preg_replace($_pattenElse, "<?php }else{ ?>", $this->_tpl);
+                }
+            } else {
+                exit('ERROR：if语句没有关闭！');
+            }
+        }
+    }
+
+
     //解析foreach语句
     private function parForeach()
     {
@@ -60,6 +80,26 @@ class Parser
             }
         }
     }
+
+    //解析for语句用于内嵌循环
+    private function parFor()
+    {
+        $_pattenFor = '/\{for\s+\@([\w\-\>]+)\(([\w]+),([\w]+)\)\}/';
+        $_pattenEndFor = '/\{\/for\}/';
+        $_pattenVar = '/\{@([\w]+)([\w\-\>+]*)\}/';
+        if (preg_match($_pattenFor, $this->_tpl)) {
+            if (preg_match($_pattenEndFor, $this->_tpl)) {
+                $this->_tpl = preg_replace($_pattenFor, "<?php foreach(\$$1 as \$$2 => \$$3){ ?>", $this->_tpl);
+                $this->_tpl = preg_replace($_pattenEndFor, "<?php } ?>", $this->_tpl);
+                if (preg_match($_pattenVar, $this->_tpl)) {
+                    $this->_tpl = preg_replace($_pattenVar, "<?php echo \$$1$2; ?>", $this->_tpl);
+                }
+            } else {
+                exit('ERROR：for语句必须有结尾标签！');
+            }
+        }
+    }
+
 
     //解析include语句
     private function parInclude()
@@ -98,7 +138,9 @@ class Parser
     {
         $this->parVar();
         $this->parIf();
+        $this->parIff();
         $this->parForeach();
+        $this->parFor();
         $this->parInclude();
         $this->parCommon();
         $this->parConfig();

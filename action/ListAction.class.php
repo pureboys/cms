@@ -46,13 +46,35 @@ class ListAction extends Action
             parent::page($this->_model->getListContentTotal(), ARTICLE_SIZE);
             $_object = $this->_model->getListContent();
             if ($_object) {
-                $_object = Tool::subStr($_object, 'info', 120, 'utf8');
-                $_object = Tool::subStr($_object, 'title', 35, 'utf8');
+                Tool::subStr($_object, 'info', 120, 'utf8');
+                Tool::subStr($_object, 'title', 35, 'utf8');
+                foreach ($_object as $_value) {
+                    if (empty($_value->thumbnail)) $_value->thumbnail = '/images/none.jpg';
+                }
             }
             $this->_tpl->assign('AllListContent', $_object);
+            //本月本类推荐
+            $_object = $this->_model->getMonthNavRec();
+            if ($_object) $this->setObject($_object);
+            $this->_tpl->assign('MonthNavRec', $_object);
+            //本类热点推荐
+            $_object = $this->_model->getMonthNavHot();
+            if ($_object) $this->setObject($_object);
+            $this->_tpl->assign('MonthNavHot', $_object);
+            //本类图文推荐
+            $_object = $this->_model->getMonthNavPic();
+            if ($_object) $this->setObject($_object);
+            $this->_tpl->assign('MonthNavPic', $_object);
         } else {
             Tool::alertBack('警告：非法操作');
         }
+    }
+
+    //set Object
+    private function setObject(&$_object)
+    {
+        Tool::objDate($_object, 'date');
+        Tool::subStr($_object, 'title', 14, 'utf8');
     }
 
 

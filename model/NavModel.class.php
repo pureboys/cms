@@ -15,9 +15,9 @@ class NavModel extends Model
     function __set($key, $value)
     {
         $_link = DB::getDB();
-        $this->$key = Tool::mysqlString($_link,$value);
+        $this->$key = Tool::mysqlString($_link, $value);
         $_result = null;
-        DB::unDB($_result,$_link);
+        DB::unDB($_result, $_link);
     }
 
     function __get($key)
@@ -132,6 +132,13 @@ class NavModel extends Model
     public function getAllNavChildId()
     {
         $_sql = "SELECT id FROM cms_nav WHERE  pid <> 0";
+        return parent::all($_sql);
+    }
+
+    //获取前4个主导航
+    public function getFourNav()
+    {
+        $_sql = "SELECT id,nav_name FROM cms_nav WHERE pid=0 ORDER BY sort ASC LIMIT 0,4";
         return parent::all($_sql);
     }
 

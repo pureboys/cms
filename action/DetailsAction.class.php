@@ -57,9 +57,30 @@ class DetailsAction extends Action
                 }
             }
             $this->_tpl->assign('NewThreeComment', $_object);
+
+            $this->_model->nav = $_content->nav;
+            //本月本类推荐
+            $_object = $this->_model->getMonthNavRec();
+            if ($_object) $this->setObject($_object);
+            $this->_tpl->assign('MonthNavRec', $_object);
+            //本类热点推荐
+            $_object = $this->_model->getMonthNavHot();
+            if ($_object) $this->setObject($_object);
+            $this->_tpl->assign('MonthNavHot', $_object);
+            //本类图文推荐
+            $_object = $this->_model->getMonthNavPic();
+            if ($_object) $this->setObject($_object);
+            $this->_tpl->assign('MonthNavPic', $_object);
         } else {
             Tool::alertBack('警告：非法操作！');
         }
+    }
+
+    //set Object
+    private function setObject(&$_object)
+    {
+        Tool::objDate($_object, 'date');
+        Tool::subStr($_object, 'title', 14, 'utf8');
     }
 
 
@@ -79,5 +100,6 @@ class DetailsAction extends Action
             Tool::alertBack('警告：此导航不存在！');
         }
     }
+
 
 }

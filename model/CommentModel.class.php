@@ -81,12 +81,7 @@ class CommentModel extends Model
         return parent::all($_sql);
     }
 
-    //获取总排行榜，文档评论量从大到小
-    public function getHotTwentyComment()
-    {
-        $_sql = "SELECT ct.id,ct.title FROM cms_content AS ct ORDER BY (SELECT COUNT(*) FROM cms_comment AS c WHERE c.cid=ct.id) DESC LIMIT 0,20";
-        return parent::all($_sql);
-    }
+
 
 
 }

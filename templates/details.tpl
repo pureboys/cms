@@ -50,40 +50,44 @@
     </div>
 </div>
 <div id="sidebar">
+    <div class="nav">
+        <h2>子栏目列表</h2>
+        {if $childnav}
+            {foreach $childnav(key,value)}
+                <strong><a href="list.php?id={@value->id}">{@value->nav_name}</a></strong>
+            {/foreach}
+        {else}
+            <span>该栏目没有子类</span>
+        {/if}
+    </div>
     <div class="right">
-        <h2>本类推荐</h2>
+        <h2>本月本类推荐</h2>
         <ul>
-            <li><em>06-20</em><a href="###">天空飘来五个字，那都不是事儿...</a></li>
-            <li><em>06-20</em><a href="###">天空飘来五个字，那都不是事儿...</a></li>
-            <li><em>06-20</em><a href="###">天空飘来五个字，那都不是事儿...</a></li>
-            <li><em>06-20</em><a href="###">天空飘来五个字，那都不是事儿...</a></li>
-            <li><em>06-20</em><a href="###">天空飘来五个字，那都不是事儿...</a></li>
-            <li><em>06-20</em><a href="###">天空飘来五个字，那都不是事儿...</a></li>
-            <li><em>06-20</em><a href="###">天空飘来五个字，那都不是事儿...</a></li>
+            {if $MonthNavRec}
+                {foreach $MonthNavRec(key,value)}
+                    <li><em>{@value->date}</em><a href="/details.php?id={@value->id}" target="_blank">{@value->title}</a></li>
+                {/foreach}
+            {/if}
         </ul>
     </div>
     <div class="right">
-        <h2>本类热点</h2>
+        <h2>本月本类热点</h2>
         <ul>
-            <li><em>06-20</em><a href="###">天空飘来五个字，那都不是事儿...</a></li>
-            <li><em>06-20</em><a href="###">天空飘来五个字，那都不是事儿...</a></li>
-            <li><em>06-20</em><a href="###">天空飘来五个字，那都不是事儿...</a></li>
-            <li><em>06-20</em><a href="###">天空飘来五个字，那都不是事儿...</a></li>
-            <li><em>06-20</em><a href="###">天空飘来五个字，那都不是事儿...</a></li>
-            <li><em>06-20</em><a href="###">天空飘来五个字，那都不是事儿...</a></li>
-            <li><em>06-20</em><a href="###">天空飘来五个字，那都不是事儿...</a></li>
+            {if $MonthNavHot}
+                {foreach $MonthNavHot(key,value)}
+                    <li><em>{@value->date}</em><a href="/details.php?id={@value->id}" target="_blank">{@value->title}</a></li>
+                {/foreach}
+            {/if}
         </ul>
     </div>
     <div class="right">
-        <h2>本类图文</h2>
+        <h2>本月本类图文</h2>
         <ul>
-            <li><em>06-20</em><a href="###">天空飘来五个字，那都不是事儿...</a></li>
-            <li><em>06-20</em><a href="###">天空飘来五个字，那都不是事儿...</a></li>
-            <li><em>06-20</em><a href="###">天空飘来五个字，那都不是事儿...</a></li>
-            <li><em>06-20</em><a href="###">天空飘来五个字，那都不是事儿...</a></li>
-            <li><em>06-20</em><a href="###">天空飘来五个字，那都不是事儿...</a></li>
-            <li><em>06-20</em><a href="###">天空飘来五个字，那都不是事儿...</a></li>
-            <li><em>06-20</em><a href="###">天空飘来五个字，那都不是事儿...</a></li>
+            {if $MonthNavPic}
+                {foreach $MonthNavPic(key,value)}
+                    <li><em>{@value->date}</em><a href="/details.php?id={@value->id}" target="_blank">{@value->title}</a></li>
+                {/foreach}
+            {/if}
         </ul>
     </div>
 </div>

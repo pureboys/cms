@@ -60,7 +60,7 @@ class ContentAction extends Action
         }
         parent::page($this->_model->getListContentTotal());
         $_object = $this->_model->getListContent();
-        $_object = Tool::subStr($_object, 'title', '20', 'utf8');
+        Tool::subStr($_object, 'title', '20', 'utf8');
         $this->_tpl->assign('SearchContent', $_object);
     }
 

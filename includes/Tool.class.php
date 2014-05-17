@@ -63,10 +63,10 @@ class Tool
     }
 
     //数据库输入过滤
-    static public function mysqlString($link,$_data)
+    static public function mysqlString($link, $_data)
     {
         if (is_array($_data)) return $_data;
-        return !GPC ? mysqli_real_escape_string($link,$_data) : $_data;
+        return !GPC ? mysqli_real_escape_string($link, $_data) : $_data;
     }
 
     //弹窗赋值关闭（上传）
@@ -90,13 +90,15 @@ class Tool
                 }
             }
         } else {
-            $_object = mb_substr($_object, 0, $_length, $_encoding);
+            if (mb_strlen($_object, $_encoding) > $_length)
+                return mb_substr($_object, 0, $_length, $_encoding) . '...';
+            else
+                return $_object;
         }
-        return $_object;
     }
 
     //将对象数组转换成字符串，并且去掉最后的逗号
-    static public function objArrOfstr($_object, $_field)
+    static public function objArrOfstr(&$_object, $_field)
     {
         $_html = '';
         foreach ($_object as $_value) {
@@ -117,6 +119,14 @@ class Tool
         $_str = explode('/', $_SERVER['SCRIPT_NAME']);
         $_str = explode('.', $_str[count($_str) - 1]);
         return $_str[0];
+    }
+
+    //日期转换
+    static public function objDate(&$_object, $_field)
+    {
+        foreach ($_object as $_value) {
+            $_value->$_field = date('m-d', strtotime($_value->date));
+        }
     }
 
 

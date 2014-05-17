@@ -27,9 +27,9 @@ class ContentModel extends Model
     function __set($key, $value)
     {
         $_link = DB::getDB();
-        $this->$key = Tool::mysqlString($_link,$value);
+        $this->$key = Tool::mysqlString($_link, $value);
         $_result = null;
-        DB::unDB($_result,$_link);
+        DB::unDB($_result, $_link);
     }
 
     function __get($key)
@@ -90,6 +90,91 @@ class ContentModel extends Model
         $_sql = "UPDATE cms_content SET count=count+1 WHERE id='$this->id' LIMIT 1";
         return parent::aud($_sql);
     }
+
+    //获取总排行榜，文档评论量从大到小
+    public function getHotTwentyComment()
+    {
+        $_sql = "SELECT ct.id,ct.title FROM cms_content AS ct ORDER BY (SELECT COUNT(*) FROM cms_comment AS c WHERE c.cid=ct.id) DESC LIMIT 0,20";
+        return parent::all($_sql);
+    }
+
+    //获取本月本类推荐排行榜
+    public function getMonthNavRec()
+    {
+        $_sql = "SELECT id,title,date FROM cms_content WHERE nav IN($this->nav) AND MONTH(NOW())=DATE_FORMAT(date,'%c') AND attr LIKE '%推荐%' ORDER BY date DESC LIMIT 0,10";
+        return parent::all($_sql);
+    }
+
+    //获取本月本类热点评论排行榜
+    public function getMonthNavHot()
+    {
+        $_sql = "SELECT ct.id,ct.title,ct.date FROM cms_content AS ct WHERE ct.nav IN($this->nav) AND MONTH(NOW())=DATE_FORMAT(date,'%c')  ORDER BY (SELECT COUNT(*) FROM cms_comment AS c WHERE c.cid=ct.id) DESC,ct.date DESC LIMIT 0,10";
+        return parent::all($_sql);
+    }
+
+    //获取本月本类图文排行榜
+    public function getMonthNavPic()
+    {
+        $_sql = "SELECT id,title,date FROM cms_content WHERE nav IN($this->nav) AND MONTH(NOW())=DATE_FORMAT(date,'%c') AND thumbnail<>'' ORDER BY date DESC LIMIT 0,10";
+        return parent::all($_sql);
+    }
+
+    //获取最新7条推荐文档
+    public function getNewRecList()
+    {
+        $_sql = "SELECT id,title,date FROM cms_content WHERE attr LIKE '%推荐%' ORDER BY date DESC LIMIT 0,7";
+        return parent::all($_sql);
+    }
+
+    //获取本月的点击量，总排行
+    public function getMonthHotList()
+    {
+        $_sql = "SELECT id,title,date FROM cms_content WHERE MONTH(NOW())=DATE_FORMAT(date,'%c') ORDER BY count DESC LIMIT 0,7";
+        return parent::all($_sql);
+    }
+
+    //获取本月评论排行
+    public function getMonthCommentList()
+    {
+        $_sql = "SELECT ct.id,ct.title,ct.date FROM cms_content AS ct WHERE MONTH(NOW())=DATE_FORMAT(date,'%c')  ORDER BY (SELECT COUNT(*) FROM cms_comment AS c WHERE c.cid=ct.id) DESC,ct.date DESC LIMIT 0,10";
+        return parent::all($_sql);
+    }
+
+    //获取图文咨询
+    public function getPicList()
+    {
+        $_sql = "SELECT id,title,thumbnail FROM cms_content WHERE thumbnail<>'' ORDER BY date DESC LIMIT 0,4";
+        return parent::all($_sql);
+    }
+
+    //获取最新的一条头条
+    public function getNewTop()
+    {
+        $_sql = "SELECT id,title,info FROM cms_content WHERE attr LIKE '%头条%' ORDER BY date DESC LIMIT 1";
+        return parent::one($_sql);
+    }
+
+    //获取2-5条头条
+    public function getNewTopList()
+    {
+        $_sql = "SELECT id,title FROM cms_content WHERE attr LIKE '%头条%' ORDER BY date DESC LIMIT 1,4";
+        return parent::all($_sql);
+    }
+
+    //获取最新的9条文档
+    public function getNewList()
+    {
+        $_sql = "SELECT id,title,date FROM cms_content ORDER BY date DESC LIMIT 0,9";
+        return parent::all($_sql);
+    }
+
+    //获取每个主栏目所有11条的最新文档
+    public function getNewNavList(){
+        $_sql = "SELECT id,title,date FROM cms_content WHERE nav IN(SELECT id FROM cms_nav WHERE pid='$this->nav') ORDER BY date DESC LIMIT 0,11";
+        return parent::all($_sql);
+    }
+
+
 
 
 }
