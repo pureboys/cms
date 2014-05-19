@@ -398,3 +398,10 @@ ul, ol {
     margin: 0 0 0 60px;
 }
 
+#main table span.red {
+    color: #ff0000;
+}
+
+#main table span.green {
+    color: #008000;
+}

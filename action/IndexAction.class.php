@@ -117,7 +117,6 @@ class IndexAction extends Action
             }
         }
         $this->_tpl->assign('FourNav', $_object);
-        print_r($_object);
     }
 
 
