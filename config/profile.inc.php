@@ -21,4 +21,7 @@ define('TPL_C_DIR', ROOT_PATH . '/templates_c/');
 //缓存文件目录
 define('CACHE', ROOT_PATH . '/cache/');
 
-
+//轮播器速度
+define('RO_TIME', 3);
+//轮播器个数
+define('RO_NUM', 3);

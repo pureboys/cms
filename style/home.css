@@ -207,7 +207,7 @@
     margin: 0 0 10px 0;
 }
 
-#pic img {
+#pic embed {
     display: block;
     border: 1px solid #cccccc;
 }

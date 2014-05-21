@@ -101,7 +101,7 @@
             <tr>
                 <td>缩 略 图： <input type="text" name="thumbnail" class="text" readonly/> <input type="button"
                                                                                               value="上传缩略图"
-                                                                                              onclick="centerWindow('../templates/upfile.html','upfile','400','100')"/>
+                                                                                              onclick="centerWindow('../config/upfile.php?type=content','upfile','400','100')"/>
                     <img name="pic" style="display: none"/>(*jpg,gif,png,且在200k内)
                 </td>
             </tr>
@@ -193,7 +193,7 @@
                 <td>缩 略 图： <input type="text" value="{$thumbnail}" name="thumbnail" class="text" readonly/> <input
                             type="button"
                             value="上传缩略图"
-                            onclick="centerWindow('../templates/upfile.html','upfile','400','100')"/>
+                            onclick="centerWindow('../config/upfile.php?type=content','upfile','400','100')"/>
                     <img name="pic" src="{$thumbnail}" style="display: block"/>(*jpg,gif,png,且在200k内)
                 </td>
             </tr>
