@@ -10,10 +10,30 @@ Target Server Type    : MYSQL
 Target Server Version : 50524
 File Encoding         : 65001
 
-Date: 2014-05-21 17:02:01
+Date: 2014-05-22 17:09:49
 */
 
 SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for `cms_adver`
+-- ----------------------------
+DROP TABLE IF EXISTS `cms_adver`;
+CREATE TABLE `cms_adver` (
+  `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
+  `title` varchar(20) NOT NULL,
+  `thumbnail` varchar(100) NOT NULL,
+  `link` varchar(100) NOT NULL,
+  `info` varchar(200) NOT NULL,
+  `type` tinyint(1) NOT NULL DEFAULT '0',
+  `state` tinyint(1) NOT NULL DEFAULT '0',
+  `date` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of cms_adver
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for `cms_comment`
@@ -117,7 +137,7 @@ CREATE TABLE `cms_manage` (
 -- ----------------------------
 -- Records of cms_manage
 -- ----------------------------
-INSERT INTO `cms_manage` VALUES ('1', 'admin', '7c4a8d09ca3762af61e59520943dc26494f8941b', '2', '16', '127.0.0.1', '2014-05-21 14:05:37', '2014-03-27 15:19:54');
+INSERT INTO `cms_manage` VALUES ('1', 'admin', '7c4a8d09ca3762af61e59520943dc26494f8941b', '2', '17', '127.0.0.1', '2014-05-22 14:37:44', '2014-03-27 15:19:54');
 INSERT INTO `cms_manage` VALUES ('2', 'oliver', '7c4a8d09ca3762af61e59520943dc26494f8941b', '5', '1', '127.0.0.1', '2014-04-24 08:51:52', '2014-03-27 15:23:59');
 INSERT INTO `cms_manage` VALUES ('3', '我是MT', '7c4a8d09ca3762af61e59520943dc26494f8941b', '3', '0', '000.000.000.000', '0000-00-00 00:00:00', '2014-03-27 15:24:28');
 INSERT INTO `cms_manage` VALUES ('4', '樱木花道', '7c4a8d09ca3762af61e59520943dc26494f8941b', '4', '0', '000.000.000.000', '0000-00-00 00:00:00', '0000-00-00 00:00:00');

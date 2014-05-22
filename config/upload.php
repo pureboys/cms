@@ -12,6 +12,20 @@ if (isset($_POST['send'])) {
             $_height = 193;
             $_info = '轮播图上传成功';
             break;
+        case 'adver':
+            switch ($_POST['size']) {
+                case '690*80':
+                    $_width = 690;
+                    $_height = 80;
+                    $_info = '头部广告上传成功';
+                    break;
+                case '270*200':
+                    $_width = 270;
+                    $_height = 200;
+                    $_info = '侧栏广告上传成功';
+                    break;
+            }
+            break;
         default:
             Tool::alertBack('警告：非法操作！');
     }

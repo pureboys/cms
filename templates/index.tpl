@@ -96,7 +96,7 @@
     </ul>
 </div>
 <div id="sidebar-right">
-    <div class="adver"><img src="/images/adver2.png" alt="广告图"/></div>
+    <div class="adver"><script src="/js/sidebar_adver.js"></script></div>
     <div class="hot">
         <h2>本月热点</h2>
         <ul>

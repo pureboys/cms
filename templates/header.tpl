@@ -1,13 +1,12 @@
 <script src="/config/static.php?type=header"></script>
 <div id="top">
     {$header}
-    <a href="###" class="adv">文字广告1</a>
-    <a href="###" class="adv">文字广告1</a>
+    <script src="/js/text_adver.js"></script>
 </div>
 <div id="header">
     <h1><a href="###">web俱乐部</a></h1>
 
-    <div class="adver"><a href="###"><img src="/images/adver.png" alt="广告图"/></a></div>
+    <div class="adver"><script src="/js/header_adver.js"></script></div>
 </div>
 <div id="nav">
     <ul>
