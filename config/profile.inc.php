@@ -25,3 +25,10 @@ define('CACHE', ROOT_PATH . '/cache/');
 define('RO_TIME', 3);
 //轮播器个数
 define('RO_NUM', 3);
+
+//广告服务
+define('ADVER_TEXT_NUM',5); //5条文字广告循环
+define('ADVER_PIC_NUM',5); //3条图片广告循环
+
+
+
