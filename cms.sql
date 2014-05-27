@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50524
 File Encoding         : 65001
 
-Date: 2014-05-22 17:09:49
+Date: 2014-05-27 17:54:28
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -29,11 +29,18 @@ CREATE TABLE `cms_adver` (
   `state` tinyint(1) NOT NULL DEFAULT '0',
   `date` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of cms_adver
 -- ----------------------------
+INSERT INTO `cms_adver` VALUES ('1', '腾讯新广告', '', 'http://qq.com', '腾讯新广告腾讯新广告', '1', '1', '2014-05-26 10:00:01');
+INSERT INTO `cms_adver` VALUES ('2', '新浪微博', '', 'http://weibo.com', '新浪微博', '1', '1', '2014-05-26 10:00:53');
+INSERT INTO `cms_adver` VALUES ('3', '淘宝广告11', '', 'http://taobao.com', '淘宝广告111', '1', '1', '2014-05-26 10:01:13');
+INSERT INTO `cms_adver` VALUES ('5', 'bb霜', '/uploads/20140526/20140526100229144.png', 'http://baidu.com', 'bb霜', '2', '1', '2014-05-26 10:02:35');
+INSERT INTO `cms_adver` VALUES ('6', 'bb霜2', '/uploads/20140526/20140526100324693.png', 'http://php.net', 'bb霜', '2', '1', '2014-05-26 10:03:28');
+INSERT INTO `cms_adver` VALUES ('7', '侧栏12', '/uploads/20140526/20140526140713895.png', 'http://taobao.com', '123456', '3', '1', '2014-05-26 10:03:53');
+INSERT INTO `cms_adver` VALUES ('8', '侧栏2', '/uploads/20140526/20140526140757784.png', 'http://taobao.com', '', '3', '1', '2014-05-26 10:04:27');
 
 -- ----------------------------
 -- Table structure for `cms_comment`
@@ -137,7 +144,7 @@ CREATE TABLE `cms_manage` (
 -- ----------------------------
 -- Records of cms_manage
 -- ----------------------------
-INSERT INTO `cms_manage` VALUES ('1', 'admin', '7c4a8d09ca3762af61e59520943dc26494f8941b', '2', '17', '127.0.0.1', '2014-05-22 14:37:44', '2014-03-27 15:19:54');
+INSERT INTO `cms_manage` VALUES ('1', 'admin', '7c4a8d09ca3762af61e59520943dc26494f8941b', '2', '19', '127.0.0.1', '2014-05-27 15:40:43', '2014-03-27 15:19:54');
 INSERT INTO `cms_manage` VALUES ('2', 'oliver', '7c4a8d09ca3762af61e59520943dc26494f8941b', '5', '1', '127.0.0.1', '2014-04-24 08:51:52', '2014-03-27 15:23:59');
 INSERT INTO `cms_manage` VALUES ('3', '我是MT', '7c4a8d09ca3762af61e59520943dc26494f8941b', '3', '0', '000.000.000.000', '0000-00-00 00:00:00', '2014-03-27 15:24:28');
 INSERT INTO `cms_manage` VALUES ('4', '樱木花道', '7c4a8d09ca3762af61e59520943dc26494f8941b', '4', '0', '000.000.000.000', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
@@ -230,3 +237,29 @@ INSERT INTO `cms_user` VALUES ('8', '路飞', '7c4a8d09ca3762af61e59520943dc2649
 INSERT INTO `cms_user` VALUES ('9', '山本', '7c4a8d09ca3762af61e59520943dc26494f8941b', 'shanben@sina.com', '04.gif', '', '', '1', '1399604802', '2014-05-09 09:41:33');
 INSERT INTO `cms_user` VALUES ('11', '呵呵', '7c4a8d09ca3762af61e59520943dc26494f8941b', 'hehe@sina.com', '13.gif', '您父亲的姓名', '不知道', '1', '', '2014-05-14 09:56:45');
 INSERT INTO `cms_user` VALUES ('12', 'bbq', '7c4a8d09ca3762af61e59520943dc26494f8941b', 'bbq@sina.com', '03.gif', '您配偶的性别', '男', '5', '', '2014-05-14 10:11:24');
+
+-- ----------------------------
+-- Table structure for `cms_vote`
+-- ----------------------------
+DROP TABLE IF EXISTS `cms_vote`;
+CREATE TABLE `cms_vote` (
+  `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
+  `title` varchar(20) NOT NULL,
+  `info` varchar(200) NOT NULL,
+  `vid` mediumint(8) NOT NULL DEFAULT '0' COMMENT '//主题或者项目',
+  `count` smallint(6) NOT NULL DEFAULT '0',
+  `state` tinyint(1) NOT NULL DEFAULT '0',
+  `date` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of cms_vote
+-- ----------------------------
+INSERT INTO `cms_vote` VALUES ('2', '你最喜欢的歌', '你最喜欢的歌', '0', '0', '0', '2014-05-27 16:03:10');
+INSERT INTO `cms_vote` VALUES ('3', '您最喜欢的菜是什么', '您最喜欢的菜是什么', '0', '0', '1', '2014-05-27 16:04:24');
+INSERT INTO `cms_vote` VALUES ('4', '东方红', '', '2', '0', '0', '2014-05-27 16:42:32');
+INSERT INTO `cms_vote` VALUES ('5', '嘻唰唰', '嘻唰唰', '2', '0', '0', '2014-05-27 16:43:57');
+INSERT INTO `cms_vote` VALUES ('6', '刷牙歌', '刷牙歌', '2', '0', '0', '2014-05-27 17:08:20');
+INSERT INTO `cms_vote` VALUES ('7', 'letter song', 'letter song', '2', '0', '0', '2014-05-27 17:10:08');
+INSERT INTO `cms_vote` VALUES ('8', '你最喜欢的男歌手', '你最喜欢的男歌手', '0', '0', '0', '2014-05-27 17:11:34');
