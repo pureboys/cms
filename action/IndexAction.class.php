@@ -12,6 +12,7 @@ class IndexAction extends Action
         $this->login();
         $this->laterUser();
         $this->showList();
+        $this->getVote();
     }
 
     //登录模块
@@ -118,6 +119,16 @@ class IndexAction extends Action
         }
         $this->_tpl->assign('FourNav', $_object);
     }
+
+    //获取投票
+    private function getVote(){
+        $_vote = new VoteModel();
+        $this->_tpl->assign('vote_title',$_vote->getVoteTitle()->title);
+        $this->_tpl->assign('vote_item',$_vote->getVoteItem());
+    }
+
+
+
 
 
 }

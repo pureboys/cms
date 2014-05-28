@@ -32,6 +32,7 @@
             <th>投票主题名称</th>
             <th>投票项目</th>
             <th>是否前台首选</th>
+            <th>参与人数</th>
             <th>操作</th>
         </tr>
         {if $AllVote}
@@ -43,6 +44,7 @@
                     <td>{@value->title}</td>
                     <td><a href="vote.php?action=showchild&id={@value->id}">查看</a> | <a href="vote.php?action=addchild&id={@value->id}">增加项目</a></td>
                     <td>{@value->state}</td>
+                    <td>{@value->pcount}</td>
                     <td><a href="vote.php?action=update&id={@value->id}">修改</a>|<a
                                 href="vote.php?action=delete&id={@value->id}"
                                 onclick="return confirm('你真的要删除这个投票主题么？') ? true : false">删除</a></td>
@@ -64,6 +66,7 @@
         <tr>
             <th>序号</th>
             <th>投票项目</th>
+            <th>得票数</th>
             <th>操作</th>
         </tr>
         {if $AllChildVote}
@@ -73,6 +76,7 @@
                         <script type="text/javascript">document.write({@key+1}+{$num});</script>
                     </td>
                     <td>{@value->title}</td>
+                    <td>{@value->count}</td>
                     <td><a href="vote.php?action=update&id={@value->id}">修改</a>|<a
                                 href="vote.php?action=delete&id={@value->id}"
                                 onclick="return confirm('你真的要删除这个投票项目么？') ? true : false">删除</a></td>
@@ -80,11 +84,11 @@
             {/foreach}
         {else}
             <tr>
-                <td colspan="3">对不起，没有任何数据！</td>
+                <td colspan="4">对不起，没有任何数据！</td>
             </tr>
         {/if}
         <tr>
-            <td colspan="3">所属主题：<strong>{$titlec}</strong> <a href="vote.php?action=addchild&id={$id}">增加本项</a> <a href="{$prev_url}">返回列表</a></td>
+            <td colspan="4">所属主题：<strong>{$titlec}</strong> <a href="vote.php?action=addchild&id={$id}">增加本项</a> <a href="{$prev_url}">返回列表</a></td>
         </tr>
     </table>
     <div id="page">{$page}</div>

@@ -17,9 +17,9 @@ class VoteModel extends Model
     function __set($key, $value)
     {
         $_link = DB::getDB();
-        $this->$key = Tool::mysqlString($_link,$value);
+        $this->$key = Tool::mysqlString($_link, $value);
         $_result = null;
-        DB::unDB($_result,$_link);
+        DB::unDB($_result, $_link);
     }
 
     function __get($key)
@@ -50,7 +50,7 @@ class VoteModel extends Model
      */
     public function getAllVote()
     {
-        $sql = "SELECT id,title,state FROM cms_vote WHERE vid=0 ORDER BY date DESC $this->_limit";
+        $sql = "SELECT c.id,c.title,c.state,(SELECT SUM(count) FROM cms_vote WHERE vid=c.id) pcount FROM cms_vote c WHERE c.vid=0 ORDER BY c.date DESC $this->_limit";
         return parent::all($sql);
     }
 
@@ -111,6 +111,38 @@ class VoteModel extends Model
         $_sql = "UPDATE cms_vote SET state=0 WHERE state=1 LIMIT 1";
         return parent::aud($_sql);
     }
+
+    //获取首选标题
+    public function getVoteTitle()
+    {
+        $_sql = "SELECT title FROM cms_vote WHERE state=1 LIMIT 1";
+        return parent::one($_sql);
+    }
+
+    //获取首选项目
+    public function getVoteItem()
+    {
+        $_sql = "SELECT id,title,count FROM cms_vote WHERE vid=(SELECT id FROM cms_vote WHERE state=1 LIMIT 1)";
+        return parent::all($_sql);
+    }
+
+    //累计投票
+    public function setCount()
+    {
+        $_sql = "UPDATE cms_vote SET count=count+1 WHERE id='$this->id'";
+        return parent::aud($_sql);
+    }
+
+    //获取总票数
+    public function getVoteSum(){
+        $_sql = "SELECT SUM(count) c FROM cms_vote WHERE vid=(SELECT id FROM cms_vote WHERE state=1 LIMIT 1)";
+        return parent::one($_sql);
+    }
+
+
+
+
+
 
 
 }

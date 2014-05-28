@@ -23,3 +23,8 @@ if (IS_CACHE) {
     }
 }
 
+$_link = new FriendLinkAction($_tpl);
+$_link->index();
+
+
+

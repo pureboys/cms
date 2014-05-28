@@ -112,6 +112,7 @@ class VoteAction extends Action
                     $_value->state = '<span class="red">否</span> | <a href="vote.php?action=state&type=ok&id=' . $_value->id . '">通过</a>';
                 else
                     $_value->state = '<span class="green">是</span>';
+                if(empty($_value->pcount)) $_value->pcount = 0;
             }
         }
         $this->_tpl->assign('AllVote', $_object);
