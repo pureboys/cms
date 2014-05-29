@@ -22,6 +22,7 @@ class ContentModel extends Model
     private $color;
     private $_limit;
     private $sort;
+    private $inputkeyword;
     private $readlimit;
 
     function __set($key, $value)
@@ -65,7 +66,7 @@ class ContentModel extends Model
     //获取文档列表
     public function getListContent()
     {
-        $_sql = "SELECT c.id,c.title,c.title t,c.date,c.info,c.thumbnail,c.count,c.attr,c.gold,c.nav,n.nav_name FROM cms_content c,cms_nav n WHERE c.nav=n.id AND c.nav IN ($this->nav) ORDER BY c.date DESC " . $this->_limit;
+        $_sql = "SELECT c.id,c.title,c.title t,c.date,c.info,c.thumbnail,c.count,c.attr,c.keyword,c.gold,c.nav,n.nav_name FROM cms_content c,cms_nav n WHERE c.nav=n.id AND c.nav IN ($this->nav) ORDER BY c.date DESC " . $this->_limit;
         return parent::all($_sql);
     }
 
@@ -105,6 +106,14 @@ class ContentModel extends Model
         return parent::all($_sql);
     }
 
+    //获取本类总推荐排行榜
+    public function getAllNavRec()
+    {
+        $_sql = "SELECT id,title,date FROM cms_content WHERE attr LIKE '%推荐%' ORDER BY date DESC LIMIT 0,10";
+        return parent::all($_sql);
+    }
+
+
     //获取本月本类热点评论排行榜
     public function getMonthNavHot()
     {
@@ -112,10 +121,24 @@ class ContentModel extends Model
         return parent::all($_sql);
     }
 
+    //获取本类总热点评论排行榜
+    public function getAllNavHot()
+    {
+        $_sql = "SELECT ct.id,ct.title,ct.date FROM cms_content AS ct ORDER BY (SELECT COUNT(*) FROM cms_comment AS c WHERE c.cid=ct.id) DESC,ct.date DESC LIMIT 0,10";
+        return parent::all($_sql);
+    }
+
     //获取本月本类图文排行榜
     public function getMonthNavPic()
     {
         $_sql = "SELECT id,title,date FROM cms_content WHERE nav IN($this->nav) AND MONTH(NOW())=DATE_FORMAT(date,'%c') AND thumbnail<>'' ORDER BY date DESC LIMIT 0,10";
+        return parent::all($_sql);
+    }
+
+    //获取本月本类图文排行榜
+    public function getAllNavPic()
+    {
+        $_sql = "SELECT id,title,date FROM cms_content WHERE thumbnail<>'' ORDER BY date DESC LIMIT 0,10";
         return parent::all($_sql);
     }
 
@@ -173,6 +196,45 @@ class ContentModel extends Model
         $_sql = "SELECT id,title,date FROM cms_content WHERE nav IN(SELECT id FROM cms_nav WHERE pid='$this->nav') ORDER BY date DESC LIMIT 0,11";
         return parent::all($_sql);
     }
+
+    //获取按标题搜索的文档列表
+    public function searchTitleContent(){
+        $_sql = "SELECT c.id,c.title,c.title t,c.date,c.info,c.thumbnail,c.count,c.attr,c.keyword,c.gold,c.nav,n.nav_name FROM cms_content c,cms_nav n WHERE c.nav=n.id AND c.title LIKE '%$this->inputkeyword%' ORDER BY c.date DESC " . $this->_limit;
+        return parent::all($_sql);
+    }
+
+// 按照标题搜索的文档总记录
+    public function searchTitleContentTotal(){
+        $_sql = "SELECT COUNT(*) FROM cms_content c,cms_nav n WHERE c.nav=n.id AND c.title LIKE '%$this->inputkeyword%'";
+        return parent::total($_sql);
+    }
+
+    //获取按关键字搜索的文档列表
+    public function searchKeywordContent(){
+        $_sql = "SELECT c.id,c.title,c.title t,c.date,c.info,c.thumbnail,c.count,c.attr,c.keyword,c.gold,c.nav,n.nav_name FROM cms_content c,cms_nav n WHERE c.nav=n.id AND c.keyword LIKE '%$this->inputkeyword%' ORDER BY c.date DESC " . $this->_limit;
+        return parent::all($_sql);
+    }
+
+    // 按照关键字搜索的文档总记录
+    public function searchKeywordContentTotal(){
+        $_sql = "SELECT COUNT(*) FROM cms_content c,cms_nav n WHERE c.nav=n.id AND c.keyword LIKE '%$this->inputkeyword%'";
+        return parent::total($_sql);
+    }
+
+    //获取按tag搜索的文档列表
+    public function searchTagContent(){
+        $_sql = "SELECT c.id,c.title,c.title t,c.date,c.info,c.thumbnail,c.count,c.attr,c.keyword,c.gold,c.nav,n.nav_name FROM cms_content c,cms_nav n WHERE c.nav=n.id AND c.tag LIKE '%$this->inputkeyword%' ORDER BY c.date DESC " . $this->_limit;
+        return parent::all($_sql);
+    }
+
+    // 按照tag搜索的文档总记录
+    public function searchTagContentTotal(){
+        $_sql = "SELECT COUNT(*) FROM cms_content c,cms_nav n WHERE c.nav=n.id AND c.tag LIKE '%$this->inputkeyword%'";
+        return parent::total($_sql);
+    }
+
+
+
 
 
 

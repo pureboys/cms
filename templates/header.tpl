@@ -19,26 +19,20 @@
     </ul>
 </div>
 <div id="search">
-    <form action="">
-        <select name="search" id="">
-            <option value="" selected>按标题</option>
-            <option value="">按关键字</option>
-            <option value="">全局查询</option>
+    <form action="search.php" method="get">
+        <select name="type" id="">
+            <option value="1" selected>按标题</option>
+            <option value="2">按关键字</option>
         </select>
-        <input type="text" name="keyword" class="text"/>
-        <input type="submit" name="send" value="搜索" class="submit"/>
+        <input type="text" name="inputkeyword" class="text"/>
+        <input type="submit"  value="搜索" class="submit"/>
     </form>
     <strong>TAG标签：</strong>
     <ul>
-        <li><a href="###">基金(1)</a></li>
-        <li><a href="###">美女(1)</a></li>
-        <li><a href="###">白兰地(2)</a></li>
-        <li><a href="###">音乐(12)</a></li>
-        <li><a href="###">体育(34)</a></li>
-        <li><a href="###">直播(323)</a></li>
-        <li><a href="###">会晤(34)</a></li>
-        <li><a href="###">韩日(4)</a></li>
-        <li><a href="###">警方(7)</a></li>
-        <li><a href="###">广州(3)</a></li>
+        {if $FiveTag}
+        {foreach $FiveTag(key,value)}
+        <li><a href="search.php?type=3&inputkeyword={@value->tagname}">{@value->tagname}({@value->count})</a></li>
+        {/foreach}
+        {/if}
     </ul>
 </div>

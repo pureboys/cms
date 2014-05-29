@@ -106,6 +106,17 @@ class LinkModel extends Model
         return parent::all($sql);
     }
 
+    //所有文字连接
+    public function getAllTextLink(){
+        $sql = "SELECT webname,weburl FROM cms_link WHERE type=1 AND state=1 ORDER BY date DESC";
+        return parent::all($sql);
+    }
+
+    //所有logo连接
+    public function getAllLogoLink(){
+        $sql = "SELECT webname,weburl,logourl FROM cms_link WHERE type=2 AND state=1 ORDER BY date DESC";
+        return parent::all($sql);
+    }
 
 
 }

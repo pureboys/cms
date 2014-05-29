@@ -23,8 +23,12 @@ if (IS_CACHE) {
     }
 }
 
+//footer页的友情链接
 $_link = new FriendLinkAction($_tpl);
 $_link->index();
+//头部的tag
+$_tag = new TagAction($_tpl);
+$_tag->getFiveTag();
 
 
 

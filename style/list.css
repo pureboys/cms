@@ -61,6 +61,10 @@
     border-bottom: 1px dashed #ccc
 }
 
+#list span.red{
+    color: #ff0000;
+}
+
 #sidebar {
     width: 260px;
     min-height: 600px;

@@ -25,7 +25,11 @@ class FriendLinkAction extends Action
     //front show
     private function frontshow()
     {
+        $this->_tpl->assign('Alltext',$this->_model->getAllTextLink());
+        $this->_tpl->assign('Alllogo',$this->_model->getAllLogoLink());
 
+        $this->_tpl->assign('frontadd', false);
+        $this->_tpl->assign('frontshow', true);
     }
 
     //front add

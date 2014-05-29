@@ -22,6 +22,14 @@ class DetailsAction extends Action
             $_content = $this->_model->getOneContent();
             $_comment = new CommentModel();
             $_comment->cid = $this->_model->id;
+
+            $tagArr = explode(',',$_content->tag);
+            if(is_array($tagArr)){
+                foreach ($tagArr as $_value) {
+                    $_content->tag = str_replace($_value,'<a target="_blank" href="search.php?type=3&inputkeyword='.$_value.'">'.$_value.'</a>',$_content->tag);
+                }
+            }
+
             $this->_tpl->assign('id', $_content->id);
             $this->_tpl->assign('titles', $_content->title);
             $this->_tpl->assign('date', $_content->date);

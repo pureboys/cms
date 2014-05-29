@@ -35,6 +35,25 @@
 {/if}
 
 {if $frontshow}
+<div id="friendlink">
+    <h2>所有友情连接</h2>
+    <h3>文字连接</h3>
+     <div>
+         {if $text}
+             {foreach $Alltext(key,value)}
+                <a href="{@value->weburl}" target="_blank">{@value->webname}</a>
+             {/foreach}
+         {/if}
+     </div>
+    <h3>LOGO连接</h3>
+    <div>
+        {if $logo}
+            {foreach $Alllogo(key,value)}
+               <a href="{@value->weburl}" target="_blank"><img src="{@value->logourl}" alt="{@value->webname}"/></a>
+            {/foreach}
+        {/if}
+    </div>
+</div>
 {/if}
 
 {include file='footer.tpl'}

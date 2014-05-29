@@ -1,12 +1,10 @@
 #friendlink {
-    width: 100%;
-    float: left;
     margin: 0 0 10px 0;
+    border: 1px solid #cccccc;
+    padding: 0 0 10px 0;
 }
 
 #friendlink h2 {
-    border: 1px solid #cccccc;
-    border-bottom: none;
     text-align: center;
 }
 
@@ -19,8 +17,28 @@
     color: #f60;
 }
 
+#friendlink h3 {
+    padding: 20px;
+}
+
+#friendlink div {
+    padding: 0 20px;
+}
+
+#friendlink div a {
+    color: #666;
+    text-decoration: none;
+}
+
+#friendlink div a:hover {
+    text-decoration: underline;
+}
+
+#friendlink div img{
+    border: none;
+}
+
 #friendlink form {
-    border: 1px solid #cccccc;
     padding: 15px 0;
 }
 
@@ -43,7 +61,7 @@
     color: #ff0000;
 }
 
-#friendlink form dl dd img.face{
+#friendlink form dl dd img.face {
     margin: 0 0 0 60px;
 }
 
