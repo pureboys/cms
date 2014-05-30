@@ -43,9 +43,11 @@ class DetailsAction extends Action
                 $this->_tpl->assign('comment', "<script>getComment();</script>");
                 $this->_tpl->assign('count', "<script>getContentCount();</script>");
             } else {
-                $this->_tpl->assign('comment', $_comment->getCommentTotal());
                 $this->_tpl->assign('count', $_content->count);
             }
+
+            $this->_tpl->assign('comment', $_comment->getCommentTotal());
+
             $_object = $_comment->getNewThreeComment();
             if ($_object) {
                 foreach ($_object as $_value) {

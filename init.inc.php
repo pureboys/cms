@@ -21,10 +21,10 @@ function __autoload($_className)
 }
 
 //设置不缓存
-$_cache = new Cache(array('code', 'ckeup', 'static', 'upload', 'register','feedback','cast','friendlink'));
+$_cache = new Cache(array('code', 'ckeup', 'static', 'upload', 'register','feedback','cast','friendlink','search'));
 
 //实例化模版类
-$_tpl = new Templates();
+$_tpl = new Templates($_cache);
 //初始化
 require 'common.inc.php';
 

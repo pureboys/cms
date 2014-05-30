@@ -6,9 +6,11 @@ class Templates
     private $_vars = array();
     //保存系统变量
     private $_config = array();
+    //缓存对象
+    private $_cache;
 
     //验证各目录是否存在
-    public function __construct()
+    public function __construct($_cache)
     {
         if (!is_dir(TPL_DIR) or !is_dir(TPL_C_DIR) or !is_dir(CACHE)) {
             exit('ERROR：模板目录或编译目录或缓存目录不存在！请手工设置！');
@@ -20,6 +22,7 @@ class Templates
         foreach ($_taglib as $_tag) {
             $this->_config["$_tag->name"] = $_tag->value;
         }
+        $this->_cache = $_cache;
     }
 
     //注入变量
@@ -41,11 +44,12 @@ class Templates
             exit('ERROR：模板文件不存在！');
         }
         //是否加入参数
-        if (!empty($_SERVER['QUERY_STRING'])) $_file .= $_SERVER['QUERY_STRING'];
+        $_file_query = '';
+        if (!empty($_SERVER['QUERY_STRING'])) $_file_query = $_SERVER['QUERY_STRING'];
         //编译文件
         $_parFile = TPL_C_DIR . md5($_file) . $_file . '.php';
         //缓存文件
-        $_cacheFile = CACHE . md5($_file) . $_file . '.html';
+        $_cacheFile = CACHE . md5($_file) . $_file . $_file_query . '.html';
 
         //当编译文件不存在，或者模板文件修改过，则生成编译文件
         if (!file_exists($_parFile) or filemtime($_parFile) < filemtime($_tplFile)) {
@@ -56,7 +60,7 @@ class Templates
         }
         //载入编译文件
         include $_parFile;
-        if (IS_CACHE) {
+        if (IS_CACHE && !$this->_cache->noCache()) {
             //获取缓冲区内的数据，并且创建缓存文件
             file_put_contents($_cacheFile, ob_get_contents());
             //清除缓冲区(清除了编译文件加载的内容)

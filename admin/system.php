@@ -1,8 +1,7 @@
 <?php
 require substr(dirname(__FILE__), 0, -6) . '/init.inc.php';
-global $_tpl;
 Validate::checkSession();
 global $_tpl;
-$_main = new MainAction($_tpl);
-$_main->_action();
-$_tpl->display('main.tpl');
+$_system = new SystemAction($_tpl);
+$_system->_action();
+$_tpl->display('system.tpl');

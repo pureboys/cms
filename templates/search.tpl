@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
+    <title>{$webname}</title>
     <link rel="stylesheet" href="/style/basic.css"/>
     <link rel="stylesheet" href="/style/list.css"/>
 </head>

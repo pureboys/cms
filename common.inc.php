@@ -30,5 +30,5 @@ $_link->index();
 $_tag = new TagAction($_tpl);
 $_tag->getFiveTag();
 
-
+$_tpl->assign('webname',WEBNAME);
 

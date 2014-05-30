@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50524
 File Encoding         : 65001
 
-Date: 2014-05-29 14:40:01
+Date: 2014-05-30 16:25:38
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -169,7 +169,7 @@ CREATE TABLE `cms_manage` (
 -- ----------------------------
 -- Records of cms_manage
 -- ----------------------------
-INSERT INTO `cms_manage` VALUES ('1', 'admin', '7c4a8d09ca3762af61e59520943dc26494f8941b', '2', '22', '127.0.0.1', '2014-05-28 15:24:06', '2014-03-27 15:19:54');
+INSERT INTO `cms_manage` VALUES ('1', 'admin', '7c4a8d09ca3762af61e59520943dc26494f8941b', '2', '23', '127.0.0.1', '2014-05-30 09:50:53', '2014-03-27 15:19:54');
 INSERT INTO `cms_manage` VALUES ('2', 'oliver', '7c4a8d09ca3762af61e59520943dc26494f8941b', '5', '1', '127.0.0.1', '2014-04-24 08:51:52', '2014-03-27 15:23:59');
 INSERT INTO `cms_manage` VALUES ('3', '我是MT', '7c4a8d09ca3762af61e59520943dc26494f8941b', '3', '0', '000.000.000.000', '0000-00-00 00:00:00', '2014-03-27 15:24:28');
 INSERT INTO `cms_manage` VALUES ('4', '樱木花道', '7c4a8d09ca3762af61e59520943dc26494f8941b', '4', '0', '000.000.000.000', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
@@ -214,6 +214,35 @@ INSERT INTO `cms_nav` VALUES ('18', '越南军事', '越南军事', '1', '4');
 INSERT INTO `cms_nav` VALUES ('19', '朝鲜军事', '朝鲜军事', '1', '19');
 
 -- ----------------------------
+-- Table structure for `cms_permission`
+-- ----------------------------
+DROP TABLE IF EXISTS `cms_permission`;
+CREATE TABLE `cms_permission` (
+  `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  `info` varchar(200) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of cms_permission
+-- ----------------------------
+INSERT INTO `cms_permission` VALUES ('1', '后台登录', '后台登录');
+INSERT INTO `cms_permission` VALUES ('2', '清理缓存', '清理缓存');
+INSERT INTO `cms_permission` VALUES ('3', '管理员管理', '管理员管理');
+INSERT INTO `cms_permission` VALUES ('4', '等级管理', '等级管理');
+INSERT INTO `cms_permission` VALUES ('5', '权限设定', '权限设定');
+INSERT INTO `cms_permission` VALUES ('6', '网站导航', '网站导航');
+INSERT INTO `cms_permission` VALUES ('7', '文档操作', '文档操作');
+INSERT INTO `cms_permission` VALUES ('8', '评论审核', '评论审核');
+INSERT INTO `cms_permission` VALUES ('9', '轮播器管理', '轮播器管理');
+INSERT INTO `cms_permission` VALUES ('10', '广告管理', '广告管理');
+INSERT INTO `cms_permission` VALUES ('11', '投票管理', '投票管理');
+INSERT INTO `cms_permission` VALUES ('12', '审核友情连接', '审核友情连接');
+INSERT INTO `cms_permission` VALUES ('13', '会员管理', '会员管理');
+INSERT INTO `cms_permission` VALUES ('14', '系统配置文件管理', '系统配置文件管理');
+
+-- ----------------------------
 -- Table structure for `cms_rotation`
 -- ----------------------------
 DROP TABLE IF EXISTS `cms_rotation`;
@@ -235,6 +264,29 @@ INSERT INTO `cms_rotation` VALUES ('2', '/uploads/20140521/20140521144601369.jpg
 INSERT INTO `cms_rotation` VALUES ('3', '/uploads/20140521/20140521154112950.jpg', '12345', 'dddd', '1', 'tteee', '2014-05-21 15:41:35');
 
 -- ----------------------------
+-- Table structure for `cms_system`
+-- ----------------------------
+DROP TABLE IF EXISTS `cms_system`;
+CREATE TABLE `cms_system` (
+  `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
+  `webname` varchar(100) NOT NULL,
+  `page_size` tinyint(2) NOT NULL COMMENT '//普通分页',
+  `article_size` tinyint(2) NOT NULL COMMENT '//文章分页',
+  `nav_size` tinyint(2) NOT NULL COMMENT '//主导航前台显示个数',
+  `updir` varchar(100) NOT NULL COMMENT '//上传的主目录',
+  `ro_time` tinyint(2) NOT NULL COMMENT '//轮播器速度',
+  `ro_num` tinyint(2) NOT NULL COMMENT '//轮播器个数',
+  `adver_text_num` tinyint(2) NOT NULL COMMENT '//文字广告的个数',
+  `adver_pic_num` tinyint(2) NOT NULL COMMENT '//图片广告的个数',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of cms_system
+-- ----------------------------
+INSERT INTO `cms_system` VALUES ('1', 'WEB俱乐部', '10', '8', '10', '/uploads/', '3', '3', '5', '3');
+
+-- ----------------------------
 -- Table structure for `cms_tag`
 -- ----------------------------
 DROP TABLE IF EXISTS `cms_tag`;
@@ -248,7 +300,7 @@ CREATE TABLE `cms_tag` (
 -- ----------------------------
 -- Records of cms_tag
 -- ----------------------------
-INSERT INTO `cms_tag` VALUES ('1', 'arsort', '24');
+INSERT INTO `cms_tag` VALUES ('1', 'arsort', '26');
 INSERT INTO `cms_tag` VALUES ('2', '移动开发', '4');
 INSERT INTO `cms_tag` VALUES ('3', '开发工具', '5');
 INSERT INTO `cms_tag` VALUES ('4', 'HBuilder', '4');

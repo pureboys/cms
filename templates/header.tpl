@@ -4,7 +4,7 @@
     <script src="/js/text_adver.js"></script>
 </div>
 <div id="header">
-    <h1><a href="###">web俱乐部</a></h1>
+    <h1><a href="###">{$webname}</a></h1>
 
     <div class="adver"><script src="/js/header_adver.js"></script></div>
 </div>
