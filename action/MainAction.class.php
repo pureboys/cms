@@ -10,7 +10,7 @@ class MainAction extends Action
     public function _action()
     {
         if(isset($_GET['action']) && $_GET['action'] == 'delcache') {
-            if(in_array(2,explode(',',$_SESSION['admin']['permission']))){
+            if(in_array(2,$_SESSION['admin']['permission'])){
                 $this->delCache();
             }else{
                 Tool::alertBack('警告：权限不足，你无法清理缓存！');
