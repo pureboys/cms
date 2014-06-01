@@ -18,15 +18,16 @@ class DetailsAction extends Action
         if (isset($_GET['id'])) {
             parent::__construct($this->_tpl, new ContentModel());
             $this->_model->id = $_GET['id'];
-            if (!$this->_model->setContentCount()) Tool::alertBack('警告：不存在此文档！');
+            if (!IS_CACHE) $this->_model->setContentCount();
             $_content = $this->_model->getOneContent();
+            if (!$_content) Tool::alertBack('警告：不存在此文档！');
             $_comment = new CommentModel();
             $_comment->cid = $this->_model->id;
 
-            $tagArr = explode(',',$_content->tag);
-            if(is_array($tagArr)){
+            $tagArr = explode(',', $_content->tag);
+            if (is_array($tagArr)) {
                 foreach ($tagArr as $_value) {
-                    $_content->tag = str_replace($_value,'<a target="_blank" href="search.php?type=3&inputkeyword='.$_value.'">'.$_value.'</a>',$_content->tag);
+                    $_content->tag = str_replace($_value, '<a target="_blank" href="search.php?type=3&inputkeyword=' . $_value . '">' . $_value . '</a>', $_content->tag);
                 }
             }
 

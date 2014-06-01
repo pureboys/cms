@@ -51,7 +51,7 @@ class ManageModel extends Model
     //查询登录管理员
     public function getLoginManage()
     {
-        $_sql = "SELECT m.admin_user,l.level_name FROM cms_manage m,cms_level l WHERE m.admin_user='$this->_admin_user' AND m.admin_pass='$this->_admin_pass' AND m.level=l.id LIMIT 1";
+        $_sql = "SELECT m.admin_user,l.level_name,l.permission FROM cms_manage m,cms_level l WHERE m.admin_user='$this->_admin_user' AND m.admin_pass='$this->_admin_pass' AND m.level=l.id LIMIT 1";
         return parent::one($_sql);
     }
 

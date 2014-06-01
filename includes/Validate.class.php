@@ -61,5 +61,12 @@ class Validate
         return false;
     }
 
+    //权限
+    static public function checkPermission($_data, $_info)
+    {
+        if (!in_array($_data, $_SESSION['admin']['permission']))
+            Tool::alertBack($_info);
+    }
 
-} 
+
+}

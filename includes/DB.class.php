@@ -11,7 +11,7 @@ class DB
      */
     static public function getDB()
     {
-        $_mysqli = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+        $_mysqli = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME, DB_PORT);
         if (mysqli_connect_errno()) {
             echo '数据库连接错误，错误代码：' . mysqli_connect_errno();
             exit();

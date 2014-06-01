@@ -16,6 +16,8 @@ function __autoload($_className)
     } elseif (substr($_className, -5) === 'Model') {
         require ROOT_PATH . '/model/' . $_className . '.class.php';
     } else {
+        if(!file_exists(ROOT_PATH . '/includes/' . $_className . '.class.php') && $_className=='mysqli')
+            exit('警告：服务器不支持mysqli');
         require ROOT_PATH . '/includes/' . $_className . '.class.php';
     }
 }

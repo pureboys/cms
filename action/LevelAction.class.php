@@ -37,6 +37,9 @@ class LevelAction extends Action
             $this->_model->level_name = $_POST['level_name'];
             if ($this->_model->getOneLevel()) Tool::alertBack('警告！等级已经有了！');
             $this->_model->level_info = $_POST['level_info'];
+            if (!empty($_POST['permission'])) {
+                $this->_model->permission = implode(',', $_POST['permission']);
+            }
             $this->_model->addLevel() ? Tool::alertLocation("恭喜新增等级成功!", 'level.php?action=show') : Tool::alertBack("很遗憾，添加等级失败!");
         }
         $this->_tpl->assign('add', true);
@@ -44,6 +47,10 @@ class LevelAction extends Action
         $this->_tpl->assign('update', false);
         $this->_tpl->assign('title', '新增等级');
         $this->_tpl->assign('prev_url', PREV_URL);
+
+        $_permission = new PermissionModel();
+        $this->_tpl->assign('AllNoLimitPermission', $_permission->getAllNoLimitPermission());
+
     }
 
 
@@ -68,9 +75,26 @@ class LevelAction extends Action
             $this->_model->id = $_POST['id'];
             $this->_model->level_name = $_POST['level_name'];
             $this->_model->level_info = $_POST['level_info'];
+            $this->_model->permission = implode(',', $_POST['permission']);
             $this->_model->updateLevel() ? Tool::alertLocation('恭喜修改等级成功！', $_POST['prev_url']) : Tool::alertBack('很遗憾，修改等级失败');
         }
         if (isset($_GET['id'])) {
+            $this->_model->id = $_GET['id'];
+            $_level = $this->_model->getOneLevel();
+            //获取本用户组下权限
+            $arr_permission = explode(',', $_level->permission);
+            //获取所有权限
+            $_permission = new PermissionModel();
+            $_object = $_permission->getAllNoLimitPermission();
+            $_html = '';
+            foreach ($_object as $key => $_value) {
+                if (in_array($_value->id, $arr_permission))
+                    $_html .= '<input checked type="checkbox" name="permission[]" value="' . $_value->id . '">' . $_value->name;
+                else
+                    $_html .= '<input type="checkbox" name="permission[]" value="' . $_value->id . '">' . $_value->name;
+            }
+            $this->_tpl->assign('AllNoLimitPermission', $_html);
+
             $this->_model->id = $_GET['id'];
             $_level = $this->_model->getOneLevel();
             is_object($_level) ? true : Tool::alertBack('等级传值id有误');

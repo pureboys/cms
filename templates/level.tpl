@@ -25,6 +25,7 @@
             <th>序号</th>
             <th>等级名称</th>
             <th>等级描述</th>
+            <th>权限标示</th>
             <th>操作</th>
         </tr>
         {if $AllLevel}
@@ -35,6 +36,7 @@
                     </td>
                     <td>{@value->level_name}</td>
                     <td>{@value->level_info}</td>
+                    <td>{@value->permission}</td>
                     <td><a href="level.php?action=update&id={@value->id}">修改</a>|<a
                                 href="level.php?action=delete&id={@value->id}"
                                 onclick="return confirm('你真的要删除这个等级么？') ? true : false">删除</a></td>
@@ -42,7 +44,7 @@
             {/foreach}
         {else}
             <tr>
-                <td colspan="4">对不起，没有任何数据！</td>
+                <td colspan="5">对不起，没有任何数据！</td>
             </tr>
         {/if}
     </table>
@@ -65,6 +67,13 @@
                     (不得大于200位)
                 </td>
             </tr>
+            <tr><td style="padding-left: 60px; padding-right: 40%">
+                    {if $AllNoLimitPermission}
+                        {foreach $AllNoLimitPermission(key,value)}
+                            <input type="checkbox" value="{@value->id}" name="permission[]"/>{@value->name}
+                        {/foreach}
+                    {/if}
+                </td></tr>
             <tr>
                 <td>
                     <input type="submit" name="send" value="新增等级" class="submit level" onclick="return checkForm();"/>
@@ -91,6 +100,9 @@
                     <textarea name="level_info" id="" cols="30" rows="10">{$level_info}</textarea>
                 </td>
             </tr>
+            <tr><td style="padding-left: 60px; padding-right: 40%">
+                 {$AllNoLimitPermission}
+            </td></tr>
             <tr>
                 <td>
                     <input type="submit" name="send" value="修改等级" class="submit level" onclick="return checkForm();"/>

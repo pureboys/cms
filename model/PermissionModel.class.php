@@ -59,6 +59,16 @@ class PermissionModel extends Model
     }
 
     /**
+     * 获取所有列表数据,不带limit
+     * @return array
+     */
+    public function getAllNoLimitPermission()
+    {
+        $sql = "SELECT id,name,info FROM cms_permission ORDER BY id ASC";
+        return parent::all($sql);
+    }
+
+    /**
      * 删除单个列表数据
      * @return int
      */

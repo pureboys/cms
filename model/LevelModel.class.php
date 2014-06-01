@@ -9,6 +9,7 @@ class LevelModel extends Model
     private $level_name;
     private $level_info;
     private $_limit;
+    private $permission;
 
     function __set($key, $value)
     {
@@ -36,7 +37,7 @@ class LevelModel extends Model
      */
     public function getAllLevel()
     {
-        $sql = "SELECT id,level_name,level_info FROM cms_level ORDER BY id DESC";
+        $sql = "SELECT id,level_name,level_info,permission FROM cms_level ORDER BY id DESC";
         return parent::all($sql);
     }
 
@@ -46,13 +47,13 @@ class LevelModel extends Model
      */
     public function getAllLimitLevel()
     {
-        $sql = "SELECT id,level_name,level_info FROM cms_level ORDER BY id DESC $this->_limit";
+        $sql = "SELECT id,level_name,level_info,permission FROM cms_level ORDER BY id DESC $this->_limit";
         return parent::all($sql);
     }
 
     public function getOneLevel()
     {
-        $sql = "SELECT id,level_name,level_info FROM cms_level WHERE id='$this->id' OR level_name='$this->level_name' LIMIT 1";
+        $sql = "SELECT id,level_name,level_info,permission FROM cms_level WHERE id='$this->id' OR level_name='$this->level_name' LIMIT 1";
         return parent::one($sql);
     }
 
@@ -63,14 +64,14 @@ class LevelModel extends Model
     public function addLevel()
     {
 
-        $sql = "INSERT INTO cms_level(level_name,level_info) VALUES ('$this->level_name','$this->level_info')";
+        $sql = "INSERT INTO cms_level(level_name,level_info,permission) VALUES ('$this->level_name','$this->level_info','$this->permission')";
         return parent::aud($sql);
     }
 
     public function  updateLevel()
     {
 
-        $sql = "UPDATE cms_level SET level_name='$this->level_name',level_info='$this->level_info' WHERE id='$this->id' LIMIT 1";
+        $sql = "UPDATE cms_level SET level_name='$this->level_name',level_info='$this->level_info',permission='$this->permission' WHERE id='$this->id' LIMIT 1";
         return parent::aud($sql);
     }
 

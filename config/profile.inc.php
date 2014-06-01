@@ -5,6 +5,7 @@ define('DB_HOST', 'localhost');
 define('DB_USER', 'root');
 define('DB_PASS', '123456');
 define('DB_NAME', 'cms');
+define('DB_PORT', '3306');
 
 //系统配置文件
 define('GPC', get_magic_quotes_gpc()); //sql转义功能是否打开
