@@ -3,7 +3,7 @@
     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#rebound-navbar-collapse"><span
                 class="fa fa-bars"></span> Menu
     </button>
-    <a href="./index.php" class="navbar-brand">{$webname}</a>
+    <a href="./" class="navbar-brand">{$webname}</a>
 
     <p class="brand-text">Do you know the pony? <br/> {$header}</p>
 
@@ -12,7 +12,7 @@
     <ul class="nav navbar-nav">
 
         <li class="title">导航</li>
-        <li><a href="./index.php">首页</a></li>
+        <li><a href="./">首页</a></li>
         {if $FrontNav}
             {foreach $FrontNav(key,value)}
                 <li><a href="list.php?id={@value->id}">{@value->nav_name}</a></li>

@@ -66,6 +66,8 @@ class Page
             parse_str($_par['query'], $_query);
             unset($_query['page']);
             $_url = $_par['path'] . '?' . http_build_query($_query);
+        }else{
+            $_url =  $_par['path'] . '?';
         }
         return $_url;
     }
