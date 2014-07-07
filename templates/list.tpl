@@ -3,77 +3,116 @@
 <head>
     <meta charset="UTF-8">
     <title>{$webname}</title>
-    <link rel="stylesheet" href="/style/basic.css"/>
-    <link rel="stylesheet" href="/style/list.css"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Le styles -->
+    <link href="/style/bootstrap.css" rel="stylesheet">
+    <link href="/style/font-awesome.css" rel="stylesheet">
+    <!--[if IE 7]>
+    <link rel="stylesheet" href="/style/font-awesome-ie7.min.css">
+    <![endif]-->
+    <link rel="stylesheet" type="text/css" href="/style/style.css">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="/js/html5.js"></script>
+    <script src="/js/respond.src.js"></script>
+    <![endif]-->
+
 </head>
 <body>
 
-{include file='header.tpl'}
-<div id="list">
-    <h2>当前位置 &gt; {$nav}</h2>
-    {if $AllListContent}
-        {foreach $AllListContent(key,value)}
-            <dl>
-                <dt><a href="details.php?id={@value->id}" target="_blank"><img src="{@value->thumbnail}"
-                                                                               alt="{@value->title}"/></a></dt>
-                <dd>[<strong>{@value->nav_name}</strong>]<a href="details.php?id={@value->id}"
-                                                            target="_blank">{@value->title}</a></dd>
-                <dd>日期：{@value->date} 点击量：{@value->count} 关键字:{@value->keyword}</dd>
-                <dd>
-                    {@value->info}
-                </dd>
-            </dl>
-        {/foreach}
-    {else}
-        <p class="none">没有任何数据</p>
-    {/if}
+
+<div class="wrapper">
+    <div class="row">
+        <div class="col-md-3 sidebar">
+            <div class="navbar" role="navigation">
+
+                {include file='header.tpl'}
+                <div class="collapse navbar-collapse">
+
+                    <ul class="nav navbar-nav hidden-sm hidden-xs">
+                        <li class="title">当前位置</li>
+                        <li class="active">{$nav}</li>
+                    </ul>
+
+                    <ul class="nav navbar-nav">
+                        <li class="title">子栏目列表</li>
+                        {if $childnav}
+                            {foreach $childnav(key,value)}
+                                <li><a href="list.php?id={@value->id}">{@value->nav_name}</a></li>
+                            {/foreach}
+                        {else}
+                            <li>该栏目没有子类</li>
+                        {/if}
+                    </ul>
+                </div>
+
+            </div>
+            <!-- end navbar -->
+        </div>
+        <!-- end col -->
+
+        <div class="col-md-9 content">
+            <div class="portfolio-wrapper isotope" style="position: relative; overflow: hidden; height: 1960px;">
+
+                {if $AllListContent}
+                    {foreach $AllListContent(key,value)}
+                        <div class="card film art isotope-item"
+                             style="position: absolute; left: 0px; top: 0px; -webkit-transform: translate3d(0px, 0px, 0px); width: 250px;">
+                            <a href="details.php?id={@value->id}" class="thumb">
+                                <img src="{@value->thumbnail}" alt="{@value->title}" title="">
+                                <span class="overlay"><span class="fa fa-search"></span></span>
+                            </a>
+
+                            <div class="card-body">
+                                <h2><a href="details.php?id={@value->id}">{@value->title}</a></h2>
+
+                                <p>{@value->info}</p>
+
+                                <p><a href="details.php?id={@value->id}">了解更多</a></p>
+                            </div>
+                            <!-- end card-body -->
+                            <div class="card-footer">
+                                <ul class="list-inline filters">
+                                    <li>{@value->keyword}</li>
+                                </ul>
+                            </div>
+                            <!-- end card-footer -->
+                        </div>
+                        <!-- end card -->
+                    {/foreach}
+                {else}
+                    <div>Sorry,现在没有任何数据</div>
+                {/if}
 
 
-    <div id="page">{$page}</div>
+            </div>
+            <!-- end portfolio-wrapper -->
+            <div class="pagination-wrapper">
+                <p class="pagination">
+                    {$page}
+                </p>
+            </div>
+            <!-- end pagination-wrapper -->
+        </div>
+        <!-- end col -->
+    </div>
+    <!-- end row -->
 </div>
-<div id="sidebar">
-    <div class="nav">
-        <h2>子栏目列表</h2>
-        {if $childnav}
-            {foreach $childnav(key,value)}
-                <strong><a href="list.php?id={@value->id}">{@value->nav_name}</a></strong>
-            {/foreach}
-        {else}
-            <span>该栏目没有子类</span>
-        {/if}
-    </div>
-    <div class="right">
-        <h2>本月本类推荐</h2>
-        <ul>
-            {if $MonthNavRec}
-            {foreach $MonthNavRec(key,value)}
-            <li><em>{@value->date}</em><a href="/details.php?id={@value->id}" target="_blank">{@value->title}</a></li>
-            {/foreach}
-            {/if}
-        </ul>
-    </div>
-    <div class="right">
-        <h2>本月本类热点</h2>
-        <ul>
-            {if $MonthNavHot}
-                {foreach $MonthNavHot(key,value)}
-                    <li><em>{@value->date}</em><a href="/details.php?id={@value->id}" target="_blank">{@value->title}</a></li>
-                {/foreach}
-            {/if}
-        </ul>
-    </div>
-    <div class="right">
-        <h2>本月本类图文</h2>
-        <ul>
-            {if $MonthNavPic}
-                {foreach $MonthNavPic(key,value)}
-                    <li><em>{@value->date}</em><a href="/details.php?id={@value->id}" target="_blank">{@value->title}</a></li>
-                {/foreach}
-            {/if}
-        </ul>
-    </div>
-</div>
+<!-- end wrapper -->
 
 {include file='footer.tpl'}
+
+<!-- Le javascript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/rebound.js"></script>
+<script src="/js/jquery.isotope.min.js"></script>
+<script src="/js/list.js"></script>
+
+
 </body>
 </html>

@@ -18,8 +18,7 @@ if (IS_CACHE) {
     if ($_cookie->getCookie()) {
         $_tpl->assign('header', $_cookie->getCookie() . ' 您好！<a href="/register.php?action=logout">退出</a>');
     } else {
-        $_tpl->assign('header', '<a href="/register.php?action=reg" class="user">注册</a>
-    <a href="/register.php?action=login" class="user">登录</a>');
+        $_tpl->assign('header', '');
     }
 }
 

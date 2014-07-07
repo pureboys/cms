@@ -37,14 +37,14 @@ class LoginAction extends Action
             $this->_model->_last_ip = $_SERVER['REMOTE_ADDR'];
             $_login = $this->_model->getLoginManage();
             if ($_login) {
-                $_preArr = explode(',',$_login->permission);
-                if(in_array(1,$_preArr)){
+                $_preArr = explode(',', $_login->permission);
+                if (in_array(1, $_preArr)) {
                     $_SESSION['admin']['admin_user'] = $_login->admin_user;
                     $_SESSION['admin']['level_name'] = $_login->level_name;
                     $_SESSION['admin']['permission'] = $_preArr;
                     $this->_model->setLoginCount();
                     Tool::alertLocation(null, 'admin.php');
-                }else{
+                } else {
                     Tool::alertBack('警告：权限不够，您无法登陆！');
                 }
             } else {

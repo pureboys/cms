@@ -1,6 +1,6 @@
 <?php
 	//系统配置
-	define('WEBNAME','WEB俱乐部');
+	define('WEBNAME','PPPony');
 	define('PAGE_SIZE',10);
 	define('ARTICLE_SIZE',8);
 	define('NAV_SIZE',10);

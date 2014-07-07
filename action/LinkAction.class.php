@@ -37,7 +37,7 @@ class LinkAction extends Action
             if (Validate::checkLength($_POST['webname'], 20, 'max')) Tool::alertBack("警告：网站名称不得大于20位");
             if (Validate::checkNull($_POST['weburl'])) Tool::alertBack("警告：网站地址不得为空");
             if (Validate::checkLength($_POST['weburl'], 100, 'max')) Tool::alertBack("警告：网站地址不得大于100位");
-            if ($_POST['type'] == 2){
+            if ($_POST['type'] == 2) {
                 if (Validate::checkNull($_POST['logourl'])) Tool::alertBack("警告：Logo地址不得为空");
                 if (Validate::checkLength($_POST['logourl'], 100, 'max')) Tool::alertBack("警告：Logo地址不得大于100位");
             }
@@ -51,7 +51,7 @@ class LinkAction extends Action
             $this->_model->user = $_POST['user'];
             $this->_model->state = $_POST['state'];
 
-            $this->_model->addLink() ? Tool::alertLocation('恭喜您，新增友情连接成功！','?action=show') : Tool::alertBack('新增友情连接失败！');
+            $this->_model->addLink() ? Tool::alertLocation('恭喜您，新增友情连接成功！', '?action=show') : Tool::alertBack('新增友情连接失败！');
 
         }
         $this->_tpl->assign('add', true);
@@ -70,11 +70,11 @@ class LinkAction extends Action
         $this->_tpl->assign('update', false);
         $this->_tpl->assign('title', '友情连接列表');
         $_object = $this->_model->getAllLink();
-        if($_object){
-            Tool::subStr($_object,'weburl',20,'utf8');
-            Tool::subStr($_object,'logourl',20,'utf8');
+        if ($_object) {
+            Tool::subStr($_object, 'weburl', 20, 'utf8');
+            Tool::subStr($_object, 'logourl', 20, 'utf8');
             foreach ($_object as $_value) {
-                switch($_value->type){
+                switch ($_value->type) {
                     case 1:
                         $_value->type = '文字连接';
                         break;
@@ -88,7 +88,7 @@ class LinkAction extends Action
                     $_value->state = '<span class="green">已审核</span> | <a href="link.php?action=state&type=cancel&id=' . $_value->id . '">取消</a>';
             }
         }
-        $this->_tpl->assign('AllLink',$_object);
+        $this->_tpl->assign('AllLink', $_object);
     }
 
 
@@ -111,7 +111,6 @@ class LinkAction extends Action
     }
 
 
-
     private function update()
     {
         if (isset($_POST['send'])) {
@@ -119,7 +118,7 @@ class LinkAction extends Action
             if (Validate::checkLength($_POST['webname'], 20, 'max')) Tool::alertBack("警告：网站名称不得大于20位");
             if (Validate::checkNull($_POST['weburl'])) Tool::alertBack("警告：网站地址不得为空");
             if (Validate::checkLength($_POST['weburl'], 100, 'max')) Tool::alertBack("警告：网站地址不得大于100位");
-            if ($_POST['type'] == 2){
+            if ($_POST['type'] == 2) {
                 if (Validate::checkNull($_POST['logourl'])) Tool::alertBack("警告：Logo地址不得为空");
                 if (Validate::checkLength($_POST['logourl'], 100, 'max')) Tool::alertBack("警告：Logo地址不得大于100位");
             }
@@ -134,12 +133,12 @@ class LinkAction extends Action
             $this->_model->user = $_POST['user'];
             $this->_model->state = $_POST['state'];
 
-            $this->_model->updateLink() ? Tool::alertLocation('恭喜您，修改友情连接成功！',$_POST['prev_url']) : Tool::alertBack('修改友情连接失败！');
+            $this->_model->updateLink() ? Tool::alertLocation('恭喜您，修改友情连接成功！', $_POST['prev_url']) : Tool::alertBack('修改友情连接失败！');
         }
         if (isset($_GET['id'])) {
             $this->_model->id = $_GET['id'];
             $_link = $this->_model->getOneLink();
-            if(!$_link) Tool::alertBack('警告：不存在此友情连接!');
+            if (!$_link) Tool::alertBack('警告：不存在此友情连接!');
             $this->_tpl->assign('id', $_link->id);
             $this->_tpl->assign('webname', $_link->webname);
             $this->_tpl->assign('weburl', $_link->weburl);
@@ -147,14 +146,14 @@ class LinkAction extends Action
             $this->_tpl->assign('user', $_link->user);
             $this->_tpl->assign('state', $_link->state);
 
-            if($_link->type == 1){
-                $this->_tpl->assign('text_type','checked');
-                $this->_tpl->assign('logo_type','');
-                $this->_tpl->assign('logo','display:none');
-            }else if($_link->type == 2){
-                $this->_tpl->assign('text_type','');
-                $this->_tpl->assign('logo_type','checked');
-                $this->_tpl->assign('logo','display:block');
+            if ($_link->type == 1) {
+                $this->_tpl->assign('text_type', 'checked');
+                $this->_tpl->assign('logo_type', '');
+                $this->_tpl->assign('logo', 'display:none');
+            } else if ($_link->type == 2) {
+                $this->_tpl->assign('text_type', '');
+                $this->_tpl->assign('logo_type', 'checked');
+                $this->_tpl->assign('logo', 'display:block');
             }
 
             $this->_tpl->assign('prev_url', PREV_URL);
@@ -176,7 +175,6 @@ class LinkAction extends Action
             Tool::alertBack('非法操作！');
         }
     }
-
 
 
 }

@@ -15,7 +15,9 @@
         <th>快捷操作</th>
     </tr>
     <tr>
-        <td><input type="button" value="清理缓存" onclick="javascript:location.href='main.php?action=delcache'"/>（缓存目录有<span class="red">{$cacheNum}</span>个文件）</td>
+        <td><input type="button" value="清理缓存" onclick="javascript:location.href='main.php?action=delcache'"/>（缓存目录有<span
+                    class="red">{$cacheNum}</span>个文件）
+        </td>
     </tr>
 </table>
 

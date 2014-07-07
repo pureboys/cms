@@ -15,7 +15,7 @@
     <li><a href="vote.php?action=show" class="selected">投票主题列表</a></li>
     <li><a href="vote.php?action=add">新增投票主题</a></li>
     {if $addchild}
-    <li><a href="vote.php?action=addchild&id={$id}">新增投票项目</a></li>
+        <li><a href="vote.php?action=addchild&id={$id}">新增投票项目</a></li>
     {/if}
     {if $showchild}
         <li><a href="vote.php?action=showchild&id={$id}">投票项目列表</a></li>
@@ -42,7 +42,8 @@
                         <script type="text/javascript">document.write({@key+1}+{$num});</script>
                     </td>
                     <td>{@value->title}</td>
-                    <td><a href="vote.php?action=showchild&id={@value->id}">查看</a> | <a href="vote.php?action=addchild&id={@value->id}">增加项目</a></td>
+                    <td><a href="vote.php?action=showchild&id={@value->id}">查看</a> | <a
+                                href="vote.php?action=addchild&id={@value->id}">增加项目</a></td>
                     <td>{@value->state}</td>
                     <td>{@value->pcount}</td>
                     <td><a href="vote.php?action=update&id={@value->id}">修改</a>|<a
@@ -88,7 +89,8 @@
             </tr>
         {/if}
         <tr>
-            <td colspan="4">所属主题：<strong>{$titlec}</strong> <a href="vote.php?action=addchild&id={$id}">增加本项</a> <a href="{$prev_url}">返回列表</a></td>
+            <td colspan="4">所属主题：<strong>{$titlec}</strong> <a href="vote.php?action=addchild&id={$id}">增加本项</a> <a
+                        href="{$prev_url}">返回列表</a></td>
         </tr>
     </table>
     <div id="page">{$page}</div>

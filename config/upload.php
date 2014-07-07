@@ -3,8 +3,8 @@ require substr(dirname(__FILE__), 0, -7) . '/init.inc.php';
 if (isset($_POST['send'])) {
     switch ($_POST['type']) {
         case 'content':
-            $_width = 150;
-            $_height = 100;
+            $_width = 250;
+            $_height = 251;
             $_info = '缩略图上传成功';
             break;
         case 'rotation':

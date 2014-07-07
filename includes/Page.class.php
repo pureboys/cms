@@ -92,7 +92,7 @@ class Page
     private function first()
     {
         if ($this->page > $this->bothnum + 1) {
-            return ' <a href="' . $this->url . '">1</a>... ';
+            return ' <a href="' . $this->url . '">1</a><span>...</span>';
         }
         return false;
     }
@@ -101,7 +101,7 @@ class Page
     private function last()
     {
         if ($this->pagenum - $this->page > $this->bothnum) {
-            return ' ...<a href="' . $this->url . '&page=' . $this->pagenum . '">' . $this->pagenum . '</a> ';
+            return '<span>...</span><a href="' . $this->url . '&page=' . $this->pagenum . '">' . $this->pagenum . '</a> ';
         }
         return false;
     }

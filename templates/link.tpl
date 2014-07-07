@@ -63,7 +63,7 @@
         <table cellspacing="0" class="left">
             <tr>
                 <td>
-                    网站类型: <input type="radio" name="type" value="1" checked onclick="link(1)" />文字连接
+                    网站类型: <input type="radio" name="type" value="1" checked onclick="link(1)"/>文字连接
                     <input type="radio" name="type" value="2" onclick="link(2)"/>Logo连接
                 </td>
             </tr>
@@ -106,13 +106,14 @@
         <table cellspacing="0" class="left">
             <tr>
                 <td>
-                    网站类型: <input type="radio" name="type" value="1" {$text_type} onclick="link(1)" />文字连接
+                    网站类型: <input type="radio" name="type" value="1" {$text_type} onclick="link(1)"/>文字连接
                     <input type="radio" name="type" value="2" {$logo_type} onclick="link(2)"/>Logo连接
                 </td>
             </tr>
             <tr>
                 <td>
-                    网站名称: <input type="text" class="text" name="webname" value="{$webname}"/><span class="red">[必填]</span>(*网站名称不得大于20位且不能为空)
+                    网站名称: <input type="text" class="text" name="webname" value="{$webname}"/><span
+                            class="red">[必填]</span>(*网站名称不得大于20位且不能为空)
                 </td>
             </tr>
             <tr>
@@ -122,7 +123,8 @@
             </tr>
             <tr id="logo" style="{$logo}">
                 <td>
-                    Logo地址: <input type="text" class="text" name="logourl" value="{$logourl}"/><span class="red">[必填]</span>(*Logo地址不得大于100位且不能为空)
+                    Logo地址: <input type="text" class="text" name="logourl" value="{$logourl}"/><span
+                            class="red">[必填]</span>(*Logo地址不得大于100位且不能为空)
                 </td>
             </tr>
             <tr>

@@ -62,6 +62,7 @@
     </table>
     <form action="" method="get">
         <input type="hidden" name="action" value="show"/>
+
         <div id="page">{$page}
             <select name="kind" id="" style="background: #fff;border: 1px solid #ccc;">
                 <option value="0">默认全部</option>
@@ -69,7 +70,7 @@
                 <option value="2">头部广告</option>
                 <option value="3">侧栏广告</option>
             </select>
-            <input type="submit" value="查询" />
+            <input type="submit" value="查询"/>
         </div>
     </form>
 {/if}
@@ -143,8 +144,9 @@
                 </td>
             </tr>
             <tr {$pic} id="thumbnail">
-                <td>广告图片： <input type="text" value="{$thumbnail}" name="thumbnail" class="text" readonly /> <span id="up">{$up}</span>
-                    <img name="pic" src="{$thumbnail}" style="display: block" />(*jpg,gif,png,且在200k内)
+                <td>广告图片： <input type="text" value="{$thumbnail}" name="thumbnail" class="text" readonly/> <span
+                            id="up">{$up}</span>
+                    <img name="pic" src="{$thumbnail}" style="display: block"/>(*jpg,gif,png,且在200k内)
                 </td>
             </tr>
             <tr>
@@ -154,7 +156,9 @@
                 </td>
             </tr>
             <tr>
-                <td>是否前台应用: <input type="radio" name="state" value="1" {$left_state}/>是 <input type="radio" name="state" value="0" {$right_state} />否</td>
+                <td>是否前台应用: <input type="radio" name="state" value="1" {$left_state}/>是 <input type="radio" name="state"
+                                                                                               value="0" {$right_state} />否
+                </td>
             </tr>
             <tr>
                 <td>

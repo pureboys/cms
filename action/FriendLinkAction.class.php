@@ -25,8 +25,8 @@ class FriendLinkAction extends Action
     //front show
     private function frontshow()
     {
-        $this->_tpl->assign('Alltext',$this->_model->getAllTextLink());
-        $this->_tpl->assign('Alllogo',$this->_model->getAllLogoLink());
+        $this->_tpl->assign('Alltext', $this->_model->getAllTextLink());
+        $this->_tpl->assign('Alllogo', $this->_model->getAllLogoLink());
 
         $this->_tpl->assign('frontadd', false);
         $this->_tpl->assign('frontshow', true);
@@ -42,7 +42,7 @@ class FriendLinkAction extends Action
             if (Validate::checkLength($_POST['webname'], 20, 'max')) Tool::alertBack("警告：网站名称不得大于20位");
             if (Validate::checkNull($_POST['weburl'])) Tool::alertBack("警告：网站地址不得为空");
             if (Validate::checkLength($_POST['weburl'], 100, 'max')) Tool::alertBack("警告：网站地址不得大于100位");
-            if ($_POST['type'] == 2){
+            if ($_POST['type'] == 2) {
                 if (Validate::checkNull($_POST['logourl'])) Tool::alertBack("警告：Logo地址不得为空");
                 if (Validate::checkLength($_POST['logourl'], 100, 'max')) Tool::alertBack("警告：Logo地址不得大于100位");
             }
@@ -65,23 +65,23 @@ class FriendLinkAction extends Action
     }
 
     //index footer
-    public function index(){
+    public function index()
+    {
         $this->text();
         $this->logo();
     }
 
     //text
-    private function text(){
-        $this->_tpl->assign('text',$this->_model->getTwentyTextLink());
+    private function text()
+    {
+        $this->_tpl->assign('text', $this->_model->getTwentyTextLink());
     }
 
     //logo
-    private function logo(){
-        $this->_tpl->assign('logo',$this->_model->getNineLogoLink());
+    private function logo()
+    {
+        $this->_tpl->assign('logo', $this->_model->getNineLogoLink());
     }
-
-
-
 
 
 }

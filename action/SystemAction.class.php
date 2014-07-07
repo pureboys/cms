@@ -33,22 +33,22 @@ class SystemAction extends Action
                 $_tab = "\t";
 
                 $_profile = '<?php' . $_br;
-                $_profile .= $_tab . "//系统配置". $_br;
-                $_profile .= $_tab . "define('WEBNAME','{$this->_model->webname}');". $_br;
-                $_profile .= $_tab . "define('PAGE_SIZE',{$this->_model->page_size});". $_br;
-                $_profile .= $_tab . "define('ARTICLE_SIZE',{$this->_model->article_size});". $_br;
-                $_profile .= $_tab . "define('NAV_SIZE',{$this->_model->nav_size});". $_br;
-                $_profile .= $_tab . "define('UPDIR','{$this->_model->updir}');". $_br;
+                $_profile .= $_tab . "//系统配置" . $_br;
+                $_profile .= $_tab . "define('WEBNAME','{$this->_model->webname}');" . $_br;
+                $_profile .= $_tab . "define('PAGE_SIZE',{$this->_model->page_size});" . $_br;
+                $_profile .= $_tab . "define('ARTICLE_SIZE',{$this->_model->article_size});" . $_br;
+                $_profile .= $_tab . "define('NAV_SIZE',{$this->_model->nav_size});" . $_br;
+                $_profile .= $_tab . "define('UPDIR','{$this->_model->updir}');" . $_br;
 
                 $_profile .= $_br;
-                $_profile .= $_tab . "//轮播器配置". $_br;
-                $_profile .= $_tab . "define('RO_TIME',{$this->_model->ro_time});". $_br;
-                $_profile .= $_tab . "define('RO_NUM',{$this->_model->ro_num});". $_br;
+                $_profile .= $_tab . "//轮播器配置" . $_br;
+                $_profile .= $_tab . "define('RO_TIME',{$this->_model->ro_time});" . $_br;
+                $_profile .= $_tab . "define('RO_NUM',{$this->_model->ro_num});" . $_br;
 
                 $_profile .= $_br;
-                $_profile .= $_tab . "//广告服务". $_br;
-                $_profile .= $_tab . "define('ADVER_TEXT_NUM',{$this->_model->adver_text_num});". $_br;
-                $_profile .= $_tab . "define('ADVER_PIC_NUM',{$this->_model->adver_pic_num});". $_br;
+                $_profile .= $_tab . "//广告服务" . $_br;
+                $_profile .= $_tab . "define('ADVER_TEXT_NUM',{$this->_model->adver_text_num});" . $_br;
+                $_profile .= $_tab . "define('ADVER_PIC_NUM',{$this->_model->adver_pic_num});" . $_br;
 
                 if (!file_put_contents('../config/sys_profile.inc.php', $_profile)) {
                     Tool::alertBack('警告：生成配置文件失败!');

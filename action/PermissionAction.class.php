@@ -73,7 +73,7 @@ class PermissionAction extends Action
         if (isset($_GET['id'])) {
             $this->_model->id = $_GET['id'];
             $_permission = $this->_model->getOnePermission();
-            if(!$_permission) Tool::alertBack('不存在此权限！');
+            if (!$_permission) Tool::alertBack('不存在此权限！');
             $this->_tpl->assign('id', $_permission->id);
             $this->_tpl->assign('name', $_permission->name);
             $this->_tpl->assign('info', $_permission->info);

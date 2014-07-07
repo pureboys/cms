@@ -233,9 +233,30 @@ class ContentModel extends Model
         return parent::total($_sql);
     }
 
+    //获取上一篇
+    public function getPrevPage(){
+        $_sql = "SELECT id,title,date FROM cms_content WHERE id < '$this->id' ORDER BY id DESC LIMIT 0,1";
+        return parent::one($_sql);
+    }
+
+    //获取上一篇
+    public function getNextPage(){
+        $_sql = "SELECT id,title,date FROM cms_content WHERE id > '$this->id' ORDER BY id ASC LIMIT 0,1";
+        return parent::one($_sql);
+    }
 
 
+    public function getCommendContentTotal(){
+        $_sql = "SELECT COUNT(*) FROM cms_content WHERE commend=1";
+        return parent::total($_sql);
+    }
 
+    //获取推荐文档
+    public function getCommendContent()
+    {
+        $_sql = "SELECT id,title,title,date,info,thumbnail,count,attr,keyword,gold,author,source FROM cms_content WHERE commend=1 ORDER BY date DESC " . $this->_limit;
+        return parent::all($_sql);
+    }
 
 
 

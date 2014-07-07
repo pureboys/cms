@@ -67,13 +67,15 @@
                     (不得大于200位)
                 </td>
             </tr>
-            <tr><td style="padding-left: 60px; padding-right: 40%">
+            <tr>
+                <td style="padding-left: 60px; padding-right: 40%">
                     {if $AllNoLimitPermission}
                         {foreach $AllNoLimitPermission(key,value)}
                             <input type="checkbox" value="{@value->id}" name="permission[]"/>{@value->name}
                         {/foreach}
                     {/if}
-                </td></tr>
+                </td>
+            </tr>
             <tr>
                 <td>
                     <input type="submit" name="send" value="新增等级" class="submit level" onclick="return checkForm();"/>
@@ -100,9 +102,11 @@
                     <textarea name="level_info" id="" cols="30" rows="10">{$level_info}</textarea>
                 </td>
             </tr>
-            <tr><td style="padding-left: 60px; padding-right: 40%">
-                 {$AllNoLimitPermission}
-            </td></tr>
+            <tr>
+                <td style="padding-left: 60px; padding-right: 40%">
+                    {$AllNoLimitPermission}
+                </td>
+            </tr>
             <tr>
                 <td>
                     <input type="submit" name="send" value="修改等级" class="submit level" onclick="return checkForm();"/>

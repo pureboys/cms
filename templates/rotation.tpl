@@ -46,7 +46,8 @@
                 <td colspan="5" style="color: #008000">修改轮播器后，请点击[生成xml文件]，更新首页轮播</td>
             </tr>
             <tr>
-                <td colspan="5"><input type="button" value="生成xml文件" onclick="javascript:location.href='?action=xml'"/></td>
+                <td colspan="5"><input type="button" value="生成xml文件" onclick="javascript:location.href='?action=xml'"/>
+                </td>
             </tr>
         {else}
             <tr>
@@ -89,7 +90,8 @@
             </tr>
             <tr>
                 <td>
-                    <input type="submit" name="send" value="新增轮播图" class="submit level" onclick="return checkAddRotation();"/>
+                    <input type="submit" name="send" value="新增轮播图" class="submit level"
+                           onclick="return checkAddRotation();"/>
                     [ <a href="{$prev_url}">返回列表</a> ]
                 </td>
             </tr>
@@ -130,10 +132,15 @@
                     (不得大于200位)
                 </td>
             </tr>
-            <tr><td>是否轮播： <input type="radio" name="state" value="1" {$left_state}/>是 <input type="radio" name="state" value="0" {$right_state}/>否 </td></tr>
+            <tr>
+                <td>是否轮播： <input type="radio" name="state" value="1" {$left_state}/>是 <input type="radio" name="state"
+                                                                                             value="0" {$right_state}/>否
+                </td>
+            </tr>
             <tr>
                 <td>
-                    <input type="submit" name="send" value="修改轮播图" class="submit level" onclick="return checkAddRotation();"/>
+                    <input type="submit" name="send" value="修改轮播图" class="submit level"
+                           onclick="return checkAddRotation();"/>
                     [ <a href="{$prev_url}">返回列表</a> ]
                 </td>
             </tr>

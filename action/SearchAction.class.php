@@ -4,7 +4,7 @@ class SearchAction extends Action
 {
     public function __construct(&$_tpl)
     {
-        parent::__construct($_tpl,new ContentModel());
+        parent::__construct($_tpl, new ContentModel());
     }
 
     public function _action()
@@ -16,9 +16,10 @@ class SearchAction extends Action
     }
 
     //按照标题搜索
-    private function searchTitle(){
-        if($_GET['type'] == 1){
-            if(empty($_GET['inputkeyword'])) Tool::alertBack('警告：搜索关键字不能为空!');
+    private function searchTitle()
+    {
+        if ($_GET['type'] == 1) {
+            if (empty($_GET['inputkeyword'])) Tool::alertBack('警告：搜索关键字不能为空!');
             $this->_model->inputkeyword = $_GET['inputkeyword'];
 
             parent::page($this->_model->searchTitleContentTotal(), ARTICLE_SIZE);
@@ -28,7 +29,7 @@ class SearchAction extends Action
                 Tool::subStr($_object, 'title', 35, 'utf8');
                 foreach ($_object as $_value) {
                     if (empty($_value->thumbnail)) $_value->thumbnail = '/images/none.jpg';
-                    $_value->title = str_replace($this->_model->inputkeyword,'<span class="red">'.$this->_model->inputkeyword.'</span>',$_value->title);
+                    $_value->title = str_replace($this->_model->inputkeyword, '<span class="red">' . $this->_model->inputkeyword . '</span>', $_value->title);
                 }
             }
             $this->_tpl->assign('SearchContent', $_object);
@@ -36,9 +37,10 @@ class SearchAction extends Action
     }
 
     //按照关键字搜索
-    private function searchKeyword(){
-        if($_GET['type'] == 2){
-            if(empty($_GET['inputkeyword'])) Tool::alertBack('警告：搜索关键字不能为空!');
+    private function searchKeyword()
+    {
+        if ($_GET['type'] == 2) {
+            if (empty($_GET['inputkeyword'])) Tool::alertBack('警告：搜索关键字不能为空!');
             $this->_model->inputkeyword = $_GET['inputkeyword'];
 
             parent::page($this->_model->searchKeywordContentTotal(), ARTICLE_SIZE);
@@ -48,7 +50,7 @@ class SearchAction extends Action
                 Tool::subStr($_object, 'title', 35, 'utf8');
                 foreach ($_object as $_value) {
                     if (empty($_value->thumbnail)) $_value->thumbnail = '/images/none.jpg';
-                    $_value->keyword = str_replace($this->_model->inputkeyword,'<span class="red">'.$this->_model->inputkeyword.'</span>',$_value->keyword);
+                    $_value->keyword = str_replace($this->_model->inputkeyword, '<span class="red">' . $this->_model->inputkeyword . '</span>', $_value->keyword);
                 }
             }
             $this->_tpl->assign('SearchContent', $_object);
@@ -56,8 +58,9 @@ class SearchAction extends Action
     }
 
     //按照tag标签搜索
-    private function searchTag(){
-        if($_GET['type'] == 3){
+    private function searchTag()
+    {
+        if ($_GET['type'] == 3) {
             $this->_model->inputkeyword = $_GET['inputkeyword'];
 
             parent::page($this->_model->searchTagContentTotal(), ARTICLE_SIZE);
@@ -71,15 +74,16 @@ class SearchAction extends Action
             }
 
             $_tag = new TagModel();
-            $_tag->tagname =  $this->_model->inputkeyword;
-            $_tag->getOneTag() ? $_tag->addTagCount() :  $_tag->addTag();
+            $_tag->tagname = $this->_model->inputkeyword;
+            $_tag->getOneTag() ? $_tag->addTagCount() : $_tag->addTag();
 
             $this->_tpl->assign('SearchContent', $_object);
         }
     }
 
     //右侧栏目
-    private function getNav(){
+    private function getNav()
+    {
         //本月本类推荐
         $_object = $this->_model->getAllNavRec();
         if ($_object) $this->setObject($_object);

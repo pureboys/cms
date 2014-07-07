@@ -117,4 +117,8 @@ class AdverModel extends Model
         return parent::all($_sql);
     }
 
+
+
+
+
 }

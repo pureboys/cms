@@ -70,6 +70,35 @@ class DetailsAction extends Action
             $this->_tpl->assign('NewThreeComment', $_object);
 
             $this->_model->nav = $_content->nav;
+            //获取上一篇 下一篇
+            $prevPage = $this->_model->getPrevPage();
+            $nextPage = $this->_model->getNextPage();
+
+            if ($prevPage) {
+                $this->_tpl->assign('PrevPage', true);
+                $this->_tpl->assign('PrevPageID', $prevPage->id);
+                $this->_tpl->assign('PrevPageTitle', $prevPage->title);
+                $this->_tpl->assign('PrevPageDate', $prevPage->date);
+            } else {
+                $this->_tpl->assign('PrevPage', false);
+                $this->_tpl->assign('PrevPageID', '');
+                $this->_tpl->assign('PrevPageTitle', '');
+                $this->_tpl->assign('PrevPageDate', '');
+            }
+
+            if ($nextPage) {
+                $this->_tpl->assign('NextPage', true);
+                $this->_tpl->assign('NextPageID', $nextPage->id);
+                $this->_tpl->assign('NextPageTitle', $nextPage->title);
+                $this->_tpl->assign('NextPageDate', $nextPage->date);
+            } else {
+                $this->_tpl->assign('NextPage', false);
+                $this->_tpl->assign('NextPageID', '');
+                $this->_tpl->assign('NextPageTitle', '');
+                $this->_tpl->assign('NextPageDate', '');
+            }
+
+
             //本月本类推荐
             $_object = $this->_model->getMonthNavRec();
             if ($_object) $this->setObject($_object);

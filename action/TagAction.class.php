@@ -13,10 +13,10 @@ class TagAction extends Action
     }
 
     //前台显示5条
-    public function getFiveTag(){
-        $this->_tpl->assign('FiveTag',$this->_model->getFiveTag());
+    public function getFiveTag()
+    {
+        $this->_tpl->assign('FiveTag', $this->_model->getFiveTag());
     }
-
 
 
 }

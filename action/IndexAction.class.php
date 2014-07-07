@@ -13,6 +13,7 @@ class IndexAction extends Action
         $this->laterUser();
         $this->showList();
         $this->getVote();
+        $this->getPageListCommend();
     }
 
     //登录模块
@@ -110,8 +111,8 @@ class IndexAction extends Action
                 //通过目录获取文档
                 $this->_model->nav = $_value->id;
                 $_navList = $this->_model->getNewNavList();
-                if($_navList){
-                    Tool::objDate($_navList,'date');
+                if ($_navList) {
+                    Tool::objDate($_navList, 'date');
                     Tool::subStr($_navList, 'title', 20, 'utf8');
                 }
                 $_value->list = $_navList;
@@ -121,10 +122,26 @@ class IndexAction extends Action
     }
 
     //获取投票
-    private function getVote(){
+    private function getVote()
+    {
         $_vote = new VoteModel();
-        $this->_tpl->assign('vote_title',$_vote->getVoteTitle()->title);
-        $this->_tpl->assign('vote_item',$_vote->getVoteItem());
+        $this->_tpl->assign('vote_title', $_vote->getVoteTitle()->title);
+        $this->_tpl->assign('vote_item', $_vote->getVoteItem());
+    }
+
+    //获取推荐信息，分页
+    private function getPageListCommend(){
+        parent::__construct($this->_tpl, new ContentModel());
+        parent::page($this->_model->getCommendContentTotal(),3);
+        $object = $this->_model->getCommendContent();
+        if($object){
+            $comment = new CommentModel();
+            foreach($object as $value){
+              $comment->cid = $value->id;
+              $value->commend = $comment->getCommentTotal();
+            }
+        }
+        $this->_tpl->assign('CommendContent',$object);
     }
 
 

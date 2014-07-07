@@ -67,9 +67,9 @@ class AdverAction extends Action
 
     private function show()
     {
-        if(!isset($_GET['kind']) || empty($_GET['kind'])){
+        if (!isset($_GET['kind']) || empty($_GET['kind'])) {
             $this->_model->kind = '1,2,3';
-        }else{
+        } else {
             $this->_model->kind = $_GET['kind'];
         }
         parent::page($this->_model->getAdverTotal());
@@ -123,7 +123,7 @@ class AdverAction extends Action
 
     private function update()
     {
-        if(isset($_POST['send'])){
+        if (isset($_POST['send'])) {
             if (Validate::checkNull($_POST['title'])) Tool::alertBack("警告：标题不得为空");
             if (Validate::checkLength($_POST['title'], 2, 'min')) Tool::alertBack("警告：标题不得小于2位");
             if (Validate::checkLength($_POST['title'], 20, 'max')) Tool::alertBack("警告：标题不得大于20位");
@@ -141,7 +141,7 @@ class AdverAction extends Action
             $this->_model->info = $_POST['info'];
             $this->_model->state = $_POST['state'];
 
-            $this->_model->updateAdver() ? Tool::alertLocation('修改广告成功！',$_POST['prev_url']) : Tool::alertBack('修改广告失败！');
+            $this->_model->updateAdver() ? Tool::alertLocation('修改广告成功！', $_POST['prev_url']) : Tool::alertBack('修改广告失败！');
         }
 
         if (isset($_GET['id'])) {
@@ -158,35 +158,35 @@ class AdverAction extends Action
             $this->_tpl->assign('show', false);
             $this->_tpl->assign('add', false);
             $this->_tpl->assign('title', '修改等级');
-            switch($_adver->type){
+            switch ($_adver->type) {
                 case 1:
-                    $this->_tpl->assign('type1','checked');
-                    $this->_tpl->assign('type2','');
-                    $this->_tpl->assign('type3','');
-                    $this->_tpl->assign('pic','style="display:none"');
-                    $this->_tpl->assign('up','');
+                    $this->_tpl->assign('type1', 'checked');
+                    $this->_tpl->assign('type2', '');
+                    $this->_tpl->assign('type3', '');
+                    $this->_tpl->assign('pic', 'style="display:none"');
+                    $this->_tpl->assign('up', '');
                     break;
                 case 2:
-                    $this->_tpl->assign('type1','');
-                    $this->_tpl->assign('type2','checked');
-                    $this->_tpl->assign('type3','');
-                    $this->_tpl->assign('pic','style="display:block');
-                    $this->_tpl->assign('up',"<input type=\"button\" value=\"上传头部广告\" onclick=\"centerWindow('../config/upfile.php?type=adver&size=690*80','upfile','400','100')\"/>");
+                    $this->_tpl->assign('type1', '');
+                    $this->_tpl->assign('type2', 'checked');
+                    $this->_tpl->assign('type3', '');
+                    $this->_tpl->assign('pic', 'style="display:block');
+                    $this->_tpl->assign('up', "<input type=\"button\" value=\"上传头部广告\" onclick=\"centerWindow('../config/upfile.php?type=adver&size=690*80','upfile','400','100')\"/>");
                     break;
                 case 3:
-                    $this->_tpl->assign('type1','');
-                    $this->_tpl->assign('type2','');
-                    $this->_tpl->assign('type3','checked');
-                    $this->_tpl->assign('pic','style="display:block');
-                    $this->_tpl->assign('up',"<input type=\"button\" value=\"上传侧栏广告\" onclick=\"centerWindow('../config/upfile.php?type=adver&size=270*200','upfile','400','100')\"/>");
+                    $this->_tpl->assign('type1', '');
+                    $this->_tpl->assign('type2', '');
+                    $this->_tpl->assign('type3', 'checked');
+                    $this->_tpl->assign('pic', 'style="display:block');
+                    $this->_tpl->assign('up', "<input type=\"button\" value=\"上传侧栏广告\" onclick=\"centerWindow('../config/upfile.php?type=adver&size=270*200','upfile','400','100')\"/>");
                     break;
             }
-            if(empty($_adver->state)){
-                $this->_tpl->assign('left_state','');
-                $this->_tpl->assign('right_state','checked');
-            }else{
-                $this->_tpl->assign('left_state','checked');
-                $this->_tpl->assign('right_state','');
+            if (empty($_adver->state)) {
+                $this->_tpl->assign('left_state', '');
+                $this->_tpl->assign('right_state', 'checked');
+            } else {
+                $this->_tpl->assign('left_state', 'checked');
+                $this->_tpl->assign('right_state', '');
             }
         } else {
             Tool::alertBack('非法操作！');
@@ -204,13 +204,14 @@ class AdverAction extends Action
     }
 
     //生成文字js广告
-    private function text(){
+    private function text()
+    {
         $_object = $this->_model->getNewTextAdver();
-        $_js  = "var text = [];\r\n";
+        $_js = "var text = [];\r\n";
 
         $i = 0;
-        if($_object){
-            foreach($_object as $_value){
+        if ($_object) {
+            foreach ($_object as $_value) {
                 $i++;
                 $_js .= "text[$i] = {\r\n";
                 $_js .= "\t'title': '$_value->title',\r\n";
@@ -222,21 +223,22 @@ class AdverAction extends Action
         $_js .= "var i = Math.floor(Math.random() * $i + 1);\r\n";
         $_js .= "document.write('<a target=\"_blank\" class=\"adv\" href=\"' + text[i].link + '\">' + text[i].title + '</a>');\r\n";
 
-        if(!file_put_contents('../js/text_adver.js',$_js)){
+        if (!file_put_contents('../js/text_adver.js', $_js)) {
             Tool::alertBack('警告:生成文字js文件出错!');
         }
-        Tool::alertLocation('恭喜文字js生成成功！','?action=show');
+        Tool::alertLocation('恭喜文字js生成成功！', '?action=show');
     }
 
 
     //生成头部js广告
-    private function header(){
+    private function header()
+    {
         $_object = $this->_model->getNewHeaderAdver();
-        $_js  = "var header = [];\r\n";
+        $_js = "var header = [];\r\n";
 
         $i = 0;
-        if($_object){
-            foreach($_object as $_value){
+        if ($_object) {
+            foreach ($_object as $_value) {
                 $i++;
                 $_js .= "header[$i] = {\r\n";
                 $_js .= "\t'title': '$_value->title',\r\n";
@@ -249,20 +251,21 @@ class AdverAction extends Action
         $_js .= "var i = Math.floor(Math.random() * $i + 1);\r\n";
         $_js .= "document.write('<a class=\"adv\" target=\"_blank\" title=\"' + header[i].title + '\" href=\"' + header[i].link + '\"><img src=\"' + header[i].pic + '\" /></a>');\r\n";
 
-        if(!file_put_contents('../js/header_adver.js',$_js)){
+        if (!file_put_contents('../js/header_adver.js', $_js)) {
             Tool::alertBack('警告:生成头部js文件出错!');
         }
-        Tool::alertLocation('恭喜头部js生成成功！','?action=show');
+        Tool::alertLocation('恭喜头部js生成成功！', '?action=show');
     }
 
     //生成侧栏js广告
-    private function sidebar(){
+    private function sidebar()
+    {
         $_object = $this->_model->getNewSidebarAdver();
-        $_js  = "var sidebar = [];\r\n";
+        $_js = "var sidebar = [];\r\n";
 
         $i = 0;
-        if($_object){
-            foreach($_object as $_value){
+        if ($_object) {
+            foreach ($_object as $_value) {
                 $i++;
                 $_js .= "sidebar[$i] = {\r\n";
                 $_js .= "\t'title': '$_value->title',\r\n";
@@ -275,12 +278,11 @@ class AdverAction extends Action
         $_js .= "var i = Math.floor(Math.random() * $i + 1);\r\n";
         $_js .= "document.write('<a class=\"adv\" target=\"_blank\" title=\"' + sidebar[i].title + '\" href=\"' + sidebar[i].link + '\"><img border=\"0\" src=\"' + sidebar[i].pic + '\" /></a>');\r\n";
 
-        if(!file_put_contents('../js/sidebar_adver.js',$_js)){
+        if (!file_put_contents('../js/sidebar_adver.js', $_js)) {
             Tool::alertBack('警告:生成侧栏js文件出错!');
         }
-        Tool::alertLocation('恭喜侧栏js生成成功！','?action=show');
+        Tool::alertLocation('恭喜侧栏js生成成功！', '?action=show');
     }
-
 
 
 }

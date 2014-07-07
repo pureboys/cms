@@ -106,13 +106,13 @@ class VoteAction extends Action
         $this->_tpl->assign('update', false);
         $this->_tpl->assign('title', '投票主题列表');
         $_object = $this->_model->getAllVote();
-        if($_object){
-            foreach($_object as $_value){
+        if ($_object) {
+            foreach ($_object as $_value) {
                 if (empty($_value->state))
                     $_value->state = '<span class="red">否</span> | <a href="vote.php?action=state&type=ok&id=' . $_value->id . '">通过</a>';
                 else
                     $_value->state = '<span class="green">是</span>';
-                if(empty($_value->pcount)) $_value->pcount = 0;
+                if (empty($_value->pcount)) $_value->pcount = 0;
             }
         }
         $this->_tpl->assign('AllVote', $_object);
@@ -194,14 +194,13 @@ class VoteAction extends Action
             if ($_GET['type'] == 'ok') {
                 $this->_model->setStateCancel();
                 $this->_model->setStateOK() ? Tool::alertLocation(null, PREV_URL) : Tool::alertBack('警告：通过失败！');
-            }else {
+            } else {
                 Tool::alertBack('警告:非法操作');
             }
         } else {
             Tool::alertBack('警告：非法操作!');
         }
     }
-
 
 
 }
