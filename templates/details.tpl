@@ -52,8 +52,9 @@
                     <!-- end page-header -->
                     <ul class="list-inline post-meta">
                         <li><span class="fa fa-calendar"></span>{$date}</li>
-                        <li><span class="fa fa-user"></span> 作者：<a href="#none">{$author}</a></li>
+                        <li><span class="fa fa-user"></span> 作者：{$author}</li>
                         <li><span class="fa fa-list-ul"></span>来源：{$source}</li>
+                        <li><span class="fa fa-tags">Tag:{$tag}</span></li>
                         <li><span class="fa fa-comments"></span><a
                                     href="/feedback.php?cid={$id}">已经有<span>{$comment}</span>人参与评论</a></li>
                     </ul>

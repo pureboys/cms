@@ -37,20 +37,21 @@
                 {foreach $CommendContent(key,value)}
                 <article>
                     <div class="page-header">
-                        <h1>{@value->title}</h1>
-
+                        <h1><a href="details.php?id={@value->id}">{@value->title}</a></h1>
                         <p class="lead">{@value->info}</p>
                     </div>
                     <!-- end page-header -->
                     <ul class="list-inline post-meta">
                         <li><span class="fa fa-calendar">{@value->date}</span></li>
-                        <li><span class="fa fa-user"></span> 作者：<a href="#none">{@value->author}</a></li>
+                        <li><span class="fa fa-user"></span> 作者：{@value->author}</li>
                         <li><span class="fa fa-list-ul"></span>来源：{@value->source}</li>
                         <li><span class="fa fa-comments"></span><a
                                     href="/feedback.php?cid={@value->id}">已经有<span>{@value->commend}</span>人参与评论</a></li>
                     </ul>
+
                 </article>
-                <div class="clearfix"></div>
+                <div class="clearfix margin-bottom-5">
+                </div>
                 {/foreach}
             </div>
             <!-- end portfolio-wrapper -->
