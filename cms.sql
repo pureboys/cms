@@ -1,27 +1,26 @@
--- MySQL dump 10.13  Distrib 5.5.36, for Linux (i686)
---
--- Host: localhost    Database: cms
--- ------------------------------------------------------
--- Server version	5.5.36
+/*
+ Navicat Premium Data Transfer
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
-/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
-/*!40103 SET TIME_ZONE='+00:00' */;
-/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+ Source Server         : local
+ Source Server Type    : MySQL
+ Source Server Version : 50617
+ Source Host           : localhost
+ Source Database       : cms
 
---
--- Table structure for table `cms_adver`
---
+ Target Server Type    : MySQL
+ Target Server Version : 50617
+ File Encoding         : utf-8
 
+ Date: 08/14/2014 11:49:39 AM
+*/
+
+SET NAMES utf8;
+SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+--  Table structure for `cms_adver`
+-- ----------------------------
 DROP TABLE IF EXISTS `cms_adver`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `cms_adver` (
   `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
   `title` varchar(20) NOT NULL,
@@ -33,25 +32,18 @@ CREATE TABLE `cms_adver` (
   `date` datetime NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `cms_adver`
---
+-- ----------------------------
+--  Records of `cms_adver`
+-- ----------------------------
+BEGIN;
+INSERT INTO `cms_adver` VALUES ('1', '腾讯新广告', '', 'http://qq.com', '腾讯新广告腾讯新广告', '1', '1', '2014-05-26 10:00:01'), ('2', '新浪微博', '', 'http://weibo.com', '新浪微博', '1', '1', '2014-05-26 10:00:53'), ('3', '淘宝广告', '', 'http://taobao.com', '淘宝广告', '1', '1', '2014-05-26 10:01:13'), ('5', 'bb霜', '/uploads/20140526/20140526100229144.png', 'http://baidu.com', 'bb霜', '2', '1', '2014-05-26 10:02:35'), ('6', 'bb霜', '/uploads/20140526/20140526100324693.png', 'http://php.net', 'bb霜', '2', '1', '2014-05-26 10:03:28'), ('7', '侧栏', '/uploads/20140526/20140526140713895.png', 'http://taobao.com', '', '3', '1', '2014-05-26 10:03:53'), ('8', '侧栏', '/uploads/20140526/20140526140757784.png', 'http://taobao.com', '', '3', '1', '2014-05-26 10:04:27');
+COMMIT;
 
-LOCK TABLES `cms_adver` WRITE;
-/*!40000 ALTER TABLE `cms_adver` DISABLE KEYS */;
-INSERT INTO `cms_adver` VALUES (1,'腾讯新广告','','http://qq.com','腾讯新广告腾讯新广告',1,1,'2014-05-26 10:00:01'),(2,'新浪微博','','http://weibo.com','新浪微博',1,1,'2014-05-26 10:00:53'),(3,'淘宝广告11','','http://taobao.com','淘宝广告111',1,1,'2014-05-26 10:01:13'),(5,'bb霜','/uploads/20140526/20140526100229144.png','http://baidu.com','bb霜',2,1,'2014-05-26 10:02:35'),(6,'bb霜2','/uploads/20140526/20140526100324693.png','http://php.net','bb霜',2,1,'2014-05-26 10:03:28'),(7,'侧栏12','/uploads/20140526/20140526140713895.png','http://taobao.com','123456',3,1,'2014-05-26 10:03:53'),(8,'侧栏2','/uploads/20140526/20140526140757784.png','http://taobao.com','',3,1,'2014-05-26 10:04:27');
-/*!40000 ALTER TABLE `cms_adver` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `cms_comment`
---
-
+-- ----------------------------
+--  Table structure for `cms_comment`
+-- ----------------------------
 DROP TABLE IF EXISTS `cms_comment`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `cms_comment` (
   `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
   `user` varchar(20) NOT NULL,
@@ -60,29 +52,22 @@ CREATE TABLE `cms_comment` (
   `manner` tinyint(1) NOT NULL,
   `cid` mediumint(8) unsigned NOT NULL,
   `date` datetime NOT NULL,
-  `sustain` smallint(6) unsigned NOT NULL COMMENT '支持',
-  `oppose` smallint(6) NOT NULL COMMENT '反对',
+  `sustain` smallint(6) NOT NULL DEFAULT '0' COMMENT '支持',
+  `oppose` smallint(6) NOT NULL DEFAULT '0' COMMENT '反对',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `cms_comment`
---
+-- ----------------------------
+--  Records of `cms_comment`
+-- ----------------------------
+BEGIN;
+INSERT INTO `cms_comment` VALUES ('15', '游客', '期待，赞！！！！！', '1', '0', '56', '2014-08-14 11:41:49', '1', '0'), ('16', '樱桃小丸子', '非常不错！赞！！！', '1', '0', '56', '2014-08-14 11:42:50', '2', '0'), ('17', '路飞', '挺好的，支持 支持', '1', '1', '57', '2014-08-14 11:45:25', '0', '0');
+COMMIT;
 
-LOCK TABLES `cms_comment` WRITE;
-/*!40000 ALTER TABLE `cms_comment` DISABLE KEYS */;
-INSERT INTO `cms_comment` VALUES (4,'樱桃小丸子','国人民解放军军事学院中美防务关系研究中心研究员赵蔚彬表示，房峰辉此次访美恰逢其时，将释放有信心推进中美两军关系的积极信号、削弱企图炒作“中国威胁”的言论',1,1,49,'2014-05-14 15:10:53',0,0),(5,'樱桃小丸子','wwwwwwwwwwwwwwww',1,1,49,'2014-05-14 15:16:38',3,3),(6,'游客','mytest',1,1,49,'2014-05-14 16:48:02',3,0),(9,'游客','asdfa',1,1,47,'2014-05-15 09:50:25',3,1),(10,'游客','asdf',1,1,49,'2014-05-15 09:51:23',68,18);
-/*!40000 ALTER TABLE `cms_comment` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `cms_content`
---
-
+-- ----------------------------
+--  Table structure for `cms_content`
+-- ----------------------------
 DROP TABLE IF EXISTS `cms_content`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `cms_content` (
   `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT COMMENT '//编号',
   `title` varchar(50) NOT NULL COMMENT '//标题',
@@ -103,52 +88,38 @@ CREATE TABLE `cms_content` (
   `color` varchar(20) NOT NULL COMMENT '//颜色',
   `date` datetime NOT NULL COMMENT '//发布时间',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=52 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+) ENGINE=InnoDB AUTO_INCREMENT=58 DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `cms_content`
---
+-- ----------------------------
+--  Records of `cms_content`
+-- ----------------------------
+BEGIN;
+INSERT INTO `cms_content` VALUES ('44', '《无头骑士异闻录》第二季再曝视觉图', '14', '推荐,头条', '无头骑士异闻录', '无头骑士异闻录,第二季', '/uploads/20140814/20140814104402336.jpg', '腾讯动漫', 'admin', '即将于2015年1月开始播出的《无头骑士异闻录》第2季《无头骑士异闻录×2》曝光了视觉图第2弹。还记得不久前公开的第1弹视觉图画的是龙峰帝人、纪田正臣和园原杏里这3名', '<p>即将于2015年1月开始播出的《无头骑士异闻录》第2季《无头骑士异闻录&times;2》曝光了视觉图第2弹。还记得不久前公开的第1弹视觉图画的是龙峰帝人、纪田正臣和园原杏里这3名主角，这次曝光的第2弹视觉图同样也画了3个人。左右两名女性角色是折原临也的两个双胞胎妹妹九瑠璃和舞流，中间扁着嘴巴、站得笔挺挺的男生是第2季的新登场角色黑沼青叶。</p>\r\n\r\n<p>《无头骑士异闻录》原作是成田良悟创作的系列轻小说作品，累计销量500万本。本作以池袋为舞台，讲述生活在这里的形形色色的人物的故事。TV动画第1季2010年1月播出，出演声优有泽城美雪、丰永利行、宫野真守、花泽香菜、神谷浩史等。</p>\r\n\r\n<p>《无头骑士异闻录&times;2》2015年1月播出</p>\r\n\r\n<p><strong>【STAFF】</strong></p>\r\n\r\n<p>原作：成田良悟《无头骑士异闻录》（电击文库出版）</p>\r\n\r\n<p>原作插画：安田典生</p>\r\n\r\n<p>导演：大森贵弘</p>\r\n\r\n<p>系列构成：高木登</p>\r\n\r\n<p>角色设定：岸田隆宏</p>\r\n\r\n<p>总作画监督：高田晃</p>\r\n\r\n<p>动作作画监督：山田起生</p>\r\n\r\n<p>美术：伊藤圣</p>\r\n\r\n<p>美术设定：藤濑智康</p>\r\n\r\n<p>小道具设计：山崎绘里</p>\r\n\r\n<p>色彩设计：宫胁裕美</p>\r\n\r\n<p>CG制作：神林宪和</p>\r\n\r\n<p>编辑：关一彦</p>\r\n\r\n<p>摄影：田村仁</p>\r\n\r\n<p>音乐：吉森信</p>\r\n\r\n<p>动画制作：朱夏</p>\r\n', '0', '226', '0', '2', '2', 'blue', '2014-04-04 13:20:33'), ('45', 'AnimePower武汉动漫展9月登陆江城', '16', '推荐,头条', '武汉动漫', '武汉动漫', '/uploads/20140814/20140814102331697.jpg', '腾讯动漫', 'admin', '武汉动漫展近来有如雨后春笋之势， 然而，9月6~7日举办的AnimePower武汉动漫展（简称（AP动漫展）主办泽群别出心裁，筹划了一场不同于以往武汉漫展的动漫盛宴。', '<p>武汉<a href=\"http://comic.qq.com/\" target=\"_blank\">动漫</a>展近来有如雨后春笋之势， 然而，9月6~7日举办的AnimePower武汉动漫展（简称（AP动漫展）主办泽群别出心裁，筹划了一场不同于以往武汉漫展的动漫盛宴。</p>\r\n\r\n<p>据悉，首届AP动漫展主打声优与画师，请来了在《草莓棉花糖》、《白色相薄2》、《我的妹妹哪有那么可爱》、《惊爆草莓》、《<a href=\"http://comic.qq.com/z/bleach/\" target=\"_blank\">死神</a>》中有精彩表现的日本知名声优生天目仁美以及卡牌<a href=\"http://comic.qq.com/mini/mini.shtml\" target=\"_blank\">游戏</a>《扩散性百万亚瑟王》的高人气角色妮妙的人设&mdash;&mdash;日本画师refeia。</p>\r\n\r\n<p>这是史上首次有日本声优来武汉举办声优见面会，开创了武汉动漫展真正接轨国际的先河。主办方表示，在期盼得到大家的认可和支持的同时，AP动漫展将回应动 漫迷的期待继续请日本知名声优与大家见面，可以不用大费周折的远赴外地，更不用专程飞往日本，在武汉本土就能见到自己喜爱的声优，并能与声优互动！这对武 汉动漫迷来说无疑一个天大的福音。</p>\r\n\r\n<p>目前名为&ldquo;AnimePower官博君&rdquo;的AP动漫展官方微博正在进行&ldquo;你想要哪个声优来武 汉&rdquo;的邀请声优调查活动，不光得到了武汉本土动漫迷们的热烈反响，更得到了全国各地动漫迷们的响应与支持。据相关人士透露，主办方在期待首届AP动漫展得 到大家支持，取得圆满成功的同时，也在企划着明年的动漫展。明年企划中的AP动漫展有两场，届时邀请的声优将综合广大漫迷的意见，力求邀请到漫迷们喜爱的 声优来武汉跟全国的动漫迷们见面互动。</p>\r\n\r\n<p>据悉，日本知名画师refeia是9月6~7日 都会在漫展现场的，会现场作画、与观众互动，还有签售。网络上的&ldquo;妮妙狂人&rdquo;为了见&ldquo;准岳父&rdquo;refeia已买好票，请好假，准备不远万里前来&ldquo;拜见岳 父&rdquo;，由此可见refeia的画也是极具魔性，非常吸引人的。refeia著有的萌绘教科书（萌え絵の教科書）是给初学者的教科书，也有着相当的人气。主 办方希望透过refeia让动漫迷们找到画画的信心，重燃画自己喜欢的东西的热情，能够更加贴近二次元。</p>\r\n', '1', '127', '0', '0', '0', '', '2014-05-04 13:53:35'), ('51', 'UF动漫展开幕柿原彻也堀江由衣领衔', '16', '头条,推荐,加粗', '磐石', '堀江由衣,柿原彻也,UF动漫展', '/uploads/20140814/20140814101929568.jpg', '', 'admin', '离UF开幕只有不到半个月的时间了！各位小伙伴是不是都做好一切准备，来UF各种买买买看看看拍拍拍赞赞赞呢！！', '<p>离UF开幕只有不到半个月的时间了！各位小伙伴是不是都做好一切准备，来UF各种买买买看看看拍拍拍赞赞赞呢！UF组委会的大家和秋子一起，为大家准备了一份深圳暑期最奢华的活动盛宴，一次性满足您所有的愿望！那么，今天就和秋子一起来看看舞台和签售台的精彩活动吧！</p>\r\n\r\n<p><img alt=\"\" src=\"/uploads/20140814/20140814111252764.jpg\" style=\"height:890px; width:640px\" /></p>\r\n', '1', '267', '0', '0', '0', '', '2014-05-21 14:23:25'), ('52', '十月新番《天体的秩序》片尾曲歌手公布', '14', '无属性', '天体的秩序', '天体的秩序,十月新番', '/uploads/20140814/20140814104659755.jpg', '腾讯动漫', 'admin', '即将于今年十月起开播的秋季新番《天体的秩序》公开了最新片尾曲情报。据悉，《天体的秩序》片尾曲“星屑のインターリュード”将由fhana献唱。', '<p>即将于今年十月起开播的秋季新番《天体的秩序》公开了最新片尾曲情报。据悉，《天体的秩序》片尾曲&ldquo;星屑のインターリュード&rdquo;将由fhana献唱。 fhana曾经以演唱TV动画《有顶天家族》的片尾曲&ldquo;ケセラセラ&rdquo;在Lantis正式出道，此后为《银狐》、《魔女的使命》以及《我们大家的河合庄》等 多部作品献唱主题曲。</p>\r\n\r\n<p>另外，OP主题曲&ldquo;Stargazer&rdquo;曾经已经为大家报道过，将会由所属北海道为主要活动地 点的音乐创作团体I&#39;ve的Larval Stage Planning献唱。一同收录的CP曲&ldquo;North Method&rdquo;将会是《天体的秩序》的印象曲，在此前发布的PV中我们可以提前尝鲜。</p>\r\n\r\n<p>《天体的秩序（天体のメソッド）》由日本知名<a href=\"http://comic.qq.com/pic/comictongren01.shtml\" target=\"_blank\">同人</a>剧 本作家久弥直树，携手画师QP：flapper（由さくら小春、小原トメ太组成的绘师组合）共同打造的原创电视动画。故事撞树某日在雾弥湖的上空中出现了 谜样的圆盘，一度造成全世界的混乱与恐慌，但飞碟却只停留在空中，并没有进一步的行动。在时间流逝中人们渐渐对这件事失去了兴趣......就在两名少女 相遇后，静止的时间再次流动，让众人有所改变的全新故事展开，中学生活最后那一年，将拥有一生无法忘怀的回忆。</p>\r\n\r\n<p><img alt=\"\" src=\"/uploads/20140814/20140814111227589.jpg\" style=\"height:433px; width:480px\" /></p>\r\n\r\n<p><strong>【STAFF】</strong></p>\r\n\r\n<p>监督：迫井政行</p>\r\n\r\n<p>原案・脚本：久弥直树</p>\r\n\r\n<p>人物原案：QP:flapper</p>\r\n\r\n<p>人物设定・总作画监督：秋谷有纪惠</p>\r\n\r\n<p>大道具：りぱ</p>\r\n\r\n<p>小道具：古泽祐纪子</p>\r\n\r\n<p>美术设定：金平和茂（KUSANAGI）</p>\r\n\r\n<p>美术监督：伊藤弘（KUSANAGI）</p>\r\n\r\n<p>色彩设计：加藤里惠</p>\r\n\r\n<p>摄影监督：出水田和人（T2 studio）</p>\r\n\r\n<p>编辑：定松刚（SATELGHT）</p>\r\n\r\n<p>音响监督：明田川仁</p>\r\n\r\n<p>音乐制作：Lantis</p>\r\n\r\n<p>印象曲：Larval Stage Planning「North Method」</p>\r\n\r\n<p>制片：infinite</p>\r\n\r\n<p>动画制作：Studio 3Hz</p>\r\n\r\n<p><strong>【CAST】</strong></p>\r\n\r\n<p>古宮乃乃香：夏川椎菜</p>\r\n\r\n<p>椎原小春：佳村遥</p>\r\n\r\n<p>水坂柚季：丰崎爱生</p>\r\n\r\n<p>户川汐音：小松未可子</p>\r\n\r\n<p>诺艾露：水濑祈</p>\r\n\r\n<p>水坂凑太：石川界人</p>\r\n\r\n<p><strong>【主题曲】</strong></p>\r\n\r\n<p>OP：Stargazer</p>\r\n\r\n<p>唱：Larval Stage Planning</p>\r\n\r\n<p>ED：星屑のインターリュード</p>\r\n\r\n<p>唱：fhana</p>\r\n', '1', '102', '0', '0', '0', '', '2014-08-14 10:47:25'), ('53', '这是真爱！盘点羡煞旁人的校园情侣', '15', '无属性', '真爱,cp', '真爱,cp', '/uploads/20140814/20140814105137495.jpg', '腾讯动漫', 'admin', '纯纯的爱恋，青涩的初恋，校园中的点点滴滴，那段青葱的过往，那段美好的时光，都将成为我们日后回忆的美好记忆，不敢开口的，不好意思的，害羞的，腼腆 的，还未说出口的还有已经说出口的感情随着时光的流逝慢慢', '<p>纯纯的爱恋，青涩的初恋，校园中的点点滴滴，那段青葱的过往，那段美好的时光，都将成为我们日后回忆的美好记忆，不敢开口的，不好意思的，害羞的，腼腆 的，还未说出口的还有已经说出口的感情随着时光的流逝慢慢淡去，能在青涩的校园生活中添加一段浪漫的爱情也是人生中的一大美好，接下来就为大家盘点二次元 中那些明里暗里成双成对的情侣们，请准备好墨镜~</p>\r\n\r\n<p>校园纯爱剧代表作《好想急死你》，传说中的&ldquo;贞子&rdquo;浓黑的长发，就算是在盛夏也是惨白的皮肤，阴沉的脸，连笑容都让人感到恐惧的女生&mdash;&mdash;黑沼爽子，一个早 已经被遗忘的名字，被大家称做&ldquo;贞子&rdquo;，从小学到高中都是如此，几乎没有人知道她的本名，天天都被人害怕着。其实她只是阴沉了一点，笑起来有点恐怖，周围 的空气流动比较诡异点而已。爽子很想很想和大家融洽的相处，很想很想尽自己的力量去帮助大家，她有一颗很温柔、善良、纯洁的心，但是却包裹在&ldquo;贞子&rdquo;的外 貌下&hellip;&hellip;就这样被大家误解了、害怕了。直到风早的出现，阳光耀眼的他，亲切度、爽朗度100%，会对着被称做&ldquo;贞子&rdquo;的爽子微笑，和她说话，发现她那颗纤 细而温柔的心，并且第一个叫出了她的名字&hellip;&hellip;&ldquo;爽朗王子&rdquo;和被称为&ldquo;女鬼贞子&rdquo;的校园爱情故事开始了~</p>\r\n\r\n<p>&nbsp;</p>\r\n', '1', '101', '0', '0', '0', '', '2014-08-14 10:51:55'), ('54', '《夏目友人帐》之带给他温暖的角色们', '15', '无属性', '夏目友人帐', '夏目友人帐', '/uploads/20140814/20140814105336978.jpg', '腾讯动漫', 'admin', '说起治愈番，大家最熟悉的就是《夏目友人帐》了，每一个故事看似不相连，却有着千丝万缕的关系，也许一开始你看着索然无味，但是看着看着你会发现感动是一 点一滴积累的，说夏目是治愈之王一点也不为过', '<p>说起治愈番，大家最熟悉的就是《夏目友人帐》了，每一个故事看似不相连，却有着千丝万缕的关系，也许一开始你看着索然无味，但是看着看着你会发现感动是一 点一滴积累的，说夏目是治愈之王一点也不为过。那些令我们哭过、笑过、伤心过、大笑过的角色们，不止治愈了主人公夏目贵志，也治愈了我们。下面就带大家一 起回忆配夏目走过春夏秋冬的角色们~</p>\r\n\r\n<p>&nbsp;作为带给夏目温暖的还一直陪在他身边的，娘口三三第二谁敢第一？斑是一只高级妖怪，被封印在招财猫里，因为夏目不小心弄断封印的绳子而被解放，作为宠物 猫和保镖与夏目一起生活着，但是因为多年被封印在招财猫中而被同化了，日常行为作风带有浓重的猫习气。自傲的他成为夏目的保镖后要夏目尊称他&ldquo;猫咪老 师&rdquo;，但很多时候都被戏弄。本与夏目约定其死后友人帐就归他，然而在与夏目相处中逐渐被感化。爱酗酒且酒品奇差，五音不全。喜欢吃馒头，与夏目表面上无时 无刻不在斗嘴，其实非常重视夏目的~</p>\r\n', '1', '105', '0', '0', '0', '', '2014-08-14 10:53:40'), ('55', '《魔法少女伊莉雅2》角色歌专辑十月发售', '18', '无属性', '魔法少女伊莉雅', '魔法少女伊莉雅2', '/uploads/20140814/20140814105556843.jpg', '腾讯动漫', 'admin', '于今年7月起开播的系列TV动画续作《Fate/kaleid liner 魔法少女☆伊莉雅 2wei！》公开了其角色歌曲CD“Prisma☆Love Parade”的具体发售时间，', '<p>于今年7月起开播的系列TV动画续作《Fate/kaleid liner 魔法少女☆伊莉雅 2wei！》公开了其角色歌曲CD&ldquo;Prisma☆Love Parade&rdquo;的具体发售时间，为10月29日、11月26日以及12月24日。正如大家所见，这次的伊莉雅二期角色曲专辑共分三张，vol.1将会在 10月29日最先发售，另外两张则分别会在随后的11月26日和12月24日发售。届时vol.1中会收录伊莉雅（CV：门胁舞以）以及小黑（CV：斋藤 千和）的个人角色歌曲，有兴趣的朋友可以通过官网查看。</p>\r\n\r\n<p>《Fate/kaleid liner 魔法少女☆伊莉雅 2wei!》改编自TYPE-MOON原作、广山弘作画的同名漫画，也是曾于2013年7月播放的电视动画《Fate/kaleid liner 魔法少女☆伊莉雅》的第二期作品。故事讲述一个就读穗群原学园的普通女孩伊莉雅，某天突然被万花筒之杖的人工天然精灵魔法红宝石强制缔结契约，成为了魔法 少女伊莉雅。她在万花筒之杖前任持有者远坂凛的命令下，开始被迫帮忙回收阶级卡片的故事。</p>\r\n\r\n<p><img alt=\"\" src=\"/uploads/20140814/20140814111203796.jpg\" style=\"height:650px; width:458px\" /></p>\r\n\r\n<p><strong>【STAFF】</strong></p>\r\n\r\n<p>原作：广山弘、TYPE-MOON</p>\r\n\r\n<p>企划：安田猛</p>\r\n\r\n<p>总监督：大沼心</p>\r\n\r\n<p>监督：神保昌登</p>\r\n\r\n<p>系列构成：井上坚二</p>\r\n\r\n<p>剧本：水濑叶月</p>\r\n\r\n<p>角色设计：牛岛希</p>\r\n\r\n<p>美术监督：立石健</p>\r\n\r\n<p>编辑：坪根健太郎</p>\r\n\r\n<p>音响监督：土屋雅纪</p>\r\n\r\n<p>音响制作：DAX Production</p>\r\n\r\n<p>音乐：加藤达也</p>\r\n\r\n<p>音乐制作：Lantis</p>\r\n\r\n<p>动画制作：SILVER LINK.</p>\r\n\r\n<p>OP：moving soul（栗林美奈实）</p>\r\n\r\n<p>ED：TWO BY TWO（幸田梦波）</p>\r\n\r\n<p><strong>【CAST】</strong></p>\r\n\r\n<p>伊莉雅丝菲尔&middot;冯&middot;艾因兹贝伦：门胁舞以</p>\r\n\r\n<p>美游&middot;艾蒂菲尔特：名冢佳织</p>\r\n\r\n<p>小黑：斋藤千和</p>\r\n\r\n<p>远坂凛：植田佳奈</p>\r\n\r\n<p>露维亚瑟琳塔&middot;艾蒂菲尔特：伊藤静</p>\r\n\r\n<p>红宝石之星：高野直子</p>\r\n\r\n<p>蓝宝石之星：松来未佑</p>\r\n\r\n<p>卫宫士郎：杉山纪彰</p>\r\n\r\n<p>莎拉：寺田春日</p>\r\n\r\n<p>莉丝：宫川美保</p>\r\n\r\n<p>藤村大河：伊藤美纪</p>\r\n\r\n<p>森山那奈龟：伊濑茉莉也</p>\r\n\r\n<p>岳间泽龙子：加藤英美里</p>\r\n\r\n<p>栗原雀花：伊藤加奈惠</p>\r\n\r\n<p>桂美美：佐藤聪美</p>\r\n\r\n<p>巴泽特&middot;弗拉加&middot;马克雷密斯：生天目仁美</p>\r\n\r\n<p>卡莲&middot;奥尔黛西亚：小清水亚美</p>\r\n\r\n<p>爱丽斯菲尔&middot;冯&middot;爱因兹贝伦：大原沙耶香</p>\r\n\r\n<p>卫宫切嗣：小山力也</p>\r\n', '1', '106', '0', '0', '0', '', '2014-08-14 10:56:04'), ('56', '《纯白交响曲》蓝光BOX将于平安夜发售', '18', '无属性', '纯白交响曲', '纯白交响曲', '/uploads/20140814/20140814105811724.jpg', '腾讯动漫', 'admin', '2011年10月，根据人气恋爱美少女游戏改编的同名动画《纯白交响曲》同广大动漫迷见面。这一部作品是由曾经负责过《只有神知道的世界》等大人气作品的manglobe进行制作', '<p>2011年10月，根据人气恋爱美少女游戏改编的同名动画《纯白交响曲》同广大动漫迷见面。这一部作品是由曾经负责过《只有神知道的世界》等大人气作品的manglobe进行制作，故事当中细腻的剧情刻画以及个性丰满的美少女们无不给观众留下了深刻的印象，当然作品最后的结局也引起了不少争议。而近日，官方宣布将在2014年12月24日发售该作品的蓝光BOX，在平安夜之际有了这样一部动画相伴，恐怕很多独守空闺的宅人们也能得到一丝安慰了吧？</p>\r\n\r\n<p>此次的蓝光BOX将收录本篇剧情（约282分钟、12集）以及约72分钟的映像特典。而其他特典方面将包括：</p>\r\n\r\n<p>1.动画版最新设计的外包装</p>\r\n\r\n<p>2.特制精美手册</p>\r\n\r\n<p>3. 映像特典《纯白白金》、另一个故事&ldquo;她的颜色是爱理&rdquo;、无字幕版主题曲画面、无字幕版片尾曲画面、MV（爱理/樱乃）、MV（安洁莉娜&middot;菜夏&middot;史威尔/天 羽美羽/纱凪）、安洁莉娜与樱乃的迎接大作战、欢迎来到干家、真人影像（小野凉子、吉田真弓、樱井好美）、结尾卡片等。</p>\r\n\r\n<p>《纯白交响曲》蓝光BOX售价为23760日元。</p>\r\n\r\n<p><strong>【剧情梗概】</strong></p>\r\n\r\n<p>男 主角瓜生新吾是&ldquo;各务台学园&rdquo;的普通学生。不过该学校由于各种原因的关系，在新学期开始的时候将同名叫&ldquo;结姬女子学园&rdquo;的名门女校进行合并。为了让学生能 够更加融洽地相处，校方在新学期开始之前实行了试行合并，包括新吾在内的数十名各务台学园生试验性地到结女学园上学。而男生的出现也在女校引发了不小的骚 动，众多个性丰富的妹子们也扎堆似的出现在了男主角的面前。那么包围在后宫般的环境当中，新吾又将从何选择呢&hellip;&hellip;</p>\r\n\r\n<p><img alt=\"\" src=\"/uploads/20140814/20140814111127464.jpg\" style=\"height:400px; width:640px\" /></p>\r\n\r\n<p><strong>【制作人员】</strong></p>\r\n\r\n<p>原作 ： Palette</p>\r\n\r\n<p>导演 ： 菅沼荣治</p>\r\n\r\n<p>人设&middot;总作画导演 ： 川村敏江</p>\r\n\r\n<p>系列构成 ： Team RIKKA</p>\r\n\r\n<p>道具设计 ： 新沼大祐</p>\r\n\r\n<p>美术导演 ： 佐藤步</p>\r\n\r\n<p>色彩设计 ： 中尾总子</p>\r\n\r\n<p>摄影导演 ： 高桥贤司</p>\r\n\r\n<p>编辑 ： 长坂智树</p>\r\n\r\n<p>音响导演 ： 矢野SATOSI</p>\r\n\r\n<p>音乐 ： 虹音</p>\r\n\r\n<p>制作人 ： 深尾聪志、冈田登志男、田中信作、樱井优香</p>\r\n\r\n<p>动画制作 ： 河内山隆、工藤博</p>\r\n\r\n<p>制作公司 ： Manglobe</p>\r\n\r\n<p>制作 ： 纯白交响曲制作委员会（Frontier Works、Media Factory、Lantis）</p>\r\n\r\n<p><strong>【声优名单】</strong></p>\r\n\r\n<p>瓜生新吾 ：水岛大宙</p>\r\n\r\n<p>濑名爱理 ：小野凉子</p>\r\n\r\n<p>瓜生樱乃 ：后藤麻衣</p>\r\n\r\n<p>天羽美羽 ：力丸乃梨子</p>\r\n\r\n<p>干纱凪 ：吉田真弓</p>\r\n\r\n<p>安洁莉娜&middot;菜夏&middot;史威尔 ：壹智村小真</p>\r\n\r\n<p>小熊喵、妈妈喵、濑名兰华 ：樱井浩美</p>\r\n\r\n<p>椋梨隼太 ：铃木达央</p>\r\n\r\n<p>八冢万智 ：瑞泽溪</p>\r\n\r\n<p>小野宫结月 ：田口宏子</p>\r\n\r\n<p>浅仓树 ：赤崎千夏</p>\r\n\r\n<p>雨石由香里、少女、打工者 ：辻步美</p>\r\n\r\n<p>雪森美津子、同班同学 ：三宅麻理惠</p>\r\n\r\n<p>风川真澄 ：横山菜菜</p>\r\n\r\n<p>水原浩一、男学生 ：逢坂良太</p>\r\n\r\n<p>佐佐木勇介、男学生 ：伊势文秀</p>\r\n\r\n<p>调理实习讲师 ：石田嘉代</p>\r\n\r\n<p>体育教师 ：冈田幸子</p>\r\n', '1', '113', '0', '0', '0', '', '2014-08-14 10:58:17'), ('57', '彩虹小马MY LITTLE PONY:评测 好玩易上瘾', '20', '无属性', '彩虹小马,MY LITTLE PONY', '彩虹小马,MY LITTLE PONY', '/uploads/20140814/20140814113456697.jpg', '腾讯动漫', 'admin', '彩虹小马(MYLITTLEPONY)是由著名的游戏公司开发公司gameloft最新推出的一款模拟经营类游戏今年正值彩虹小马系类动画片上映30 周年，这部在美国深受用户喜爱的动画篇', '<p>彩虹小马(MYLITTLEPONY)是由著名的游戏公司开发公司gameloft最新推出的一款模拟经营类游戏，今年正值彩虹小马系类动画片上映30 周年，这部在美国深受用户喜爱的动画篇，在美国的地位和喜羊羊与灰太狼在中国的地位是一样的，所以这款游戏在上市的时候就会用户广大的玩家基础。在这款游 戏玩家将会扮演一只名叫TwilightSparkle的小马，在众多朋友的帮助下建造一个属于自己的小马乐园，最终打败将黑暗笼罩整个 Ponyville大陆的梦魇之月，将光明和友谊从新带回这个大陆上。当玩家在连续建造乐园之后就会产生疲劳，而彩虹小马中还拥有三款小游戏，以供玩家消 遣。今天小编为大家带来的这篇彩虹小吗评测，让大家对这款gameloft新游有一个详细的了解。</p>\r\n\r\n<p>彩虹的小马的游戏背景是，梦颜之月在被禁锢在月亮之中已经过去了数个世纪，而现在梦魇之月从月亮上逃了出来，并将黑夜笼罩了整个Ponyville大陆， 而且只有TwilightSparkle以及她的好友才可以将Ponyville从梦魇之月的手中解放出来，将光明和友谊从新带回到这片大陆上。彩虹小马 (MYLITTLEPONY)作为一款模拟经营类游戏和之前热门的模拟经营类游戏《恶魔大作战monsterlife》、《幸福街 HappyStreet》相比丝毫的不逊色。《恶魔大作战monsterlife》是一款以怪兽养成为主线的模拟游戏，《幸福街HappyStreet》 的游戏特点是横版经营，而今天的主角《彩虹小马MYLITTLEPONY》则是一款以迷你游戏为特点的模拟经营类游戏，这款游戏将主线任务、模拟经营、迷 你游戏三者结合在了一起，向玩家呈现出一款轻松可以的新游戏。</p>\r\n\r\n<p><strong>游戏的主线任务：重返光明</strong></p>\r\n\r\n<p>　　大家都知道很大的模拟经营游戏都会有一个主 线任务，《彩虹小马MYLITTLEPONY》也是继承了模拟经营游戏的特点，这款游戏的主主线任务和游戏剧情仅仅相连：曾经掌管黑暗的 NightmareMoon在最近的几个世纪里一直被封印在月亮上，现在她从月亮上逃了出来，并将Ponyville笼罩在黑暗之中，而我们作为彩虹小马 游戏中的主角TwilightSparkle，我们需要在朋友们的帮助下，将Ponyville从新多回来，将光明和友谊从新带回Ponyville大 陆，所以这款游戏不不是表面上那种以建造更多的房屋、赚更多的钱为目标的，所以这款游戏的可玩性还是比较高的。</p>\r\n\r\n<p><strong>模拟经营：小马的奇幻世界</strong></p>\r\n\r\n<p>　　彩虹小马这款游戏的主角是几只可爱的小马， 它们分别是TwilightSparkle、RainbowDash,、AppleJack、Rarity,、Fluttershy和 PinkiePie，这几只小马都拥有属于自己的&ldquo;看家本领&rdquo;，当它们在不同的岗位上工作时就会有不同的效果。在游戏中的建筑物也是拥有不同的风格的，风 车、樱桃屋、柠檬店、胡萝卜农场等都是非常的甜美可爱，这款游戏对女性玩家的吸引力更高。</p>\r\n\r\n<p><strong>　　迷你游戏：激活你的兴趣</strong></p>\r\n\r\n<p>　　在彩虹小马游戏中还有顶皮球、接苹果、彩虹之翼三款迷你游戏，这三款游戏需要玩家在建造商店、完成任务、迎接新的伙伴任务都完成之后才可以开启这些迷你游戏，这样的游戏设定可以帮助玩家缓解长时间游戏带来的枯燥。</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>&nbsp;</p>\r\n', '1', '104', '0', '0', '0', '', '2014-08-14 11:36:16');
+COMMIT;
 
-LOCK TABLES `cms_content` WRITE;
-/*!40000 ALTER TABLE `cms_content` DISABLE KEYS */;
-INSERT INTO `cms_content` VALUES (44,'HBuilder：最快的Web开发IDE',14,'推荐,头条','前端开发,HBuilder,Web开发','前端开发,HBuilder','/uploads/20140504/20140504131722895.png','移动开发','admin','HBuilder是DCloud推出的一款支持HTML5的Web开发IDE。快，是HBuilder的最大优势，通过完整的语法提示和代码输入法、代码块等，大幅提升HTML、js、css的开发效率。同时，它还包括最全面的语法库和浏览器兼容性数据。','<p>从Frontpage、Dreamweaver、UE，到Sublime Text和JetBrains的WebStorm，Web编程的IDE已经更换了几批。HBuilder是<a href=\"http://www.dcloud.io/\" target=\"_blank\">DCloud</a>（数 字天堂）推出一款支持HTML5的Web开发IDE。&ldquo;快，是HBuilder的最大优势，通过完整的语法提示和代码输入法、代码块及很多配 套，HBuilder能大幅提升HTML、js、css的开发效率。&rdquo;问到HBuilder的优势时，DCloud CEO王安表示。</p>\r\n\r\n<p>在HBuilder里预置了一个hello HBuilder的工程，用户敲这几十行代码后会发现，HBuilder比其他开发工具至少快5倍。&ldquo;最全的浏览器兼容性数据、开发手机App等很多特点也都是HBuilder强于竞品的地方&rdquo;，王安表示。</p>\r\n\r\n<p>以 &ldquo;快&rdquo;为核心的HBuilder，引入了&ldquo;快捷键语法&rdquo;的概念，巧妙地解决了困扰许多开发者的快捷键过多而记不住的问题。开发者只需要记住几条语法，就可 以快速实现跳转、转义和其他操作。比如alt+[是跳转到括号，alt+&rsquo;是跳转到引号，alt+字母是跳转菜单项，而alt+左则是跳转到上一次光标位 置。而Ctrl则是各种操作，比如ctrl+d就是删除一行。shift则是转义，比如shift+回车是&lt;br/&gt;，shift+空格 是&amp;nbsp;。</p>\r\n\r\n<p>另外，HBuilder的生态系统可能是最丰富的Web IDE生态系统，因为它同时兼容Eclipse插件和Ruby Bundle。SVN、git、ftp、PHP、less等各种技术都有Eclipse插件。</p>\r\n\r\n<p>HBuilder 的编写用到了Java、C、Web和Ruby。HBuilder本身主体是由Java编写，它基于Eclipse，所以顺其自然地兼容了Eclipse的 插件。但因为Java效率太低，所以用C写了启动器。HBuilder柔和的绿色界面设计需要动态调节屏幕亮度，它还支持手机数据线真机联调，而这些都是 用C写的。</p>\r\n\r\n<p>HBuilder很多界面，比如用户信息界面都是使用Web技术来做的，既漂亮，开发起来又快。最后，代码块、快捷配置命令脚本，都是用Ruby开发的。</p>\r\n\r\n<p>&ldquo;这4种技术各有各的用途，我们团队内部也灵活运用，HBuilder的架构支持不同的技术互相融合通信。至于我们的技术选型原则，首先满足用户需求，然后我们内部用什么技术能更快完成就会选什么技术&rdquo;，王安解释道。</p>\r\n\r\n<p><strong>最大的难题：js解析</strong></p>\r\n\r\n<p>HBuilder 第一个版本发布到现在，DCloud以每周一版的速度已经发布了20多个版本。主要更新包括支持边看边改、插件安装、App打包平台开放、代码块自定义开 放。&ldquo;但是最主要的工作还是在努力把亮点做到极致，从第一个版本发布，我们能提升一倍的web开发效率，到现在可以提升5倍&rdquo;王安说道。</p>\r\n\r\n<p>DCloud在开发HBuilder的过程中遇到了不少难题，比如 web语法库和浏览器兼容库的建立，从W3C的HTML、JavaScript、CSS的正式标准和推荐标准，到ECMAScript中浏览器支持的部分，还有各大浏览器的扩展语法，Webkit、moz、ms的HTML、JS、CSS， 想集齐这些语法，不仅仅是工作量的问题。而每个语法在每个浏览器的每个版本上是否能运行，得到这个数据也是前人未能突破的挑战。还好这个难题目前已经被解决。</p>\r\n\r\n<p>&ldquo;当前困扰我们最大的难题还是js解析&rdquo;王安坦言道。</p>\r\n\r\n<p>目 前其他开发工具都不能有效的识别代码里的js对象，要不没有提示，要不全提示，甚至有的随意提示用户输入过的词。而DCloud在识别用户写的js方面下 了很大的功夫，比如var e = document.getElementById(&quot;e&quot;)，e或许是一个div也可能是input，那么e设置属性时，就需要准确识别e到底是什么，才 能给出有效精准的提示。</p>\r\n\r\n<p>&ldquo;我们已经克服了很多挑战，即使很复杂的写法document.querySelector(&quot;div:not(#a1) .class1&quot;)，HBuilder也知道这个对象到底是什么&rdquo;。</p>\r\n\r\n<p>当 然把精准识别做到极致，必然带来一个烦恼，就是性能下降。当用户快速敲代码时，无法接受延迟提示，也就是说，复杂的识别运算要在毫秒级完成，这种挑战非常 大。为此需要不停的优化算法甚至重构。&ldquo;目前我们还在路上艰难前行，但我们相信终究会克服这个挑战，届时开发者们将得到又快又准的提示，而我们也给竞品铸 造了难以超越的壁垒&rdquo;，王安表示。</p>\r\n\r\n<p><strong>目前Web开发领域格局</strong></p>\r\n\r\n<p>目前主流的前端开发工具有Sublime为代表的文 本编辑器，以及Webstorm、Brackets、Dreamweaver、vs等IDE。但说道为HTML5设计或做了特殊优化的，只有 HBuilder、Webstorm和Brackets。从用户群和优缺点角度，主流的开发工具总结如下表（仅收集小部分开发者的意见，如对工具有更多看 法，欢迎评论）：</p>\r\n',0,197,0,2,2,'blue','2014-04-04 13:20:33'),(45,'必须Mark！最佳HTML5应用开发工具推荐',15,'推荐,头条','开发工具','开发工具推荐','/uploads/20140504/20140504135135979.jpg','','admin','HTML5自诞生以来，作为新一代的Web标准，越来越受开发人员及设计师的欢迎。其强大的兼容性，一次开发，到处使用，大大减少了跨平台开发人员的数量及成本。特别在如今日新月异的移动时代，HTML5的才能更加得以体现。','<p>HTML5自诞生以来，作为新一代的Web标准，越来越受开发人员及设计师的欢迎。其强大的兼容性，一次开发，到处使用，大大减少了跨平台开发人员的数量及成本。特别是在如今日新月异的移动时代，除了iOS、Android两大平台，还有Windows Phone、Blackberry、Bada等多个竞争，恰恰给了HTML5展现才能的机会。本文就搜集了十款HTML5工具，希望能对大家的开发工作有所帮助。</p>\r\n\r\n<p><img alt=\"\" src=\"/uploads/20140504/20140504135313305.jpg\" style=\"height:219px; width:500px\" /></p>\r\n',1,116,0,0,0,'','2014-05-04 13:53:35'),(46,'Unity“三巨头”：全心全意为开发者服务',13,'推荐,头条','移动开发','移动开发,UniteUnite','','csdn','admin','近期，在北京举行的2014年Unity亚洲开发者大会，吸引了众多国内游戏开发者的参与。游戏引擎并非只有Unity一个，那为何Unity会脱颖而出广受好评？对此，Unity“三巨头”接受采访，畅谈Unity的存在意义以及发展策略。 ','<p>近期，在北京国家会议中心举行的2014年Unity亚洲开发者大会，吸引了众多国内游戏开发者的参与。目前，游戏引擎并非只有Unity一个，那为何 Unity会脱颖而出广受好评？CSDN记者采访了Unity全球CEO David Helgason、Unity亚太区总裁John Goodale及Unity大中华区总裁符国新（Allen）先生，请他们深入畅谈Unity的存在意义以及发展策略。</p>\r\n\r\n<p><strong>CSDN移动：首先问一下David先生，目前在游戏引擎方面，并不只有Unity，那Unity凭借哪些特性和优势，使开发者选择Unity呢？</strong></p>\r\n\r\n<p><strong>David：</strong>我 想，要是把所有的特点都列出来，清单肯定非常长。核心的来讲，就是多样性和集成方式，我们现在做2D，可以和3D进行完美的结合，这些都是特点。另外我想 强调的是，我们有着非常好的性能，还有一个重点就是多平台。我们可以进行很多无缝的导入，比如说在设备方面包括PC、Mac以及各种各样的智能手机，而平 台方面并不仅仅只有Android和iOS，还包括其他的平台。</p>\r\n\r\n<p><strong><strong>CSDN移动</strong>：不同的平台面对的用户和操控方式都不一样，比如说目前正在兴起的操控平台和手机完全不一样，Unity如何引导开发者面对这些改变呢？</strong></p>\r\n\r\n<p><strong>David：</strong>其实我们专注于多平台和研究已经很长时间了，我们和国际主流的知名电视制造商也有合作，这方面积累了很多经验，尤其在中国，我们注重和主要的合作伙伴进行这方面的研究。</p>\r\n\r\n<p><strong><strong>CSDN移动</strong>：下面我问一下John，现在移动市场的发展导致开发者无论从数量和经验上都比较缺少，可能开发者生态圈比较乱。那Unity是通过哪些措施促进开发者质量的提高，从而规范开发者的生态？</strong></p>\r\n\r\n<p><strong>John：</strong>这 个问题问的好。其实我们要帮助开发者提高的，并不是他们技能本身，而是希望帮助他们进行技能的迁移。我在亚洲工作的经验大概有25年，我发现亚洲开发者技 术和素质还是相当高的，对于这点我非常满意。因为现在我们要做一些不同的东西，在技术方面存在一定的迁移性。尤其在中国，我们有不同的开发环境，所以原来 的技术需要做一些迁移，这是跟之前不同的，也是需要我们下一步要注意的。</p>\r\n\r\n<p>在Unity这边，我们也是希望可以帮助大家进行技术的迁移，把它 使用到一些新的平台上。David也提到过多平台这方面，我们一直非常注重，所以也希望可以使用很多Unity独到的方式和工具，帮助大家进行平台的开 发，再把开发好的东西迁移到移动平台上去，这些都可以使用unity的工具和方法进行帮助。</p>\r\n\r\n<p>在中国我们这边的支持团队，他们的工作是非常重要的，而且到目前为止效果也非常好。他们可以帮助各位开发者，将他们的开发产品进行非常好的优化，然后做跨平台的推广，整体来说这边的工作还是非常不错的，中国这边的效果也很好。</p>\r\n\r\n<p><strong><strong><strong>CSDN移动</strong></strong>：Unity引擎是3D的，但是亚洲市场比较流行2D，针对亚洲市场或者具体针对中国市场，有没有本土化的特征或者特别的策略？</strong></p>\r\n\r\n<p><strong>David：</strong>首 先Unity在这方面做了非常多的工作，希望尽量可以把我们的产品和我们的工具做到最好。之前也开发了很多关于2D方面的工具，但是我们认为技术有待加 强。另外在中国，我们为广大的开发者提供了非常多的支持，也帮助他们尽量的与一些平台和地方的行业进行接触和连接，便于他们取得成功。同时还有非常好的培 训系统，可以带给大家。我们在这边有非常多的适应当地的文件，还有其他的一些内容，都是可以帮助中国开发者的，即便他们不懂英文，也可以顺利进行下去。</p>\r\n\r\n<p><strong>Allen：</strong>国 内认为2D是主流，但是如果看PC上的游戏，端游也好，页游也好，走向3D的游戏居多。PC 3D的过程已经开始转过来了，100%里面的游戏，百分之七八十的PC游戏不是3D。国内手游之所以保持2D为主，主要是低端机和网速有问题，因为 WiFi的普及率不足够。如果看看这一年，首先，你发现红米手机799、899已经很普及了，红米手机跑3D游戏完全没有问题。第二，大城市WiFi普及 率非常高。第三，好多平台公司，不管是百度也好，还是360都在普及路由器，再加上移动马上推4G，而且本身所谓的低端机已经逐渐被淘汰了。</p>\r\n\r\n<p>基 于这几个点，国内今年3D趋势非常明显。如果现在你看每个月新出的游戏里面，将近50%以上都是3D。如果你看日本、韩国，都是以3D为主的游戏。为什 么？因为消费者玩家的口味越来越重。就像以前我们看2D的电影，但是看完3D电影以后很难转回2D电影，消费者口味一直在加强。整个趋势走向3D化是不可 逆转的。当然，肯定也有一些2D游戏存在，但消费者的口味再加上硬件，以及周围的系统成熟，趋势是很明显的。不过基于这个点，Unity虽然看重这个趋 势，但我们10月份会发布2D工具，因为我们意识到了行业转型是需要时间的，我们不能主导行业过程，我们要把最好的工具给开发者，这样，开发者就可以用我 们的工具开发2D游戏，也可以开发3D游戏。</p>\r\n\r\n<p><strong>CSDN移动：关于定价策略的问题，从原来的很贵到现在比较便宜，还有的是分成，还有的是免费的。中国的厂商畅游出了一个游戏也是免费的，Unity对这方面有没有什么对策，或者之后会不会改变自己的销售策略？</strong></p>\r\n\r\n<p><strong>David：</strong>市 场永远存在竞争者，现在有一些人在做开源引擎。我们一直期待可以做出价格比较合理，性能也越来越好的游戏引擎给开发者，在当中也融入越来越多的创新。 2009年我们就推出免费的版本，推广度还是不错的，功能也非常强大，我们每年都在不断的更新，希望可以加入更多的内容。刚才您也有提到Cocos2D， 它是免费的版本，也是做的比较成功的。我们也逐渐拿到一些市场份额，因为我们是更好的开发工具。Unreal是最贵的开发工具，总行业总收入占到了5%， 我们在近期推出了收费的东西，他们做的也越来越好，接受程度越来越高。</p>\r\n\r\n<p>我们在这边的愿望，在未来发展不是把重点放在定价上，而是希望可以通 过我们的努力，帮助开发者越来越容易，越来越方便地开发出成功的产品。所以我们才推出了Asset Store，大家可以在这里面进行任何活动，帮助他们省下很多的时间和金钱。Everyplay这样的产品，加速了他们的成功，同时也不用支付费用。</p>\r\n\r\n<p><strong>Allen：</strong>竞 争对手永远都会有，手游出来之后，加上游戏机的引入，现在需要的是速游，速度跟精品，把精品做好之后，同时加上速度，更符合市场的需求。现在做的好的技术 公司，或者是竞争引擎公司，核心点第一是谁的速度足够快。第二是速度代表创新的速度，因为研发新的工具，一定要有速度去更新。Unity在2年之内，已经 有19个版本更新，这是速度的更新，同时招到全球最强的引擎开发者开发，这些都是大笔的投入。Unity全球在引擎研发团队上，人数已经是第一多了，我们 150多个人只做研发引擎。</p>\r\n\r\n<p>如果分析市场的话，一个团队在做产品的时候，引擎的投入其实是最低的一部分，能力是最高的。这些成本加上引擎再 加上市场推广，把这些列出来，引擎投入只是一小部分。如果Unity引擎可以让开发者的周期越短，同时效益更高，整个成本节省远远大于那一点点软件的投入 比例。所以很多游戏公司，虽然价格上是个噱头，如果分析整个形势，最贵的就是市场推广，第二是人力成本，第三才是技术的投入。</p>\r\n\r\n<p><strong>CSDN移动：中国的一些游戏厂商已经开始转向做资源平台了，Unity也推出了Unity Cloud，你们怎么看待这个平台市场，Unity Cloud，可以帮助开发者实现什么，带来什么样的变革？</strong></p>\r\n\r\n<p><strong>Allen：</strong>Unity 做事，从技术底层，让玩家更加有社交的功能，同时这些游戏也可以在云上面做交叉推广的功能。Unity云的平台定位跟国内的手游平台定位不一样，国内平台 定位是面向消费者的平台，是发号平台。Unity更多的是游戏和游戏之间的交叉推广，虽然都叫平台，但是平台的定位也不一样。所谓的交叉推广平台也好，社 交平台也好，我们跟国内各家平台战略合作，通过他们面向消费者的资源，把我们这块的技术融合到他们的平台上，让开发者最快速度能找到需要的消费者的资源。</p>\r\n\r\n<p><strong>CSDN移动：不知道三位是不是参与Unity的技术工作。如果有一款游戏在iPhone平台比较火，我想移植到其他所有的平台，Unity是不是提供这样的逆向工程?会不会有多设备结合的游戏开发接口给开发者使用?</strong></p>\r\n\r\n<p><strong>David：</strong>其 实是不可以的，但是你们可以选Unity的工具重新做游戏，我们提供的一些技术和服务要完成这个内容也是非常快的，可以把它迁移到Android等其他的 手机平台上。你也可以使用今年要推出的新产品。另外使用Unity还有一个好处，如果你把它迁移到Android，使用Unity可以非常快速帮你完成， 但是如果不用的话，你就要开发两套完全不同的代码系统。</p>\r\n\r\n<p><strong>CSDN移动：对于非法使用Unity看法是什么？Asset Store价值如何？</strong></p>\r\n\r\n<p><strong>David：</strong>我首先回答第一个关于版权的问题。我不赞同非法使用，因为我认为Unity可以带给开发者的价值是非常高的，在制作过程中可以帮他们省掉大量的时间，大家应该对于我们表示出一定的尊重。</p>\r\n\r\n<p>其 实我觉得Asset Store非常好，更新速率非常高。因为有成千上万的开发者都给Asset Store贡献内容，Asset Store不是我们自己做的自主开发，但是它的价值是非常高的，而且它也是非常稳定的内容，里面有很多东西都是开源的。广大的开发者，如果发现有地方需要 改进的话，人人都可以参与其中。</p>\r\n\r\n<p><strong>CSDN移动：展位上有很多教育或者是其他方面的展示，这些在Unity游戏引擎里面，收入占比会是多少？会不会成为你们中国地区2014年主要的发展方向？</strong></p>\r\n\r\n<p><strong>Allen：</strong>两 年前到中国，短短24个月之内，我们业务成长速度是4倍。主要是增值服务，第一块是教育，我们有授权培训中心，我们有考试认证体系，学生可以考试，这些都 是付费服务。我们也有专业技术服务，比如说大公司、中型公司、小公司，碰到问题我们都有技术团队进行支持，这里面也有收费的体系。我们也有一个非游戏解决 方案团队，解决方案团队做的是项目，把一些合作伙伴硬件结合在一起，把一些项目做完以后给我们企业用户。我们还有游戏发行服务，把好的游戏带到国内本地 化，和发行商合作，把一些游戏分发给消费者，通过这个合作，我们也是用分成比例的方式进行实现。这8个月以来增长速度非常快，已经远远超于我们的预期。</p>\r\n\r\n<p><strong>CSDN移动：这算不算是中国市场的特色呢？</strong></p>\r\n\r\n<p><strong>Allen：</strong>这 些业务都是在中国创造的。在中国创造，现在我们带到海外教育这块，我们跟韩国，新加坡，跟不同的国家，甚至美国，把我们的书，把我们的内容编译成英语，我 们把它当地化，把这些资源给海外Unity办公室，希望他们推动这个事。但是我们的认证是全球的认证体系。这套认证考题都是由我们统一研发团队制作出来。 游戏发行服务这块，我们跟美国是同时起步的，解决方案这块，是我们在中国成立的。近期宣布的Unity基金，也是中国成立的。</p>\r\n\r\n<p><strong>CSDN移动：关于Unity未来的发展方向。Cocos2D作为触控科技公司，他们把业务分成三块，云平台这块基本上算是子业务，Unity也在做自己的云平台，Unity未来的定位是不是不光是引擎方面，也会开展其他的业务，甚至出自己的游戏？</strong></p>\r\n\r\n<p><strong>David：</strong>我 们这边不会做自己的游戏。其实我们Unity要做的事就是帮助开发者做的越来越好，让他们越来越成功，不管使用我们的免费版本，还是付费版本，还是使用我 们Asset Store里面的东西或者用Everyplay等等，所有这些东西，都是希望他们获得自己越来越多的成功。</p>\r\n\r\n<p><strong>Allen：</strong>Unity 其实是12年的公司，我们经常谈到技术累积花了十几年才累积起来，好多公司说做引擎，但是如果放一小部分人做引擎，你说我支持引擎哪个品牌，其实要走的路 还需要很长的时间，这些引擎的累积，技术的累积确实很多。今天早上大家在会场上看到我们做出一个画面公里数，实时渲染那个游戏，看起来容易，但是后面的技 术累积确实是150个人，在全球各地，12个分公司做出来的。永远都有人说有竞争，我们很欢迎竞争对手，只有有了竞争对手，我们才会做的更好。</p>\r\n\r\n<p>我 们把几款游戏带到海外，还跟好几款本地的团队合作，把他们的游戏放到不同的商城，包括跟海外团队的合作，我们把国外的游戏引到其他的市场。刚开始把好游戏 带到国内，但是现在国内的水平逐渐提高了，国内有很多好的游戏，我们想把它带到海外，我们是发行服务商，因为我们做的事是把好的游戏以最方便的方式带到当 地的市场，并不是做发行商。</p>\r\n\r\n<p>我们跟平台的合作，并不是我们选的，我们把好多款游戏拿到Facebook上面做，由Facebook出钱，了解这款游戏，我们负责技术支持这块。</p>\r\n\r\n<p><strong>David：</strong>把中国的好游戏介绍到国外，这个我们会做，也会总结我们要做的事情，帮助我们的开发者，把他们的游戏做的越来越好。</p>\r\n',1,155,0,0,0,'','2014-05-04 13:58:10'),(47,'全球移动广告现状报告：哪种平台、应用最赚钱',13,'加粗,推荐,头条','移动开发,移动广告','移动开发,移动广告,ios','','','admin','著名移动广告平台Opera Mediaworks发布2014年第一季度移动广告现状报告。Android毫无悬念地成为了使用最广泛的智能设备系统，并以42.83%的流量份额首次赶超iOS，但说到哪个平台最赚钱？还非iOS莫属','<p>近日，著名移动广告平台Opera Mediaworks发布了2014年第一季度的移动广告现状报告。报告指出，在继上一季度成为全球第一大移动平台之后，Android毫无悬念地成为了 使用最为广泛的智能设备系统，并且，以42.83%的移动广告流量份额首次赶超iOS。但说到哪个平台广告最赚钱？还非iOS莫属，其营收份额比为 52.27%，而Android仅为33.46%</p>\r\n\r\n<p>相比<a href=\"http://operamediaworks.com/insights/sma_Q4_2013.html\" target=\"_blank\"><strong>2013年Q4季度</strong></a>，Android 平台无论是流量还是收入方面，都有着非常大的飞跃，分别增加了5.12和1.73个百分点。相比BlackBerry和Windows等其他平台的双重萎 缩，几度&ldquo;被倒下&rdquo;的塞班却是坚挺依旧，与上一季度相比，流量和营收分别增长了1.62和0.3个百分点。</p>\r\n',1,124,0,2,1,'','2014-05-04 13:59:31'),(49,'PHP arsort() 函数',19,'推荐,头条','arsort','arsort','/uploads/20140507/20140507110318175.jpg','admin','admin','PHP arsort() 函数','<p>PHP arsort() 函数</p>\r\n',0,390,250,2,4,'blue','2014-05-06 10:34:05'),(51,'磐石',16,'头条,推荐,加粗','磐石','','/uploads/20140521/20140521142302928.jpg','','admin','','<p>磐石</p>\r\n',1,174,0,0,0,'','2014-05-21 14:23:25');
-/*!40000 ALTER TABLE `cms_content` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `cms_level`
---
-
+-- ----------------------------
+--  Table structure for `cms_level`
+-- ----------------------------
 DROP TABLE IF EXISTS `cms_level`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `cms_level` (
   `id` mediumint(8) NOT NULL AUTO_INCREMENT,
   `level_name` varchar(20) NOT NULL,
   `level_info` varchar(200) NOT NULL,
   `permission` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `cms_level`
---
+-- ----------------------------
+--  Records of `cms_level`
+-- ----------------------------
+BEGIN;
+INSERT INTO `cms_level` VALUES ('1', '普通管理员', '除了不能操作其他管理员以为，其他功能都能操作', ''), ('2', '超级管理员', '最大权限，只有一个超管的情况下，不能删除自己', '1,2,3,4,5,6,7,8,9,10,11,12,13,14'), ('3', '发帖专员', '可以发表文章，修改和删除的权限', ''), ('4', '评论专员', '可以评论哦', '1,2,3,4,5'), ('5', '会员专员', '只有管理会员的权限', '1,2,3'), ('10', '后台游客', '只有访问权限', '1');
+COMMIT;
 
-LOCK TABLES `cms_level` WRITE;
-/*!40000 ALTER TABLE `cms_level` DISABLE KEYS */;
-INSERT INTO `cms_level` VALUES (1,'普通管理员','除了不能操作其他管理员以为，其他功能都能操作',''),(2,'超级管理员','最大权限，只有一个超管的情况下，不能删除自己','1,2,3,4,5,6,7,8,9,10,11,12,13,14'),(3,'发帖专员','可以发表文章，修改和删除的权限',''),(4,'评论专员','可以评论哦','1,2,3,4,5'),(5,'会员专员','只有管理会员的权限','1,2,3'),(10,'后台游客','只有访问权限','1');
-/*!40000 ALTER TABLE `cms_level` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `cms_link`
---
-
+-- ----------------------------
+--  Table structure for `cms_link`
+-- ----------------------------
 DROP TABLE IF EXISTS `cms_link`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `cms_link` (
   `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
   `webname` varchar(20) NOT NULL,
@@ -160,25 +131,18 @@ CREATE TABLE `cms_link` (
   `date` datetime NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `cms_link`
---
+-- ----------------------------
+--  Records of `cms_link`
+-- ----------------------------
+BEGIN;
+INSERT INTO `cms_link` VALUES ('1', '网易新闻', 'http://163.com', '', '丁磊', '1', '1', '2014-05-28 14:40:03'), ('2', '优酷视频', 'http://youku.com', '/images/youku.png', '古永锵', '2', '1', '2014-05-28 14:41:26'), ('3', '搜狐', 'http://sohu.com', '', '张朝阳', '1', '1', '2014-05-28 16:14:58'), ('4', '中央电视', 'http://cctv.com', '', '习', '1', '1', '2014-05-28 16:15:45'), ('6', '阿里巴巴', 'http://alibaba.com', '/images/alibaba.png', '马云', '2', '1', '2014-05-28 16:17:49');
+COMMIT;
 
-LOCK TABLES `cms_link` WRITE;
-/*!40000 ALTER TABLE `cms_link` DISABLE KEYS */;
-INSERT INTO `cms_link` VALUES (1,'网易新闻','http://163.com','','丁磊',1,1,'2014-05-28 14:40:03'),(2,'优酷视频','http://youku.com','/images/youku.png','古永锵',2,1,'2014-05-28 14:41:26'),(3,'搜狐','http://sohu.com','','张朝阳',1,1,'2014-05-28 16:14:58'),(4,'中央电视','http://cctv.com','','习',1,1,'2014-05-28 16:15:45'),(6,'阿里巴巴','http://alibaba.com','/images/alibaba.png','马云',2,1,'2014-05-28 16:17:49');
-/*!40000 ALTER TABLE `cms_link` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `cms_manage`
---
-
+-- ----------------------------
+--  Table structure for `cms_manage`
+-- ----------------------------
 DROP TABLE IF EXISTS `cms_manage`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `cms_manage` (
   `id` mediumint(8) NOT NULL AUTO_INCREMENT,
   `admin_user` varchar(20) NOT NULL,
@@ -190,25 +154,18 @@ CREATE TABLE `cms_manage` (
   `reg_time` datetime NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `cms_manage`
---
+-- ----------------------------
+--  Records of `cms_manage`
+-- ----------------------------
+BEGIN;
+INSERT INTO `cms_manage` VALUES ('1', 'admin', '7c4a8d09ca3762af61e59520943dc26494f8941b', '2', '35', '127.0.0.1', '2014-08-14 10:05:56', '2014-03-27 15:19:54'), ('2', 'oliver', '7c4a8d09ca3762af61e59520943dc26494f8941b', '5', '1', '127.0.0.1', '2014-04-24 08:51:52', '2014-03-27 15:23:59'), ('3', '我是MT', '7c4a8d09ca3762af61e59520943dc26494f8941b', '3', '0', '000.000.000.000', '0000-00-00 00:00:00', '2014-03-27 15:24:28'), ('4', '樱木花道', '7c4a8d09ca3762af61e59520943dc26494f8941b', '4', '0', '000.000.000.000', '0000-00-00 00:00:00', '0000-00-00 00:00:00'), ('5', '赤木晴子', '7c4a8d09ca3762af61e59520943dc26494f8941b', '3', '0', '000.000.000.000', '0000-00-00 00:00:00', '0000-00-00 00:00:00'), ('8', '樱桃小丸子', '7c4a8d09ca3762af61e59520943dc26494f8941b', '3', '0', '000.000.000.000', '0000-00-00 00:00:00', '2014-04-10 10:55:30'), ('10', '流川枫', '7c4a8d09ca3762af61e59520943dc26494f8941b', '3', '0', '000.000.000.000', '0000-00-00 00:00:00', '2014-04-10 10:58:38'), ('29', '宫城良田', 'da39a3ee5e6b4b0d3255bfef95601890afd80709', '4', '0', '000.000.000.000', '0000-00-00 00:00:00', '2014-04-10 13:55:04'), ('34', '蜡笔小新', '7c4a8d09ca3762af61e59520943dc26494f8941b', '10', '3', '192.168.1.177', '2014-06-01 18:56:25', '2014-04-17 11:19:41'), ('35', '赤木刚宪', '7c4a8d09ca3762af61e59520943dc26494f8941b', '4', '0', '000.000.000.000', '0000-00-00 00:00:00', '2014-04-17 11:19:58');
+COMMIT;
 
-LOCK TABLES `cms_manage` WRITE;
-/*!40000 ALTER TABLE `cms_manage` DISABLE KEYS */;
-INSERT INTO `cms_manage` VALUES (1,'admin','7c4a8d09ca3762af61e59520943dc26494f8941b',2,30,'192.168.1.177','2014-06-01 18:55:50','2014-03-27 15:19:54'),(2,'oliver','7c4a8d09ca3762af61e59520943dc26494f8941b',5,1,'127.0.0.1','2014-04-24 08:51:52','2014-03-27 15:23:59'),(3,'我是MT','7c4a8d09ca3762af61e59520943dc26494f8941b',3,0,'000.000.000.000','0000-00-00 00:00:00','2014-03-27 15:24:28'),(4,'樱木花道','7c4a8d09ca3762af61e59520943dc26494f8941b',4,0,'000.000.000.000','0000-00-00 00:00:00','0000-00-00 00:00:00'),(5,'赤木晴子','7c4a8d09ca3762af61e59520943dc26494f8941b',3,0,'000.000.000.000','0000-00-00 00:00:00','0000-00-00 00:00:00'),(8,'樱桃小丸子','7c4a8d09ca3762af61e59520943dc26494f8941b',3,0,'000.000.000.000','0000-00-00 00:00:00','2014-04-10 10:55:30'),(10,'流川枫','7c4a8d09ca3762af61e59520943dc26494f8941b',3,0,'000.000.000.000','0000-00-00 00:00:00','2014-04-10 10:58:38'),(29,'宫城良田','da39a3ee5e6b4b0d3255bfef95601890afd80709',4,0,'000.000.000.000','0000-00-00 00:00:00','2014-04-10 13:55:04'),(34,'蜡笔小新','7c4a8d09ca3762af61e59520943dc26494f8941b',10,3,'192.168.1.177','2014-06-01 18:56:25','2014-04-17 11:19:41'),(35,'赤木刚宪','7c4a8d09ca3762af61e59520943dc26494f8941b',4,0,'000.000.000.000','0000-00-00 00:00:00','2014-04-17 11:19:58');
-/*!40000 ALTER TABLE `cms_manage` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `cms_nav`
---
-
+-- ----------------------------
+--  Table structure for `cms_nav`
+-- ----------------------------
 DROP TABLE IF EXISTS `cms_nav`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `cms_nav` (
   `id` mediumint(8) NOT NULL AUTO_INCREMENT,
   `nav_name` varchar(20) NOT NULL,
@@ -216,51 +173,37 @@ CREATE TABLE `cms_nav` (
   `pid` mediumint(8) NOT NULL DEFAULT '0',
   `sort` mediumint(8) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `cms_nav`
---
+-- ----------------------------
+--  Records of `cms_nav`
+-- ----------------------------
+BEGIN;
+INSERT INTO `cms_nav` VALUES ('1', '日本动漫', '日本动漫', '0', '1'), ('2', '小马版', '小马版', '0', '2'), ('3', '其他杂谈', '其他杂谈', '0', '3'), ('14', '综合资讯', '综合资讯', '1', '1'), ('15', '精彩漫评', '精彩漫评', '1', '2'), ('16', '业界消息', '业界消息', '1', '3'), ('18', '漫闻快报', '漫闻快报', '1', '4'), ('20', 'Pony', 'Pony', '2', '20');
+COMMIT;
 
-LOCK TABLES `cms_nav` WRITE;
-/*!40000 ALTER TABLE `cms_nav` DISABLE KEYS */;
-INSERT INTO `cms_nav` VALUES (1,'军事动态','军事方面的新闻',0,1),(2,'八卦娱乐','娱乐界的狗仔新闻',0,2),(3,'时尚女人','关于时尚和女人的信息',0,3),(4,'科技频道','关于科技方面的信息',0,4),(5,'智能手机','关于智能手机方面的推荐',0,5),(6,'美容护肤','美容护肤',0,6),(7,'热门汽车','热门汽车',0,7),(8,'房产家居','房产家居',0,8),(9,'读书教育','读书教育',0,9),(11,'股票基金','股票基金',0,11),(13,'中国军事','中国军事',1,5),(14,'美国军事','美国军事',1,1),(15,'韩国军事','韩国军事',1,2),(16,'日本军事','日本军事',1,3),(18,'越南军事','越南军事',1,4),(19,'朝鲜军事','朝鲜军事',1,19);
-/*!40000 ALTER TABLE `cms_nav` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `cms_permission`
---
-
+-- ----------------------------
+--  Table structure for `cms_permission`
+-- ----------------------------
 DROP TABLE IF EXISTS `cms_permission`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `cms_permission` (
   `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
   `info` varchar(200) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `cms_permission`
---
+-- ----------------------------
+--  Records of `cms_permission`
+-- ----------------------------
+BEGIN;
+INSERT INTO `cms_permission` VALUES ('1', '后台登录', '后台登录'), ('2', '清理缓存', '清理缓存'), ('3', '管理员管理', '管理员管理'), ('4', '等级管理', '等级管理'), ('5', '权限设定', '权限设定'), ('6', '网站导航', '网站导航'), ('7', '文档操作', '文档操作'), ('8', '评论审核', '评论审核'), ('9', '轮播器管理', '轮播器管理'), ('10', '广告管理', '广告管理'), ('11', '投票管理', '投票管理'), ('12', '审核友情连接', '审核友情连接'), ('13', '会员管理', '会员管理'), ('14', '系统配置文件管理', '系统配置文件管理');
+COMMIT;
 
-LOCK TABLES `cms_permission` WRITE;
-/*!40000 ALTER TABLE `cms_permission` DISABLE KEYS */;
-INSERT INTO `cms_permission` VALUES (1,'后台登录','后台登录'),(2,'清理缓存','清理缓存'),(3,'管理员管理','管理员管理'),(4,'等级管理','等级管理'),(5,'权限设定','权限设定'),(6,'网站导航','网站导航'),(7,'文档操作','文档操作'),(8,'评论审核','评论审核'),(9,'轮播器管理','轮播器管理'),(10,'广告管理','广告管理'),(11,'投票管理','投票管理'),(12,'审核友情连接','审核友情连接'),(13,'会员管理','会员管理'),(14,'系统配置文件管理','系统配置文件管理');
-/*!40000 ALTER TABLE `cms_permission` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `cms_rotation`
---
-
+-- ----------------------------
+--  Table structure for `cms_rotation`
+-- ----------------------------
 DROP TABLE IF EXISTS `cms_rotation`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `cms_rotation` (
   `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
   `thumbnail` varchar(100) NOT NULL,
@@ -271,25 +214,18 @@ CREATE TABLE `cms_rotation` (
   `date` datetime NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `cms_rotation`
---
+-- ----------------------------
+--  Records of `cms_rotation`
+-- ----------------------------
+BEGIN;
+INSERT INTO `cms_rotation` VALUES ('2', '/uploads/20140521/20140521144601369.jpg', '444', '5555', '0', 'rotation.php?action=showss', '2014-05-21 14:46:04'), ('3', '/uploads/20140521/20140521154112950.jpg', '12345', 'dddd', '1', 'tteee', '2014-05-21 15:41:35');
+COMMIT;
 
-LOCK TABLES `cms_rotation` WRITE;
-/*!40000 ALTER TABLE `cms_rotation` DISABLE KEYS */;
-INSERT INTO `cms_rotation` VALUES (2,'/uploads/20140521/20140521144601369.jpg','444','5555',0,'rotation.php?action=showss','2014-05-21 14:46:04'),(3,'/uploads/20140521/20140521154112950.jpg','12345','dddd',1,'tteee','2014-05-21 15:41:35');
-/*!40000 ALTER TABLE `cms_rotation` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `cms_system`
---
-
+-- ----------------------------
+--  Table structure for `cms_system`
+-- ----------------------------
 DROP TABLE IF EXISTS `cms_system`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `cms_system` (
   `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
   `webname` varchar(100) NOT NULL,
@@ -303,50 +239,36 @@ CREATE TABLE `cms_system` (
   `adver_pic_num` tinyint(2) NOT NULL COMMENT '//图片广告的个数',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `cms_system`
---
+-- ----------------------------
+--  Records of `cms_system`
+-- ----------------------------
+BEGIN;
+INSERT INTO `cms_system` VALUES ('1', 'PPPony', '10', '8', '10', '/uploads/', '3', '3', '5', '3');
+COMMIT;
 
-LOCK TABLES `cms_system` WRITE;
-/*!40000 ALTER TABLE `cms_system` DISABLE KEYS */;
-INSERT INTO `cms_system` VALUES (1,'WEB俱乐部',10,8,10,'/uploads/',3,3,5,3);
-/*!40000 ALTER TABLE `cms_system` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `cms_tag`
---
-
+-- ----------------------------
+--  Table structure for `cms_tag`
+-- ----------------------------
 DROP TABLE IF EXISTS `cms_tag`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `cms_tag` (
   `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
   `tagname` varchar(20) NOT NULL,
   `count` smallint(6) unsigned NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `cms_tag`
---
+-- ----------------------------
+--  Records of `cms_tag`
+-- ----------------------------
+BEGIN;
+INSERT INTO `cms_tag` VALUES ('6', '纯白交响曲', '4'), ('7', '魔法少女伊莉雅', '1'), ('8', '夏目友人帐', '1');
+COMMIT;
 
-LOCK TABLES `cms_tag` WRITE;
-/*!40000 ALTER TABLE `cms_tag` DISABLE KEYS */;
-INSERT INTO `cms_tag` VALUES (1,'arsort',26),(2,'移动开发',4),(3,'开发工具',5),(4,'HBuilder',4),(5,'Web开发',4);
-/*!40000 ALTER TABLE `cms_tag` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `cms_user`
---
-
+-- ----------------------------
+--  Table structure for `cms_user`
+-- ----------------------------
 DROP TABLE IF EXISTS `cms_user`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `cms_user` (
   `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
   `user` varchar(20) NOT NULL,
@@ -360,25 +282,18 @@ CREATE TABLE `cms_user` (
   `date` datetime NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `cms_user`
---
+-- ----------------------------
+--  Records of `cms_user`
+-- ----------------------------
+BEGIN;
+INSERT INTO `cms_user` VALUES ('5', 'xiaoA', '7c4a8d09ca3762af61e59520943dc26494f8941b', 'sss@sina.com', '23.gif', '您父亲的姓名', 'nini', '1', '1399604713', '2014-05-07 14:49:25'), ('6', '黑崎一护', '7c4a8d09ca3762af61e59520943dc26494f8941b', 'heiqi@sina.com', '11.gif', '您父亲的姓名', '同行', '1', '1399604754', '2014-05-08 10:15:13'), ('7', '樱桃小丸子', '7c4a8d09ca3762af61e59520943dc26494f8941b', 'yingtao@sina.com', '09.gif', '您父亲的姓名', '同行', '1', '1407987750', '2014-05-08 10:16:25'), ('8', '路飞', '7c4a8d09ca3762af61e59520943dc26494f8941b', 'lufei@sina.com', '07.gif', '您父亲的姓名', '同行', '1', '1407987904', '2014-05-08 14:15:17'), ('9', '山本', '7c4a8d09ca3762af61e59520943dc26494f8941b', 'shanben@sina.com', '04.gif', '', '', '1', '1399604802', '2014-05-09 09:41:33'), ('11', '呵呵', '7c4a8d09ca3762af61e59520943dc26494f8941b', 'hehe@sina.com', '13.gif', '您父亲的姓名', '不知道', '1', '', '2014-05-14 09:56:45'), ('12', 'bbq', '7c4a8d09ca3762af61e59520943dc26494f8941b', 'bbq@sina.com', '03.gif', '您配偶的性别', '男', '5', '', '2014-05-14 10:11:24');
+COMMIT;
 
-LOCK TABLES `cms_user` WRITE;
-/*!40000 ALTER TABLE `cms_user` DISABLE KEYS */;
-INSERT INTO `cms_user` VALUES (5,'xiaoA','7c4a8d09ca3762af61e59520943dc26494f8941b','sss@sina.com','23.gif','您父亲的姓名','nini',1,'1399604713','2014-05-07 14:49:25'),(6,'黑崎一护','7c4a8d09ca3762af61e59520943dc26494f8941b','heiqi@sina.com','11.gif','您父亲的姓名','同行',1,'1399604754','2014-05-08 10:15:13'),(7,'樱桃小丸子','7c4a8d09ca3762af61e59520943dc26494f8941b','yingtao@sina.com','09.gif','您父亲的姓名','同行',1,'1400289340','2014-05-08 10:16:25'),(8,'路飞','7c4a8d09ca3762af61e59520943dc26494f8941b','lufei@sina.com','07.gif','您父亲的姓名','同行',1,'1399604779','2014-05-08 14:15:17'),(9,'山本','7c4a8d09ca3762af61e59520943dc26494f8941b','shanben@sina.com','04.gif','','',1,'1399604802','2014-05-09 09:41:33'),(11,'呵呵','7c4a8d09ca3762af61e59520943dc26494f8941b','hehe@sina.com','13.gif','您父亲的姓名','不知道',1,'','2014-05-14 09:56:45'),(12,'bbq','7c4a8d09ca3762af61e59520943dc26494f8941b','bbq@sina.com','03.gif','您配偶的性别','男',5,'','2014-05-14 10:11:24');
-/*!40000 ALTER TABLE `cms_user` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `cms_vote`
---
-
+-- ----------------------------
+--  Table structure for `cms_vote`
+-- ----------------------------
 DROP TABLE IF EXISTS `cms_vote`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `cms_vote` (
   `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
   `title` varchar(20) NOT NULL,
@@ -388,26 +303,13 @@ CREATE TABLE `cms_vote` (
   `state` tinyint(1) NOT NULL DEFAULT '0',
   `date` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `cms_vote`
---
+-- ----------------------------
+--  Records of `cms_vote`
+-- ----------------------------
+BEGIN;
+INSERT INTO `cms_vote` VALUES ('2', '你最喜欢的小马', '你最喜欢的小马', '0', '0', '1', '2014-05-27 16:03:10'), ('4', '小蝶', '小蝶', '2', '5', '0', '2014-05-27 16:42:32'), ('5', '苹果杰克', '苹果杰克', '2', '1', '0', '2014-05-27 16:43:57'), ('6', '云宝黛西', '云宝黛西', '2', '2', '0', '2014-05-27 17:08:20'), ('7', '暮光闪闪', '暮光闪闪', '2', '8', '0', '2014-05-27 17:10:08'), ('9', '瑞瑞', '瑞瑞', '2', '1', '0', '2014-08-14 11:03:49'), ('10', 'Pinkpie', 'Pinkpie', '2', '0', '0', '2014-08-14 11:04:17');
+COMMIT;
 
-LOCK TABLES `cms_vote` WRITE;
-/*!40000 ALTER TABLE `cms_vote` DISABLE KEYS */;
-INSERT INTO `cms_vote` VALUES (2,'你最喜欢的歌','你最喜欢的歌',0,0,1,'2014-05-27 16:03:10'),(3,'您最喜欢的菜是什么','您最喜欢的菜是什么',0,0,0,'2014-05-27 16:04:24'),(4,'东方红','',2,3,0,'2014-05-27 16:42:32'),(5,'嘻唰唰','嘻唰唰',2,1,0,'2014-05-27 16:43:57'),(6,'刷牙歌','刷牙歌',2,2,0,'2014-05-27 17:08:20'),(7,'letter song','letter song',2,8,0,'2014-05-27 17:10:08'),(8,'你最喜欢的男歌手','你最喜欢的男歌手',0,0,0,'2014-05-27 17:11:34');
-/*!40000 ALTER TABLE `cms_vote` ENABLE KEYS */;
-UNLOCK TABLES;
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
-
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
-
--- Dump completed on 2014-06-01 19:19:39
+SET FOREIGN_KEY_CHECKS = 1;
