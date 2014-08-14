@@ -1,4 +1,5 @@
 .idea/
+.DS_Store
 templates_c/*
 cache/*
 !templates_c/index.html
