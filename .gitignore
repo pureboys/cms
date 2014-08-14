@@ -3,4 +3,3 @@ templates_c/*
 cache/*
 !templates_c/index.html
 !cache/index.html
-uploads/
