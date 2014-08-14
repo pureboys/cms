@@ -54,7 +54,7 @@ class CastAction extends Action
         $this->_tpl->assign('vote_title', $_vote->getVoteTitle()->title);
         $_object = $_vote->getVoteItem();
         if ($_object) {
-            $arr_i = array('', 'progress-bar-success', 'progress-bar-warning', 'progress-bar-danger');
+            $arr_i = array('', 'progress-bar-success', 'progress-bar-warning', 'progress-bar-danger','','progress-bar-success');
             foreach ($_object as $_value) {
                 $_value->percent = round($_value->count / $_sum * 100, 2) . '%';
                 $_value->picwidth = $_value->count / $_sum * $_width;

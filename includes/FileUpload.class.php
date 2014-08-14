@@ -35,7 +35,7 @@ class FileUpload
     {
         $_path = $_SERVER['SCRIPT_NAME'];
         $_dir = dirname(dirname($_path));
-        if ($_dir == '\\') $_dir = '';
+        if ($_dir == '\\' || $_dir == '/') $_dir = '';
         $this->linkpath = $_dir . $this->linkpath;
         return $this->linkpath;
     }

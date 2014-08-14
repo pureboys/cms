@@ -53,7 +53,7 @@
 {/if}
 
 {if $add}
-    <form action="" method="post" name="add">
+    <form action="" method="post" name="update">
         <table cellspacing="0" class="user">
             <tr>
                 <td>用 户 名: <input type="text" class="text" name="user"/><span class="red">[必填]</span>(*用户名在2到20位之间)</td>

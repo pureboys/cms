@@ -160,7 +160,7 @@ class Image
     //图像输出
     public function out()
     {
-        imagepng($this->new, $this->file);
+        imagepng($this->new, $this->file); //todo 这里只是用Png生成 正确的是应该判断验证
         imagedestroy($this->img);
         imagedestroy($this->new);
     }
